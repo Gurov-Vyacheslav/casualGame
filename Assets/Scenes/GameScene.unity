@@ -427,9 +427,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbbcfdb3c4267046a30a9b5532e2976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followCameraOffset: {x: -10, y: 8, z: 0}
-  _rotationOffset: {x: -4.5, y: 3, z: 0}
-  _player: {fileID: 0}
+  _followCameraOffset: {x: -10, y: 4.15, z: 0}
+  _rotationOffset: {x: -4.5, y: 2.3, z: 0}
+  _player: {fileID: 1234337229}
+--- !u!114 &1234337229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6375152166119255655, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
+  m_PrefabInstance: {fileID: 6256734589150854435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbbb884687d1f9949a9e16861e349cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1401254561872475428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -442,6 +453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4447085488002897709, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
+      propertyPath: _baseWeaponPrefab
+      value: 
+      objectReference: {fileID: 6643639849626107294, guid: 13c8b2d9f3c966849a8c9a4c6bb2caf0, type: 3}
     - target: {fileID: 7778466477436933763, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.182974
@@ -538,6 +553,10 @@ PrefabInstance:
     - target: {fileID: 4092438505264641148, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377944603347019058, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
+      propertyPath: _speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -13,7 +13,7 @@ namespace LearnGame.Camera
         private Vector3 _rotationOffset = Vector3.zero;
 
         [SerializeField]
-        private EnemyCharacter _player;
+        private PlayerCharacter _player;
         protected void Start()
         {
             if (_player == null)
