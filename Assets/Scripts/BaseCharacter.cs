@@ -1,6 +1,5 @@
 using LearnGame.Movement;
 using LearnGame.Shooting;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace LearnGame

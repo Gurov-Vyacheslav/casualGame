@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using UnityEngine;
 
 namespace LearnGame.Shooting
@@ -14,6 +14,18 @@ namespace LearnGame.Shooting
         private float _nextShootTimerSec;
 
         private GameObject _target;
+        private int _targetMask;
+
+        protected void Awake()
+        {
+            if (LayerUtils.IsEnemy(gameObject))
+                _targetMask = LayerUtils.PlayerMask;
+            else if (LayerUtils.IsPlayer(gameObject))
+                _targetMask = LayerUtils.EnemyMask;
+            else
+                throw new InvalidOperationException($"Ошибка: Персонаж {gameObject.name} не может иметь данный компонент {typeof(ShootingController).Name}.");
+
+        }
 
 
 
@@ -45,9 +57,8 @@ namespace LearnGame.Shooting
 
             var position = _weapon.transform.position;
             var radius = _weapon.ShootRadius;
-            var mask = LayerUtils.EnemyMask;
 
-            var size = Physics.OverlapSphereNonAlloc(position, radius, _colliders, mask);
+            var size = Physics.OverlapSphereNonAlloc(position, radius, _colliders, _targetMask);
 
             if (size > 0 )
             {

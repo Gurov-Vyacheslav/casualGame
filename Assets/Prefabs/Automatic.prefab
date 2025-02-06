@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.7, z: 0.25}
+  m_LocalScale: {x: 0.18, y: 0.7, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8557018955650884919}
@@ -240,8 +240,8 @@ Transform:
   m_GameObject: {fileID: 3429479810928204545}
   serializedVersion: 2
   m_LocalRotation: {x: 0.9848078, y: -0, z: -0, w: -0.17364809}
-  m_LocalPosition: {x: 0, y: -0.13, z: -0.333}
-  m_LocalScale: {x: 0.08, y: 0.22, z: 0.081}
+  m_LocalPosition: {x: 0, y: -0.164, z: -0.342}
+  m_LocalScale: {x: 0.08, y: 0.20451641, z: 0.081}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8557018955650884919}
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BulletPrefab>k__BackingField: {fileID: 7735622923358220789, guid: cb591771739d71340a384a064a65e611, type: 3}
   <ShootRadius>k__BackingField: 8
-  <ShootFrequencySec>k__BackingField: 1.2
+  <ShootFrequencySec>k__BackingField: 0.35
   _damage: 0.5
   _bulletMaxFlyDistance: 70
   _bulletFlySpeed: 35
