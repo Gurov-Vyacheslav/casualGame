@@ -558,6 +558,10 @@ PrefabInstance:
       propertyPath: _speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6377944603347019058, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
+      propertyPath: _boostSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

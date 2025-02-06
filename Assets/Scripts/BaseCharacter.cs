@@ -33,7 +33,7 @@ namespace LearnGame
             _shootingController.SetWeapon(_baseWeaponPrefab, _hand);
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
             var direction = _movementDirectionSourse.MovementDirection;
             var lookDirection = direction;
@@ -44,7 +44,13 @@ namespace LearnGame
             _characterMovementController.MovementDirection = direction;
             _characterMovementController.LookDirection = lookDirection;
 
-            if (_health <=0)
+            var boostIncluded = _movementDirectionSourse.BoostIncluded;
+            _characterMovementController.BoostSpeedIncluded = boostIncluded;
+        }
+
+        protected void LateUpdate()
+        {
+            if (_health <= 0)
             {
                 Destroy(gameObject);
             }

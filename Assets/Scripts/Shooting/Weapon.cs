@@ -30,7 +30,7 @@ namespace LearnGame.Shooting
         {
             var bullet = Instantiate(BulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
             var target = targetPoint - _bulletSpawnPosition.position;
-           /* target.y = 0;*/
+            target.y = 0;
             target.Normalize();
 
             bullet.Initialize(target, _bulletMaxFlyDistance, _bulletFlySpeed, _damage);

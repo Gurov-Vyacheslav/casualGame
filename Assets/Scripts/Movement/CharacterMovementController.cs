@@ -10,11 +10,15 @@ namespace LearnGame.Movement
         [SerializeField]
         private float _speed = 1f;
         [SerializeField]
+        private float _boostSpeed = 2f;
+        [SerializeField]
         private float _maxRadianDelta = 10f;
 
 
         public Vector3 MovementDirection {  get; set; }
         public Vector3 LookDirection { get; set; }
+
+        public bool BoostSpeedIncluded { get; set; }
 
 
         private CharacterController _characterController;
@@ -37,6 +41,7 @@ namespace LearnGame.Movement
         private void Translate()
         {
             var delta = MovementDirection * _speed * Time.deltaTime;
+            if (BoostSpeedIncluded) delta = MovementDirection * _speed * _boostSpeed * Time.deltaTime;
             _characterController.Move(delta);
         }
         

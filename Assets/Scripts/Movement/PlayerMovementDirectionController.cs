@@ -6,6 +6,7 @@ namespace LearnGame.Movement
     {
         private UnityEngine.Camera _camera;
         public Vector3 MovementDirection { get; private set; }
+        public bool BoostIncluded => Input.GetKey(KeyCode.Space);
 
         protected void Awake()
         {

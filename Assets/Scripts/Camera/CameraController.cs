@@ -21,6 +21,7 @@ namespace LearnGame.Camera
         
         void LateUpdate()
         {
+            if (_player == null) return;
             Vector3 targetRotation = _rotationOffset - _followCameraOffset;
 
             transform.position = _player.transform.position + _followCameraOffset;
