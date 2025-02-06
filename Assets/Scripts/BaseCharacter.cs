@@ -1,0 +1,66 @@
+using LearnGame.Movement;
+using LearnGame.Shooting;
+using Unity.VisualScripting;
+using UnityEngine;
+
+namespace LearnGame
+{
+    [RequireComponent(typeof(CharacterMovementController), typeof(ShootingController))]
+    public class BaseCharacter : MonoBehaviour
+    {
+        [SerializeField]
+        private Weapon _baseWeaponPrefab;
+
+        [SerializeField]
+        private Transform _hand;
+
+        [SerializeField]
+        private float _health = 2f;
+
+        private IMovementDirectionSourse _movementDirectionSourse;
+
+        private CharacterMovementController _characterMovementController;
+        private ShootingController _shootingController;
+        protected void Awake()
+        {
+            _movementDirectionSourse = GetComponent<IMovementDirectionSourse>();
+
+            _characterMovementController = GetComponent<CharacterMovementController>();
+            _shootingController = GetComponent<ShootingController>();
+        }
+
+        protected void Start()
+        {
+            _shootingController.SetWeapon(_baseWeaponPrefab, _hand);
+        }
+
+        protected void Update()
+        {
+            var direction = _movementDirectionSourse.MovementDirection;
+            var lookDirection = direction;
+            if (_shootingController.HasTarget)
+            {
+                lookDirection = (_shootingController.TargetPosition - transform.position).normalized;
+            }
+            _characterMovementController.MovementDirection = direction;
+            _characterMovementController.LookDirection = lookDirection;
+
+            if (_health <=0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        protected void OnTriggerEnter(Collider other)
+        {
+            if (LayerUtils.IsBullet(other.gameObject))
+            {
+                var bullet = other.gameObject.GetComponent<Bullet>();
+
+                _health -= bullet.Damage;
+                Destroy(other.gameObject);
+            }
+        }
+    }
+}
+
