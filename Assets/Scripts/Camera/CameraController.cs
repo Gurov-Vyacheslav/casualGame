@@ -1,4 +1,3 @@
-using LearnGame.Movement;
 using System;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ namespace LearnGame.Camera
         private Vector3 _rotationOffset = Vector3.zero;
 
         [SerializeField]
-        private EnemyCharacter _player;
+        private PlayerCharacter _player;
         protected void Start()
         {
             if (_player == null)
@@ -22,6 +21,7 @@ namespace LearnGame.Camera
         
         void LateUpdate()
         {
+            if (_player == null) return;
             Vector3 targetRotation = _rotationOffset - _followCameraOffset;
 
             transform.position = _player.transform.position + _followCameraOffset;

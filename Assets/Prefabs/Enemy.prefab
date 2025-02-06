@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _maxRadianDelta: 10
+  _maxRadianDelta: 5
 --- !u!114 &4447085488002897709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0288a2b13bcedb44dab6fbe802eaf98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseWeaponPrefab: {fileID: 6643639849626107294, guid: 89682f8065f219045b8dd79d07a487a3, type: 3}
+  _baseWeaponPrefab: {fileID: 6643639849626107294, guid: 13c8b2d9f3c966849a8c9a4c6bb2caf0, type: 3}
   _hand: {fileID: 290624773896961613}
   _health: 7
 --- !u!114 &612915379397011998

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LearnGame.Shooting
 {
@@ -11,7 +10,6 @@ namespace LearnGame.Shooting
         private float _flySpped;
         private float _maxFlyDistance;
         private float _currentFlyDistance;
-        private float _damage;
 
 
         public void Initialize(Vector3 direction, float maxFlyDistance, float flySpeed, float damage)
