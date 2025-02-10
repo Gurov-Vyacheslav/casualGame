@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using LearnGame.Boosters;
+using LearnGame.PickUp;
+using UnityEngine;
 
 namespace LearnGame.Movement
 {
@@ -20,6 +22,7 @@ namespace LearnGame.Movement
 
         public bool BoostSpeedIncluded { get; set; }
 
+        private SpeedBooster _speedBooster;
 
         private CharacterController _characterController;
 
@@ -41,7 +44,21 @@ namespace LearnGame.Movement
         private void Translate()
         {
             var delta = MovementDirection * _speed * Time.deltaTime;
-            if (BoostSpeedIncluded) delta = MovementDirection * _speed * _boostSpeed * Time.deltaTime;
+            
+            if (BoostSpeedIncluded) delta *= _boostSpeed;
+
+            if (_speedBooster != null)
+            {
+                if (_speedBooster._currentBoostSpeedTimerSeconds <= _speedBooster.IntrvalSeconds)
+                {
+                    _speedBooster._currentBoostSpeedTimerSeconds += Time.deltaTime;
+                    delta *= _speedBooster.BoostSpeed;
+                }
+                else
+                {
+                    _speedBooster = null;
+                }
+            }
             _characterController.Move(delta);
         }
         
@@ -58,6 +75,11 @@ namespace LearnGame.Movement
                     _maxRadianDelta * Time.deltaTime);
                 transform.rotation = newRotation;
             }
+        }
+
+        public void GetSpeedBooster(SpeedBooster speedBooster)
+        {
+            _speedBooster = speedBooster;
         }
     }
 }
