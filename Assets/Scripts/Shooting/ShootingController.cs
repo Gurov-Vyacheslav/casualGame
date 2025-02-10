@@ -46,6 +46,7 @@ namespace LearnGame.Shooting
         }
         public void SetWeapon( Weapon weaponPrefub, Transform hand)
         {
+            if (_weapon != null) Destroy(_weapon.gameObject);
             _weapon = Instantiate(weaponPrefub, hand);
             _weapon.transform.localPosition = Vector3.zero;
             _weapon.transform.localPosition = Vector3.zero;
