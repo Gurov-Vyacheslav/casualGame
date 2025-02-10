@@ -15,19 +15,27 @@ namespace LearnGame.PickUp
         private int _maxCount = 2;
 
         [SerializeField]
-        private float _spawnIntervalSeconds = 10f;
+        private float _minSpawnIntervalSeconds = 1f;
+        [SerializeField]
+        private float _maxSpawnIntervalSeconds = 1f;
 
+        private float _currentSpawnIntervalSeconds;
         private float _currentSpawnTimerSeconds;
         private int _currentCount;
-        
+
+        protected void Awake()
+        {
+            SetNewSpawnIntervalSeconds();
+        }
         protected void Update()
         {
             if (_currentCount < _maxCount) 
             {
                 _currentSpawnTimerSeconds += Time.deltaTime;
-                if (_currentSpawnTimerSeconds > _spawnIntervalSeconds)
+                if (_currentSpawnTimerSeconds > _currentSpawnIntervalSeconds)
                 {
                     _currentSpawnTimerSeconds = 0f;
+                    SetNewSpawnIntervalSeconds();
                     _currentCount++;
 
                     var randomPointInsideRange = Random.insideUnitCircle * _range;
@@ -37,6 +45,10 @@ namespace LearnGame.PickUp
                     pickUp.OnPickedUp += OnItemPickedUp;
                 }
             }
+        }
+        private void SetNewSpawnIntervalSeconds()
+        {
+            _currentSpawnIntervalSeconds = Random.Range(_minSpawnIntervalSeconds, _maxSpawnIntervalSeconds);
         }
 
         private void OnItemPickedUp(PickUpItem pickedUpItem)
