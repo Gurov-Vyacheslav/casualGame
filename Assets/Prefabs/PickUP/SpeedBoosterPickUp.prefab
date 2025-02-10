@@ -80,8 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908effe2edba244439c7a6dee80f59b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <BoostSpeed>k__BackingField: 2
-  <BoostSpeedIntrvalSeconds>k__BackingField: 3
+  speedBooster:
+    <BoostSpeed>k__BackingField: 2
+    <IntrvalSeconds>k__BackingField: 3
+    _currentBoostSpeedTimerSeconds: 0
 --- !u!135 &8602109040398759135
 SphereCollider:
   m_ObjectHideFlags: 0

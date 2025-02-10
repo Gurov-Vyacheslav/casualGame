@@ -1,3 +1,4 @@
+using LearnGame.Boosters;
 using LearnGame.Movement;
 using LearnGame.PickUp;
 using LearnGame.Shooting;
@@ -78,9 +79,9 @@ namespace LearnGame
         {
             _shootingController.SetWeapon(weapon, _hand);
         }
-        public void GetBoostSpeed(PickUpSpeedBooster pickUpSpeedBooster)
+        public void GetBoostSpeed(SpeedBooster speedBooster)
         {
-            _characterMovementController.GetSpeedBooster(pickUpSpeedBooster);
+            _characterMovementController.GetSpeedBooster(speedBooster);
         }
     }
 }

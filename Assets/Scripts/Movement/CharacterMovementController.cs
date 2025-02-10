@@ -1,4 +1,5 @@
-﻿using LearnGame.PickUp;
+﻿using LearnGame.Boosters;
+using LearnGame.PickUp;
 using UnityEngine;
 
 namespace LearnGame.Movement
@@ -21,10 +22,7 @@ namespace LearnGame.Movement
 
         public bool BoostSpeedIncluded { get; set; }
 
-        private bool _pickedUpBoostSpeed;
-        private float _pickUpBoostSpeed;
-        private float _boostSpeedIntrvalSeconds;
-        private float _currentBoostSpeedTimerSeconds;
+        private SpeedBooster _speedBooster;
 
         private CharacterController _characterController;
 
@@ -49,17 +47,16 @@ namespace LearnGame.Movement
             
             if (BoostSpeedIncluded) delta *= _boostSpeed;
 
-            if (_pickedUpBoostSpeed)
+            if (_speedBooster != null)
             {
-                if (_currentBoostSpeedTimerSeconds <= _boostSpeedIntrvalSeconds)
+                if (_speedBooster._currentBoostSpeedTimerSeconds <= _speedBooster.IntrvalSeconds)
                 {
-                    _currentBoostSpeedTimerSeconds += Time.deltaTime;
-                    delta *= _pickUpBoostSpeed;
+                    _speedBooster._currentBoostSpeedTimerSeconds += Time.deltaTime;
+                    delta *= _speedBooster.BoostSpeed;
                 }
                 else
                 {
-                    _pickedUpBoostSpeed = false;
-                    _currentBoostSpeedTimerSeconds = 0f;
+                    _speedBooster = null;
                 }
             }
             _characterController.Move(delta);
@@ -80,11 +77,9 @@ namespace LearnGame.Movement
             }
         }
 
-        public void GetSpeedBooster(PickUpSpeedBooster pickUpSpeedBooster)
+        public void GetSpeedBooster(SpeedBooster speedBooster)
         {
-            _pickedUpBoostSpeed = true;
-            _pickUpBoostSpeed = pickUpSpeedBooster.BoostSpeed;
-            _boostSpeedIntrvalSeconds = pickUpSpeedBooster.BoostSpeedIntrvalSeconds;
+            _speedBooster = speedBooster;
         }
     }
 }
