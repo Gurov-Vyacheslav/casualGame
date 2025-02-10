@@ -18,6 +18,8 @@ namespace LearnGame.PickUp
         private float _minSpawnIntervalSeconds = 1f;
         [SerializeField]
         private float _maxSpawnIntervalSeconds = 1f;
+        [SerializeField]
+        private Color _colorGizmos = Color.green;
 
         private float _currentSpawnIntervalSeconds;
         private float _currentSpawnTimerSeconds;
@@ -60,7 +62,7 @@ namespace LearnGame.PickUp
         protected void OnDrawGizmos()
         {
             var cashedColor = Handles.color;
-            Handles.color = Color.green;
+            Handles.color = _colorGizmos;
             Handles.DrawWireDisc(transform.position, Vector3.up, _range);
             Handles.color = cashedColor;
         }

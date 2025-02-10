@@ -68,7 +68,7 @@ namespace LearnGame
             }
             else if (LayerUtils.IsPickUp(other.gameObject))
             {
-                var pickUp = other.gameObject.GetComponent<PickUpWeapon>();
+                var pickUp = other.gameObject.GetComponent<PickUpItem>();
                 pickUp.PickUp(this);
                 Destroy(other.gameObject);
             }
@@ -77,6 +77,10 @@ namespace LearnGame
         public void SetWeapon(Weapon weapon)
         {
             _shootingController.SetWeapon(weapon, _hand);
+        }
+        public void GetBoostSpeed(PickUpSpeedBooster pickUpSpeedBooster)
+        {
+            _characterMovementController.GetSpeedBooster(pickUpSpeedBooster);
         }
     }
 }
