@@ -1,5 +1,4 @@
 ﻿using LearnGame.Boosters;
-using LearnGame.PickUp;
 using UnityEngine;
 
 namespace LearnGame.Movement
