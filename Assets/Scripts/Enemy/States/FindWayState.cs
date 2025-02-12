@@ -23,7 +23,7 @@ namespace LearnGame.Enemy.States
         public override void Execute()
         {
             Vector3 targetPosition = _target.Closest.transform.position;
-            if (_navMesher.IsPathCalculated || _navMesher.DistanceToTargetPointFrom(targetPosition) > MaxDIstanceBetweenRealAndCaluculatePoints)
+            if (!_navMesher.IsPathCalculated || _navMesher.DistanceToTargetPointFrom(targetPosition) > MaxDIstanceBetweenRealAndCaluculatePoints)
                 _navMesher.CalculatePath(targetPosition);
             var currentPoint = _navMesher.GetCurrentPoint();
             if (_currentPoint !=  currentPoint)

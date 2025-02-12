@@ -6,7 +6,7 @@ namespace LearnGame.Enemy.States
 {
     public class EnemyStateMachine: BaseStateMachine
     {
-        private const float NavMeshTurnOffDistance = 5f;
+        private const float NavMeshTurnOffDistance = 1f;
 
         public EnemyStateMachine(EnemyDirectionController enemyDirectionController,
             NavMesher navMesher, EnemyTarget target)
