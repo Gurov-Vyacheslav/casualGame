@@ -1,4 +1,6 @@
-﻿using LearnGame.FSM;
+﻿using LearnGame.Exceptions;
+using LearnGame.FSM;
+using System;
 using UnityEngine;
 
 namespace LearnGame.Enemy.States
@@ -17,11 +19,18 @@ namespace LearnGame.Enemy.States
 
         public override void Execute()
         {
-            Vector3 targetPosition = _target.Closest.transform.position;
-            if (_currentPoint != targetPosition)
+            try
             {
-                _currentPoint = targetPosition;
-                _enemydirectionController.UpdateMovementDirection(_currentPoint);
+                Vector3 targetPosition = _target.Closest.transform.position;
+                if (_currentPoint != targetPosition)
+                {
+                    _currentPoint = targetPosition;
+                    _enemydirectionController.UpdateMovementDirection(_currentPoint);
+                }
+            }
+            catch (Exception NotStoped)
+            {
+                throw new DoNotKnowWhatDoingException(DoNotKnowWhatDoingException.BaseMessage, NotStoped);
             }
         }
     }
