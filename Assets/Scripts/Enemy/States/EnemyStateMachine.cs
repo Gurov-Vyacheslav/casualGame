@@ -11,7 +11,7 @@ namespace LearnGame.Enemy.States
         public EnemyStateMachine(EnemyCharacter enemyCharacter, EnemyDirectionController enemyDirectionController,
             NavMesher navMesher, EnemyTarget target, float minHpForEscapePercent, float probabilityEscapePercent)
         {
-            var idleSate = new IdleState();
+            var idleSate = new IdleState(enemyDirectionController);
             var findWaySate = new FindWayState(target, navMesher, enemyDirectionController);
             var moveForwardState = new MoveForwardState(target, enemyDirectionController);
             var escapeState = new EscapeState(target, enemyDirectionController);

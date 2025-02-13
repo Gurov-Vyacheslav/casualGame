@@ -27,6 +27,7 @@ namespace LearnGame.Enemy.States
                 {
                     _currentPoint = targetPosition;
                     _enemydirectionController.UpdateMovementDirection(_currentPoint);
+                    _enemydirectionController.UpdateBoostIncluded(true);
                 }
             }
             catch (Exception NotStoped)

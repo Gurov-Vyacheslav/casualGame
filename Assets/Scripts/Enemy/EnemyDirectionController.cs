@@ -14,5 +14,6 @@ namespace LearnGame.Enemy
             var realDirection = targetPosition - transform.position;
             MovementDirection = new Vector3(realDirection.x, 0, realDirection.z).normalized;
         }
+        public void UpdateBoostIncluded(bool boostIncluded) => BoostIncluded = boostIncluded;
     }
 }

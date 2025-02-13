@@ -12,10 +12,6 @@ namespace LearnGame.Enemy
             base.Awake();
             MaxHealth = Health;
         }
-        protected void LateUpdate()
-        {
-            /*Debug.Log($"{Health}, {MaxHealth} {Health/MaxHealth * 100}");*/
-        }
     }
 }
 
