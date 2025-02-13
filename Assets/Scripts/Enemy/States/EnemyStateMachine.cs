@@ -59,7 +59,7 @@ namespace LearnGame.Enemy.States
                 {
                     new Transition(
                         idleSate,
-                        () => target.Closest == null)
+                        () => target.Closest == null || target.MoveToSafeDistance())
                 }
             );
 

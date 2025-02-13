@@ -12,6 +12,8 @@ namespace LearnGame.Enemy
 
         private readonly Collider[] _coliders = new Collider[10];
 
+        private readonly float _safeDistance = 20f;
+
         public EnemyTarget(Transform agent, PlayerCharacter player, float viewRadius)
         {
             _agentTransform = agent;
@@ -22,8 +24,14 @@ namespace LearnGame.Enemy
         public float DistanceToClosestFromAgent()
         {
             if (Closest != null)
-                return DistanceFrimAgentTo(Closest);
+                return DistanceFromAgentTo(Closest);
             return 0;
+        }
+        public bool MoveToSafeDistance()
+        {
+            if (Closest != null)
+                return (_agentTransform.position - Closest.transform.position).magnitude >= _safeDistance;
+            return true;
         }
 
         public void FindClosest()
@@ -36,14 +44,14 @@ namespace LearnGame.Enemy
                 var go = _coliders[i].gameObject;
                 if (go == _agentTransform.gameObject) continue;
 
-                var distance = DistanceFrimAgentTo(go);
+                var distance = DistanceFromAgentTo(go);
                 if (distance < minDistance ) 
                 {
                     minDistance = distance;
                     Closest = go;
                 }
             }
-            if (_player != null && DistanceFrimAgentTo(_player.gameObject) < minDistance)
+            if (_player != null && DistanceFromAgentTo(_player.gameObject) < minDistance)
                 Closest = _player.gameObject;
         }
         private int FindAllDistance(int layerMask)
@@ -55,6 +63,6 @@ namespace LearnGame.Enemy
                 layerMask);
             return size;
         }
-        private float DistanceFrimAgentTo(GameObject go) => (_agentTransform.position - go.transform.position).magnitude;
+        private float DistanceFromAgentTo(GameObject go) => (_agentTransform.position - go.transform.position).magnitude;
     }
 }

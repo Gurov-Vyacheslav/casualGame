@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbce76355f0f3be4a937b492142bd77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewRadius: 100
+  _viewRadius: 30
   _minHpForEscapePercent: 30
   _probabilityEscapePercent: 70
 --- !u!1 &1662424769040120509

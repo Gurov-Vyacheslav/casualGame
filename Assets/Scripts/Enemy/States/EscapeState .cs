@@ -22,11 +22,11 @@ namespace LearnGame.Enemy.States
             Debug.Log("Убегает");
             try
             {
-                Vector3 targetPosition = -_target.Closest.transform.position;
+                Vector3 targetPosition = _target.Closest.transform.position;
                 if (_currentPoint != targetPosition)
                 {
                     _currentPoint = targetPosition;
-                    _enemydirectionController.UpdateMovementDirection(_currentPoint);
+                    _enemydirectionController.UpdateMovementDirection(_currentPoint, true);
                     _enemydirectionController.UpdateBoostIncluded(true);
                 }
             }
