@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace LearnGame.Enemy.States
 {
-    public class MoveForwardState: BaseState
+    public class EscapeState: BaseState
     {
         private readonly EnemyTarget _target;
         private readonly EnemyDirectionController _enemydirectionController;
 
         private Vector3 _currentPoint;
-        public MoveForwardState(EnemyTarget target, EnemyDirectionController enemydirectionController)
+        public EscapeState(EnemyTarget target, EnemyDirectionController enemydirectionController)
         {
             _target = target;
             _enemydirectionController = enemydirectionController;
@@ -19,10 +19,10 @@ namespace LearnGame.Enemy.States
 
         public override void Execute()
         {
+            Debug.Log("Убегает");
             try
             {
-                Debug.Log("Бежит на ");
-                Vector3 targetPosition = _target.Closest.transform.position;
+                Vector3 targetPosition = -_target.Closest.transform.position;
                 if (_currentPoint != targetPosition)
                 {
                     _currentPoint = targetPosition;

@@ -1,23 +1,29 @@
 ﻿using LearnGame.FSM;
-using LearnGame.Movement;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace LearnGame.Enemy.States
 {
     public class EnemyStateMachine: BaseStateMachine
     {
-        private const float NavMeshTurnOffDistance = 1f;
+        private const float NavMeshTurnOffDistance = 3f;
 
-        public EnemyStateMachine(EnemyDirectionController enemyDirectionController,
-            NavMesher navMesher, EnemyTarget target)
+        public EnemyStateMachine(EnemyCharacter enemyCharacter, EnemyDirectionController enemyDirectionController,
+            NavMesher navMesher, EnemyTarget target, float minHpForEscapePercent, float probabilityEscapePercent)
         {
             var idleSate = new IdleState();
             var findWaySate = new FindWayState(target, navMesher, enemyDirectionController);
             var moveForwardState = new MoveForwardState(target, enemyDirectionController);
+            var escapeState = new EscapeState(target, enemyDirectionController);
+
+
 
             SetInitialState(idleSate);
             AddState(state: idleSate, transotions: new List<Transition>
                 {
+                    new Transition(
+                        escapeState,
+                        () => enemyCharacter.Health/enemyCharacter.MaxHealth*100 <= minHpForEscapePercent && Random.Range( 0.0f, 100.0f ) <= probabilityEscapePercent),
                     new Transition(
                         findWaySate,
                         () => target.DistanceToClosestFromAgent() > NavMeshTurnOffDistance),
@@ -39,6 +45,9 @@ namespace LearnGame.Enemy.States
             AddState(state: moveForwardState, transotions: new List<Transition>
                 {
                     new Transition(
+                        escapeState,
+                        () => enemyCharacter.Health/enemyCharacter.MaxHealth*100 <= minHpForEscapePercent && Random.Range( 0.0f, 100.0f ) <= probabilityEscapePercent),
+                    new Transition(
                         idleSate,
                         () => target.Closest == null),
                     new Transition(
@@ -46,6 +55,14 @@ namespace LearnGame.Enemy.States
                         () => target.DistanceToClosestFromAgent() > NavMeshTurnOffDistance)
                 }
             );
+            AddState(state: escapeState, transotions: new List<Transition>
+                {
+                    new Transition(
+                        idleSate,
+                        () => target.Closest == null)
+                }
+            );
+
         }
     }
 }

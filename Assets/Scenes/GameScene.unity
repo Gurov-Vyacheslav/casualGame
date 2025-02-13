@@ -392,7 +392,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470609506295431261, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397974602669738038, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
+      propertyPath: _probabilityEscapePercent
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7778466477436933763, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1024,6 +1028,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4397974602669738038, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
+      propertyPath: _viewRadius
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397974602669738038, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
+      propertyPath: _minHpForEscapePercent
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397974602669738038, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
+      propertyPath: _probabilityEscapePercent
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447085488002897709, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
+      propertyPath: <Health>k__BackingField
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7778466477436933763, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.4
@@ -1120,6 +1140,10 @@ PrefabInstance:
     - target: {fileID: 4092438505264641148, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375152166119255655, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
+      propertyPath: <Health>k__BackingField
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6377944603347019058, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
       propertyPath: _speed

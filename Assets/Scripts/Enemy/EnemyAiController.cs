@@ -7,6 +7,10 @@ namespace LearnGame.Enemy
     {
         [SerializeField]
         private float _viewRadius = 20f;
+        [SerializeField]
+        private float _minHpForEscapePercent = 20f;
+        [SerializeField]
+        private float _probabilityEscapePercent = 70f;
 
         private EnemyTarget _target;
         private EnemyStateMachine _stateMashine;
@@ -15,9 +19,11 @@ namespace LearnGame.Enemy
             var player = FindObjectOfType<PlayerCharacter>();
             var enemyDirectionController = GetComponent<EnemyDirectionController>();
             var nawMesher = new NavMesher(transform);
+            var enemyCharacter = GetComponent<EnemyCharacter>();
 
             _target = new EnemyTarget(transform, player, _viewRadius);
-            _stateMashine  = new EnemyStateMachine(enemyDirectionController, nawMesher, _target);
+            _stateMashine  = new EnemyStateMachine(enemyCharacter, enemyDirectionController, nawMesher, 
+                _target, _minHpForEscapePercent, _probabilityEscapePercent);
         }
         protected void Update()
         {

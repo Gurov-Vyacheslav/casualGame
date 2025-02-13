@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseWeaponPrefab: {fileID: 6643639849626107294, guid: 13c8b2d9f3c966849a8c9a4c6bb2caf0, type: 3}
   _hand: {fileID: 290624773896961613}
-  _health: 7
+  <Health>k__BackingField: 10
 --- !u!114 &8278968525851143671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewRadius: 100
+  _minHpForEscapePercent: 30
+  _probabilityEscapePercent: 70
 --- !u!1 &1662424769040120509
 GameObject:
   m_ObjectHideFlags: 0

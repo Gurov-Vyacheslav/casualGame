@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseWeaponPrefab: {fileID: 6643639849626107294, guid: 89682f8065f219045b8dd79d07a487a3, type: 3}
   _hand: {fileID: 9182674443110872755}
-  _health: 5
+  <Health>k__BackingField: 10
 --- !u!114 &4469338498378378544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9d1f7bca0cc724e8f4ea47472fb281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 5
   _boostSpeed: 2
   _maxRadianDelta: 10
 --- !u!143 &2533666566479505065

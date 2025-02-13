@@ -15,14 +15,14 @@ namespace LearnGame
         [SerializeField]
         private Transform _hand;
 
-        [SerializeField]
-        private float _health = 2f;
+        [field: SerializeField]
+        public float Health { get; private set; } = 2f;
 
         private IMovementDirectionSourse _movementDirectionSourse;
 
         private CharacterMovementController _characterMovementController;
         private ShootingController _shootingController;
-        protected void Awake()
+        protected virtual void Awake()
         {
             _movementDirectionSourse = GetComponent<IMovementDirectionSourse>();
 
@@ -48,14 +48,7 @@ namespace LearnGame
 
             var boostIncluded = _movementDirectionSourse.BoostIncluded;
             _characterMovementController.BoostSpeedIncluded = boostIncluded;
-        }
-
-        protected void LateUpdate()
-        {
-            if (_health <= 0)
-            {
-                Destroy(gameObject);
-            }
+            if (Health <= 0) Destroy(gameObject);
         }
 
         protected void OnTriggerEnter(Collider other)
@@ -64,7 +57,7 @@ namespace LearnGame
             {
                 var bullet = other.gameObject.GetComponent<Bullet>();
 
-                _health -= bullet.Damage;
+                Health -= bullet.Damage;
                 Destroy(other.gameObject);
             }
             else if (LayerUtils.IsPickUp(other.gameObject))
