@@ -1,34 +1,17 @@
-﻿using UnityEditor;
+﻿using LearnGame.Spowners;
 using UnityEngine;
 
 namespace LearnGame.PickUp
 {
-    public class PickUpSpawner : MonoBehaviour
+    public class PickUpSpawner : BaseSpowner
     {
+        [SerializeField]
+        private int _maxCount = 2;
         [SerializeField]
         private PickUpItem _pickUpPrefab;
 
-        [SerializeField]
-        private float _range = 2f;
-
-        [SerializeField]
-        private int _maxCount = 2;
-
-        [SerializeField]
-        private float _minSpawnIntervalSeconds = 1f;
-        [SerializeField]
-        private float _maxSpawnIntervalSeconds = 1f;
-        [SerializeField]
-        private Color _colorGizmos = Color.green;
-
-        private float _currentSpawnIntervalSeconds;
-        private float _currentSpawnTimerSeconds;
         private int _currentCount;
 
-        protected void Awake()
-        {
-            SetNewSpawnIntervalSeconds();
-        }
         protected void Update()
         {
             if (_currentCount < _maxCount) 
@@ -48,23 +31,11 @@ namespace LearnGame.PickUp
                 }
             }
         }
-        private void SetNewSpawnIntervalSeconds()
-        {
-            _currentSpawnIntervalSeconds = Random.Range(_minSpawnIntervalSeconds, _maxSpawnIntervalSeconds);
-        }
 
         private void OnItemPickedUp(PickUpItem pickedUpItem)
         {
             _currentCount--;
             pickedUpItem.OnPickedUp -= OnItemPickedUp; 
-        }
-
-        protected void OnDrawGizmos()
-        {
-            var cashedColor = Handles.color;
-            Handles.color = _colorGizmos;
-            Handles.DrawWireDisc(transform.position, Vector3.up, _range);
-            Handles.color = cashedColor;
         }
     }
 }

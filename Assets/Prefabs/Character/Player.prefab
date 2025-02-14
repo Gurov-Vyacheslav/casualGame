@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _boostSpeed: 2
+  _boostSpeed: 1.5
   _maxRadianDelta: 10
 --- !u!143 &2533666566479505065
 CharacterController:
