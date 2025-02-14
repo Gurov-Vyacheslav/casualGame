@@ -79,6 +79,7 @@ namespace LearnGame.Movement
         public void GetSpeedBooster(SpeedBooster speedBooster)
         {
             _speedBooster = speedBooster;
+            BoostSpeedIncluded = true;
         }
     }
 }

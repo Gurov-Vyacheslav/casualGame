@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _boostSpeed: 2
+  _boostSpeed: 1.5
   _maxRadianDelta: 5
 --- !u!114 &4447085488002897709
 MonoBehaviour:
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0288a2b13bcedb44dab6fbe802eaf98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseWeaponPrefab: {fileID: 6643639849626107294, guid: 13c8b2d9f3c966849a8c9a4c6bb2caf0, type: 3}
+  _baseWeaponPrefab: {fileID: 6643639849626107294, guid: 89682f8065f219045b8dd79d07a487a3, type: 3}
   _hand: {fileID: 290624773896961613}
   <Health>k__BackingField: 10
 --- !u!114 &8278968525851143671
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbce76355f0f3be4a937b492142bd77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewRadius: 30
+  _viewRadius: 50
   _minHpForEscapePercent: 30
   _probabilityEscapePercent: 70
 --- !u!1 &1662424769040120509
