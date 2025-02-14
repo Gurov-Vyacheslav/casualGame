@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LearnGame.Movement
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController), typeof(PowerUpController))]
     public class CharacterMovementController : MonoBehaviour
     {
         private static readonly float SqrEpsilon = Mathf.Epsilon*Mathf.Epsilon;
@@ -21,7 +21,7 @@ namespace LearnGame.Movement
 
         public bool BoostSpeedIncluded { get; set; }
 
-        private SpeedBooster _speedBooster;
+        private PowerUpController _powerUpController;
 
         private CharacterController _characterController;
 
@@ -29,6 +29,7 @@ namespace LearnGame.Movement
         protected void Awake()
         {
             _characterController = GetComponent<CharacterController>();
+            _powerUpController = GetComponent<PowerUpController>();
         }
 
    
@@ -46,18 +47,9 @@ namespace LearnGame.Movement
             
             if (BoostSpeedIncluded) delta *= _boostSpeed;
 
-            if (_speedBooster != null)
-            {
-                if (_speedBooster._currentBoostSpeedTimerSeconds <= _speedBooster.IntrvalSeconds)
-                {
-                    _speedBooster._currentBoostSpeedTimerSeconds += Time.deltaTime;
-                    delta *= _speedBooster.BoostSpeed;
-                }
-                else
-                {
-                    _speedBooster = null;
-                }
-            }
+            if (_powerUpController.BoostInclude())
+                delta *= _powerUpController.Booster.BoostSpeed;
+
             _characterController.Move(delta);
         }
         
@@ -74,12 +66,6 @@ namespace LearnGame.Movement
                     _maxRadianDelta * Time.deltaTime);
                 transform.rotation = newRotation;
             }
-        }
-
-        public void GetSpeedBooster(SpeedBooster speedBooster)
-        {
-            _speedBooster = speedBooster;
-            BoostSpeedIncluded = true;
         }
     }
 }

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 3.35
-  _minSpawnIntervalSeconds: 2
+  _minSpawnIntervalSeconds: 4
   _maxSpawnIntervalSeconds: 6
   _colorGizmos: {r: 0.754717, g: 0.34531865, b: 0.3625295, a: 1}
   _playerPrefab: {fileID: 6375152166119255655, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}

@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedBooster:
     <BoostSpeed>k__BackingField: 2
-    <IntrvalSeconds>k__BackingField: 10
+    <IntrvalSeconds>k__BackingField: 5
     _currentBoostSpeedTimerSeconds: 0
 --- !u!135 &8602109040398759135
 SphereCollider:

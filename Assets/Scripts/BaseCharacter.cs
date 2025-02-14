@@ -22,12 +22,14 @@ namespace LearnGame
 
         private CharacterMovementController _characterMovementController;
         private ShootingController _shootingController;
+        private PowerUpController _powerUpController;
         protected virtual void Awake()
         {
             _movementDirectionSourse = GetComponent<IMovementDirectionSourse>();
 
             _characterMovementController = GetComponent<CharacterMovementController>();
             _shootingController = GetComponent<ShootingController>();
+            _powerUpController = GetComponent<PowerUpController>();
         }
 
         protected void Start()
@@ -74,7 +76,7 @@ namespace LearnGame
         }
         public void GetBoostSpeed(SpeedBooster speedBooster)
         {
-            _characterMovementController.GetSpeedBooster(speedBooster);
+            _powerUpController.GetSpeedBooster(speedBooster);
         }
     }
 }

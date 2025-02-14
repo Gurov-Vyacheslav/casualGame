@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-
 using LearnGame.Exceptions;
-using UnityEngine;
 
 namespace LearnGame.FSM
 {

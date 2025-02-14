@@ -15,9 +15,5 @@ namespace LearnGame.Spowners
 
         public void ReportSpownPlayer() => PlayerWasSpowned = true;
         public void ReportSpownEnemy() => CurrentCountEnemy++;
-
-
-
-
     }
 }
