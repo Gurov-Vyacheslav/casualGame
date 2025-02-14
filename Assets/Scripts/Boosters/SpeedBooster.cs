@@ -12,6 +12,5 @@ namespace LearnGame.Boosters
 
         [HideInInspector]
         public float _currentBoostSpeedTimerSeconds;
-
     }
 }

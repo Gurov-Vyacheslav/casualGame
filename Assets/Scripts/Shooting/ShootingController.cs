@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LearnGame.Shooting
 {
@@ -45,7 +44,7 @@ namespace LearnGame.Shooting
             var position = _weapon.transform.position;
             var radius = _weapon.ShootRadius;
 
-            var size = Physics.OverlapSphereNonAlloc(position, radius, _colliders, LayerUtils.СharacterMask);
+            var size = Physics.OverlapSphereNonAlloc(position, radius, _colliders, LayerUtils.CharacterMask);
 
             if (size > 0 )
             {
@@ -59,6 +58,10 @@ namespace LearnGame.Shooting
                 }
             }
             return target;
+        }
+        public bool SetBaseWeapon()
+        {
+            return !LayerUtils.IsBaseWeapon(_weapon.gameObject);
         }
     }
 }

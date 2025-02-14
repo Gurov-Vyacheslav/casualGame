@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 89251198765403018}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SpeedBooster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8639673353683555726}
   - component: {fileID: 7573453889165999291}
   - component: {fileID: 8602109040398759135}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SpeedBoosterPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedBooster:
     <BoostSpeed>k__BackingField: 2
-    <IntrvalSeconds>k__BackingField: 3
+    <IntrvalSeconds>k__BackingField: 5
     _currentBoostSpeedTimerSeconds: 0
 --- !u!135 &8602109040398759135
 SphereCollider:
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 6921289174518329477}
   - component: {fileID: 5480605595137379464}
   - component: {fileID: 6807092069353196216}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 7665634996345364722}
   - component: {fileID: 9119066579773623394}
   - component: {fileID: 3386013985454427290}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: plus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 263209265130758872}
   - component: {fileID: 3321391494921209504}
   - component: {fileID: 3246888056742922023}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: plus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

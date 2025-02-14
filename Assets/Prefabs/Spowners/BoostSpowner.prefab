@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: BoostSpowner
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9540f32f20522c341aa97e134283eae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickUpPrefab: {fileID: 7573453889165999291, guid: 22305017974f56f468ce7ae1da520fa3, type: 3}
   _range: 5.63
-  _maxCount: 4
   _minSpawnIntervalSeconds: 2
   _maxSpawnIntervalSeconds: 5
   _colorGizmos: {r: 0, g: 0.2004807, b: 1, a: 1}
+  _maxCount: 4
+  _pickUpPrefab: {fileID: 7573453889165999291, guid: 22305017974f56f468ce7ae1da520fa3, type: 3}

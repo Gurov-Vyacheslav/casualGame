@@ -19,7 +19,7 @@ namespace LearnGame.Camera
                 throw new NullReferenceException($"Follow camera can't folow null player - {nameof(_player)}.");
         }
         
-        void LateUpdate()
+        protected void LateUpdate()
         {
             if (_player == null) return;
             Vector3 targetRotation = _rotationOffset - _followCameraOffset;
@@ -27,6 +27,10 @@ namespace LearnGame.Camera
             transform.position = _player.transform.position + _followCameraOffset;
             transform.rotation = Quaternion.LookRotation(targetRotation, Vector3.up);
         }
+        public void SetPlayer(PlayerCharacter player)
+        {
+            _player = player;
+        } 
     }
 }
 
