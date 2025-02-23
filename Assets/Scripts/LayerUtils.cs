@@ -15,7 +15,7 @@ namespace LearnGame
         public static readonly int BulletLayer = LayerMask.NameToLayer(BulletLayerName);
         public static readonly int PickUpWeaponLayer = LayerMask.NameToLayer(PickUpWeaponLayerName);
         public static readonly int PickUpBoosterLayer = LayerMask.NameToLayer(PickUpBoosterLayerName);
-        public static readonly int PlayerLayer = LayerMask.NameToLayer(PlayerLayerName);
+        public static readonly int EnemyLayer = LayerMask.NameToLayer(EnemyLayerName);
 
         public static readonly int CharacterMask = LayerMask.GetMask(PlayerLayerName, EnemyLayerName);
         public static readonly int PickUpWeaponMask = LayerMask.GetMask(PickUpWeaponLayerName);
@@ -25,8 +25,7 @@ namespace LearnGame
 
         public static bool IsBullet(GameObject other) => other.layer == BulletLayer;
         public static bool IsPickUp(GameObject other) => other.layer == PickUpWeaponLayer || other.layer == PickUpBoosterLayer;
-        public static bool IsPlayer(GameObject other) => other.layer == PlayerLayer;
-
+        public static bool IsEnemy(GameObject other) => other.layer == EnemyLayer;
 
         public static bool IsBaseWeapon(GameObject other) => other.tag == PistolTag;
     }

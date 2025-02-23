@@ -7,6 +7,7 @@ namespace LearnGame.Enemy
     public class EnemyCharacter : BaseCharacter
     {
         public float MaxHealth { get; private set; }
+
         protected override void Awake()
         {
             base.Awake();

@@ -18,6 +18,7 @@ namespace LearnGame.Boosters
             }
         }
         public bool BoostInclude() => Booster != null;
+
         public void GetSpeedBooster(SpeedBooster speedBooster)
         {
             Booster = speedBooster;

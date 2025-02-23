@@ -572,7 +572,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 665ea4f1e83f90541ba578a8dcc1fc2f, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: ea7ee94e182287a4194869d6069c5911, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &699454682
 Transform:
@@ -1809,12 +1809,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4877725295703511694, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
+      propertyPath: _minCountEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877725295703511694, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: <MaxCountEnemy>k__BackingField
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4877725295703511694, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: <MinCountEnemy>k__BackingField
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9000932329326783323, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: m_Name

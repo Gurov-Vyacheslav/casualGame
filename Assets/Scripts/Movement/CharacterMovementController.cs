@@ -25,13 +25,11 @@ namespace LearnGame.Movement
 
         private CharacterController _characterController;
 
-
         protected void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _powerUpController = GetComponent<PowerUpController>();
         }
-
    
         protected void Update()
         {

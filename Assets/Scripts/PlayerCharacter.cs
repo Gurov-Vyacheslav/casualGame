@@ -13,7 +13,6 @@ namespace LearnGame
             var cameraController = UnityEngine.Camera.main.GetComponent<CameraController>();
             cameraController.SetPlayer(this);
         }
-
     }
 }
 

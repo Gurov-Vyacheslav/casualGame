@@ -27,6 +27,7 @@ namespace LearnGame.Camera
             transform.position = _player.transform.position + _followCameraOffset;
             transform.rotation = Quaternion.LookRotation(targetRotation, Vector3.up);
         }
+
         public void SetPlayer(PlayerCharacter player)
         {
             _player = player;

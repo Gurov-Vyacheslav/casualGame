@@ -16,6 +16,7 @@ namespace LearnGame.Enemy
 
         private EnemyTarget _target;
         private EnemyStateMachine _stateMashine;
+
         protected void Awake()
         {
             var player = FindObjectOfType<PlayerCharacter>();
@@ -29,6 +30,7 @@ namespace LearnGame.Enemy
             _stateMashine  = new EnemyStateMachine(enemyCharacter, enemyDirectionController, nawMesher, 
                 _target, _minHpForEscapePercent, _probabilityEscapePercent);
         }
+
         protected void Update()
         {
             _target.FindClosest();
