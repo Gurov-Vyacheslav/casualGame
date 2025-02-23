@@ -3,17 +3,23 @@ namespace LearnGame.Spowners
 {
     public class CharacterSpawnersController : MonoBehaviour
     {
-        [field: SerializeField]
-        public int MinCountEnemy { get; private set; } = 2;
-        [field: SerializeField]
-        public int MaxCountEnemy { get; private set; } = 4;
+        [SerializeField]
+        private int _minCountEnemy = 2;
+        [SerializeField]
+        private int _maxCountEnemy = 4;
 
-        public bool PlayerWasSpowned { get; private set; } = false;
-
+        public int CountEnemy { get; private set; }
         public int CurrentCountEnemy { get; private set; } = 0;
+        public bool PlayerWasSpawned { get; private set; } = false;
 
+        protected void Awake()
+        {
+            CountEnemy = GetRandomCountEnemy();
+        }
 
-        public void ReportSpownPlayer() => PlayerWasSpowned = true;
         public void ReportSpownEnemy() => CurrentCountEnemy++;
+        public void ReportSpownPlayer() => PlayerWasSpawned = true;
+
+        private int GetRandomCountEnemy() => Random.Range(_minCountEnemy, _maxCountEnemy);
     }
 }

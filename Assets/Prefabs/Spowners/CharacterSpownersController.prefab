@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968330c1bc831294cbb8d2de528a15a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MinCountEnemy>k__BackingField: 6
-  <MaxCountEnemy>k__BackingField: 7
+  _minCountEnemy: 3
+  _maxCountEnemy: 6
 --- !u!1001 &913893236456583526
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ namespace LearnGame.Shooting
             
 
         }
+
         public void SetWeapon( Weapon weaponPrefub, Transform hand)
         {
             if (_weapon != null) Destroy(_weapon.gameObject);
@@ -59,6 +60,7 @@ namespace LearnGame.Shooting
             }
             return target;
         }
+
         public bool SetBaseWeapon()
         {
             return !LayerUtils.IsBaseWeapon(_weapon.gameObject);

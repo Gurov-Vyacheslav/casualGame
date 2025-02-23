@@ -65,6 +65,7 @@ namespace LearnGame.Enemy
                 if (FindClosestByMask(mask)) return;
             if (_player != null) Closest = _player.gameObject;
         }
+
         private bool FindClosestByMask(int layerMask)
         {
             bool findClosest = false;
@@ -85,6 +86,7 @@ namespace LearnGame.Enemy
             }
             return findClosest;
         }
+
         private int FindAllDistance(int layerMask)
         {
             var size = Physics.OverlapSphereNonAlloc(
@@ -94,6 +96,7 @@ namespace LearnGame.Enemy
                 layerMask);
             return size;
         }
+
         private float DistanceFromAgentTo(GameObject go) => (_agentTransform.position - go.transform.position).magnitude;
     }
 }

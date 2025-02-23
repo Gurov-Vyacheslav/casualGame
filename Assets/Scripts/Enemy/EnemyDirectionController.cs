@@ -15,6 +15,7 @@ namespace LearnGame.Enemy
             if (escape) realDirection = -realDirection;
             MovementDirection = new Vector3(realDirection.x, 0, realDirection.z).normalized;
         }
+
         public void UpdateBoostIncluded(bool boostIncluded) => BoostIncluded = boostIncluded;
     }
 }
