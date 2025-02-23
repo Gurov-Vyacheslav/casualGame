@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace LearnGame.Spowners
+namespace LearnGame.Spawners
 {
     public class CharacterSpawnersController : MonoBehaviour
     {
@@ -17,8 +17,8 @@ namespace LearnGame.Spowners
             CountEnemy = GetRandomCountEnemy();
         }
 
-        public void ReportSpownEnemy() => CurrentCountEnemy++;
-        public void ReportSpownPlayer() => PlayerWasSpawned = true;
+        public void ReportSpawnEnemy() => CurrentCountEnemy++;
+        public void ReportSpawnPlayer() => PlayerWasSpawned = true;
 
         private int GetRandomCountEnemy() => Random.Range(_minCountEnemy, _maxCountEnemy);
     }

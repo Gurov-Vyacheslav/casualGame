@@ -1,9 +1,9 @@
 ﻿using LearnGame.Enemy;
 using UnityEngine;
 
-namespace LearnGame.Spowners
+namespace LearnGame.Spawners
 {
-    public class CharacterSpowner : BaseSpowner
+    public class CharacterSpawner : BaseSpawner
     {
         [SerializeField]
         private PlayerCharacter _playerPrefab;
@@ -23,7 +23,7 @@ namespace LearnGame.Spowners
             if (!_characterSpawnersController.PlayerWasSpawned)
             {
                 SpawningCharacter(_playerPrefab);
-                _characterSpawnersController.ReportSpownPlayer();
+                _characterSpawnersController.ReportSpawnPlayer();
             }
         }
 
@@ -42,7 +42,7 @@ namespace LearnGame.Spowners
                 SetNewSpawnIntervalSeconds();
 
                 SpawningCharacter(_enemyPrefab);
-                _characterSpawnersController.ReportSpownEnemy();
+                _characterSpawnersController.ReportSpawnEnemy();
             }
         }
 

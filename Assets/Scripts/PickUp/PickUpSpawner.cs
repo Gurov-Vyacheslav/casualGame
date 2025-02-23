@@ -1,9 +1,9 @@
-﻿using LearnGame.Spowners;
+﻿using LearnGame.Spawners;
 using UnityEngine;
 
 namespace LearnGame.PickUp
 {
-    public class PickUpSpawner : BaseSpowner
+    public class PickUpSpawner : BaseSpawner
     {
         [SerializeField]
         private int _maxCount = 2;

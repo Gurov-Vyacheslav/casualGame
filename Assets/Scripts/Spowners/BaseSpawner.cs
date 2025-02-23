@@ -1,9 +1,9 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace LearnGame.Spowners
+namespace LearnGame.Spawners
 {
-    public abstract class BaseSpowner : MonoBehaviour
+    public abstract class BaseSpawner : MonoBehaviour
     {
         [SerializeField]
         protected float _range = 2f;
