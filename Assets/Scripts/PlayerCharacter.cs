@@ -7,11 +7,28 @@ namespace LearnGame
     [RequireComponent(typeof(PlayerMovementDirectionController))]
     public class PlayerCharacter : BaseCharacter
     {
+        private CameraController _cameraController;
         protected override void Awake() 
         {
             base.Awake();
-            var cameraController = UnityEngine.Camera.main.GetComponent<CameraController>();
-            cameraController.SetPlayer(this);
+            _cameraController = UnityEngine.Camera.main.GetComponent<CameraController>();
+            _cameraController.SetPlayer(this);
+        }
+
+        protected override void OnDestroy()
+        {
+            _characterSpawnerController.ReportKillPlayer();
+        }
+
+        protected override bool CheckVictory()
+        {
+            if (_characterSpawnerController.CountEnemy == _characterSpawnerController.CurrentCountKilledEnemy)
+            {
+                _characterAnimatorController.IsWinning();
+                _cameraController.ReportPlayerWon();
+                return true;
+            }
+            return false;
         }
     }
 }

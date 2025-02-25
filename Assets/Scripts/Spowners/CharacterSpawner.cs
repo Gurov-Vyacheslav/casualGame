@@ -10,26 +10,26 @@ namespace LearnGame.Spawners
         [SerializeField]
         private EnemyCharacter _enemyPrefab;
 
-        private CharacterSpawnersController _characterSpawnersController;
+        public CharacterSpawnersController CharacterSpawnersController {get; private set;}
 
         protected override void Awake()
         {
             base.Awake();
-            _characterSpawnersController = transform.parent.GetComponent<CharacterSpawnersController>();
+            CharacterSpawnersController = transform.parent.GetComponent<CharacterSpawnersController>();
         }
 
         protected void Start()
         {
-            if (!_characterSpawnersController.PlayerWasSpawned)
+            if (!CharacterSpawnersController.PlayerWasSpawned)
             {
                 SpawningCharacter(_playerPrefab);
-                _characterSpawnersController.ReportSpawnPlayer();
+                CharacterSpawnersController.ReportSpawnPlayer();
             }
         }
 
         protected void Update()
         {
-            if (_characterSpawnersController.CurrentCountEnemy < _characterSpawnersController.CountEnemy)
+            if (CharacterSpawnersController.CurrentCountEnemy < CharacterSpawnersController.CountEnemy)
                 UpdateSpawningEnemy();
         }
 
@@ -42,7 +42,7 @@ namespace LearnGame.Spawners
                 SetNewSpawnIntervalSeconds();
 
                 SpawningCharacter(_enemyPrefab);
-                _characterSpawnersController.ReportSpawnEnemy();
+                CharacterSpawnersController.ReportSpawnEnemy();
             }
         }
 

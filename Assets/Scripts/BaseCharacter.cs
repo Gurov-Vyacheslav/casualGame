@@ -1,12 +1,14 @@
+using LearnGame.Animations;
 using LearnGame.Boosters;
 using LearnGame.Movement;
 using LearnGame.PickUp;
 using LearnGame.Shooting;
+using LearnGame.Spawners;
 using UnityEngine;
 
 namespace LearnGame
 {
-    [RequireComponent(typeof(CharacterMovementController), typeof(ShootingController))]
+    [RequireComponent(typeof(CharacterMovementController), typeof(ShootingController), typeof(CharacterAnimatorController))]
     public abstract class BaseCharacter : MonoBehaviour
     {
         [SerializeField]
@@ -14,9 +16,6 @@ namespace LearnGame
 
         [SerializeField]
         private Transform _hand;
-
-        [SerializeField]
-        private Animator _animator;
 
         [field: SerializeField]
         public float Health { get; private set; } = 2f;
@@ -26,6 +25,9 @@ namespace LearnGame
         private CharacterMovementController _characterMovementController;
         private ShootingController _shootingController;
         private PowerUpController _powerUpController;
+        protected CharacterAnimatorController _characterAnimatorController;
+
+        protected CharacterSpawnersController _characterSpawnerController;
 
         protected virtual void Awake()
         {
@@ -34,6 +36,9 @@ namespace LearnGame
             _characterMovementController = GetComponent<CharacterMovementController>();
             _shootingController = GetComponent<ShootingController>();
             _powerUpController = GetComponent<PowerUpController>();
+            _characterAnimatorController = GetComponent<CharacterAnimatorController>();
+
+            _characterSpawnerController = transform.parent.GetComponent<CharacterSpawner>().CharacterSpawnersController;
         }
 
         protected void Start()
@@ -47,18 +52,23 @@ namespace LearnGame
             var lookDirection = direction;
             if (_shootingController.HasTarget)
             {
-                lookDirection = (_shootingController.TargetPosition - transform.position).normalized;
+                lookDirection = _shootingController.TargetPosition - transform.position;
+                Quaternion rotation = Quaternion.Euler(0, 70, 0);
+                lookDirection = rotation * lookDirection;
             }
+            if (CheckVictory())
+                direction = Vector3.zero;
             _characterMovementController.MovementDirection = direction;
             _characterMovementController.LookDirection = lookDirection;
 
             var boostIncluded = _movementDirectionSourse.BoostIncluded;
             _characterMovementController.BoostSpeedIncluded = boostIncluded;
 
-            _animator.SetBool("IsMoving", direction != Vector3.zero);
-            _animator.SetBool("IsShooting", _shootingController.HasTarget);
+            _characterAnimatorController.SetMoving(direction != Vector3.zero);
+            _characterAnimatorController.SetRunning(boostIncluded);
+            _characterAnimatorController.SetShooting(_shootingController.HasTarget);
 
-            if (Health <= 0) Destroy(gameObject);
+            CheckLife();
         }
 
         protected void OnTriggerEnter(Collider other)
@@ -87,6 +97,15 @@ namespace LearnGame
         {
             _powerUpController.GetSpeedBooster(speedBooster);
         }
+
+        private void CheckLife()
+        {
+            if (Health <= 0) Destroy(gameObject);
+        }
+
+        protected abstract void OnDestroy();
+
+        protected abstract bool CheckVictory();
     }
 }
 

@@ -1,3 +1,4 @@
+using LearnGame.Animations;
 using System;
 using UnityEngine;
 
@@ -12,7 +13,8 @@ namespace LearnGame.Camera
         private Vector3 _rotationOffset = Vector3.zero;
 
         [SerializeField]
-        private PlayerCharacter _player;
+        private BaseCharacter _player;
+
         protected void Start()
         {
             if (_player == null)
@@ -28,10 +30,15 @@ namespace LearnGame.Camera
             transform.rotation = Quaternion.LookRotation(targetRotation, Vector3.up);
         }
 
-        public void SetPlayer(PlayerCharacter player)
+        public void SetPlayer(BaseCharacter player)
         {
             _player = player;
-        } 
+        }
+        public void ReportPlayerWon()
+        {
+            var cameraAmimatorController = GetComponentInParent<CameraAmimatorController>();
+            cameraAmimatorController.Scale();
+        }
     }
 }
 
