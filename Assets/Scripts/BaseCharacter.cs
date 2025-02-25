@@ -52,14 +52,14 @@ namespace LearnGame
             var lookDirection = direction;
             if (_shootingController.HasTarget)
             {
-                lookDirection = _shootingController.TargetPosition - transform.position;
-                Quaternion rotation = Quaternion.Euler(0, 70, 0);
-                lookDirection = rotation * lookDirection;
+                lookDirection = (_shootingController.TargetPosition - transform.position).normalized;
             }
-            if (CheckVictory())
+            if (CheckVictory() || CheckDie())
                 direction = Vector3.zero;
             _characterMovementController.MovementDirection = direction;
             _characterMovementController.LookDirection = lookDirection;
+
+            /*_characterAnimatorController.LookDirection = lookDirection;*/
 
             var boostIncluded = _movementDirectionSourse.BoostIncluded;
             _characterMovementController.BoostSpeedIncluded = boostIncluded;
@@ -67,8 +67,6 @@ namespace LearnGame
             _characterAnimatorController.SetMoving(direction != Vector3.zero);
             _characterAnimatorController.SetRunning(boostIncluded);
             _characterAnimatorController.SetShooting(_shootingController.HasTarget);
-
-            CheckLife();
         }
 
         protected void OnTriggerEnter(Collider other)
@@ -98,9 +96,15 @@ namespace LearnGame
             _powerUpController.GetSpeedBooster(speedBooster);
         }
 
-        private void CheckLife()
+        private bool CheckDie()
         {
-            if (Health <= 0) Destroy(gameObject);
+            if (Health <= 0)
+            {
+                _characterAnimatorController.IsDead();
+                _characterMovementController.enabled = false;
+                _shootingController.enabled = false;
+            }
+            return Health <= 0;
         }
 
         protected abstract void OnDestroy();
