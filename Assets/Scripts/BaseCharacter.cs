@@ -15,6 +15,9 @@ namespace LearnGame
         [SerializeField]
         private Transform _hand;
 
+        [SerializeField]
+        private Animator _animator;
+
         [field: SerializeField]
         public float Health { get; private set; } = 2f;
 
@@ -51,6 +54,10 @@ namespace LearnGame
 
             var boostIncluded = _movementDirectionSourse.BoostIncluded;
             _characterMovementController.BoostSpeedIncluded = boostIncluded;
+
+            _animator.SetBool("IsMoving", direction != Vector3.zero);
+            _animator.SetBool("IsShooting", _shootingController.HasTarget);
+
             if (Health <= 0) Destroy(gameObject);
         }
 

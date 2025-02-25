@@ -49,7 +49,7 @@ namespace LearnGame.Spawners
         private void SpawningCharacter(BaseCharacter character)
         {
             var randomPointInsideRange = Random.insideUnitCircle * _range;
-            var randomPosition = new Vector3(randomPointInsideRange.x, 1f, randomPointInsideRange.y) + transform.position;
+            var randomPosition = new Vector3(randomPointInsideRange.x, 0f, randomPointInsideRange.y) + transform.position;
 
             Instantiate(character, randomPosition, Quaternion.identity, transform);
         }
