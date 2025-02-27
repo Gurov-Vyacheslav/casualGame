@@ -3389,11 +3389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4877725295703511694, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: _maxCountEnemy
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4877725295703511694, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: _minCountEnemy
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4877725295703511694, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: <MaxCountEnemy>k__BackingField

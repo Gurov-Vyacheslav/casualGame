@@ -640,7 +640,7 @@ Transform:
   m_GameObject: {fileID: 3910731869884421388}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1128,7 +1128,7 @@ Transform:
   m_GameObject: {fileID: 7546706836584386648}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1179,6 +1179,7 @@ GameObject:
   - component: {fileID: 945077494331019733}
   - component: {fileID: 5219165378720340559}
   - component: {fileID: 1724702994487219373}
+  - component: {fileID: -2409989950062602670}
   m_Layer: 8
   m_Name: SniperRiflePickUp
   m_TagString: Untagged
@@ -1236,6 +1237,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.14, y: 0.4, z: 1.49}
   m_Center: {x: 0, y: 0.29, z: -0.03}
+--- !u!95 &-2409989950062602670
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074589282489267284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a93713bcb94e0854193d87add4c15585, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9161562067945598143
 GameObject:
   m_ObjectHideFlags: 0
