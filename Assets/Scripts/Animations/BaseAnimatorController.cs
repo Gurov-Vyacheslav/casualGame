@@ -1,5 +1,4 @@
-﻿using LearnGame.Movement;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LearnGame.Animations
 {

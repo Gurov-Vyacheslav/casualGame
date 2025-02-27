@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace LearnGame.Animations
+﻿namespace LearnGame.Animations
 {
     public class CameraAmimatorController : BaseAnimatorController
     {
