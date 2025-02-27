@@ -572,7 +572,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: ea7ee94e182287a4194869d6069c5911, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9e5cd0d3211dc0549a3a4693828778c2, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &699454682
 Transform:
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followCameraOffset: {x: -10, y: 4.15, z: 0}
   _rotationOffset: {x: -4.5, y: 2.3, z: 0}
-  _player: {fileID: 6375152166119255655, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
+  _character: {fileID: 0}
 --- !u!1 &971707608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4877725295703511694, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: _minCountEnemy
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4877725295703511694, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: <MaxCountEnemy>k__BackingField

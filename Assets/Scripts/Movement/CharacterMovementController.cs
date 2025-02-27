@@ -1,4 +1,5 @@
-﻿using LearnGame.Boosters;
+﻿using LearnGame.Animations;
+using LearnGame.Boosters;
 using UnityEngine;
 
 namespace LearnGame.Movement
@@ -25,28 +26,38 @@ namespace LearnGame.Movement
 
         private CharacterController _characterController;
 
+        private CharacterAnimatorController _characterAnimatorController;
+
         protected void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _powerUpController = GetComponent<PowerUpController>();
+            _characterAnimatorController = GetComponent<CharacterAnimatorController>();
         }
    
         protected void Update()
         {
+            CheckAnimationMovement();
             Translate();
-
             if (_maxRadianDelta > 0f && LookDirection != Vector3.zero)
                 Rotate();
         }
 
         private void Translate()
         {
-            var delta = MovementDirection * _speed * Time.deltaTime;
-            
-            if (BoostSpeedIncluded) delta *= _boostSpeed;
+            var currentSpeed = _speed;
+
+            if (BoostSpeedIncluded) currentSpeed *= _boostSpeed;
 
             if (_powerUpController.BoostInclude())
-                delta *= _powerUpController.Booster.BoostSpeed;
+            {
+                currentSpeed *= _powerUpController.Booster.BoostSpeed;
+                _characterAnimatorController.SetBoostSpeed(_powerUpController.Booster.BoostSpeed);
+            }
+            else
+                _characterAnimatorController.SetBoostSpeed();
+
+            var delta = MovementDirection * currentSpeed * Time.deltaTime;
 
             _characterController.Move(delta);
         }
@@ -64,6 +75,15 @@ namespace LearnGame.Movement
                     _maxRadianDelta * Time.deltaTime);
                 transform.rotation = newRotation;
             }
+        }
+        
+        private void CheckAnimationMovement()
+        {
+            var angle = Vector3.Angle(LookDirection, MovementDirection);
+            if (angle > 90)
+                _characterAnimatorController.MovingBackwards();
+            else
+                _characterAnimatorController.MovingForward();
         }
     }
 }

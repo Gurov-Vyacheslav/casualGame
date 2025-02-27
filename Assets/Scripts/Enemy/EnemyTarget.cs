@@ -57,7 +57,6 @@ namespace LearnGame.Enemy
                 else
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.PickUpWeaponMask, LayerUtils.PickUpBoosterMask, LayerUtils.CharacterMask });
             }
-            Debug.Log(Closest.gameObject.name);
         }
         private void FindClosestByMasksHeirarchy(int[] layerMasks)
         {

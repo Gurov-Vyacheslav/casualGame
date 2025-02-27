@@ -10,26 +10,26 @@ namespace LearnGame.Spawners
         [SerializeField]
         private EnemyCharacter _enemyPrefab;
 
-        private CharacterSpawnersController _characterSpawnersController;
+        public CharacterSpawnersController CharacterSpawnersController {get; private set;}
 
         protected override void Awake()
         {
             base.Awake();
-            _characterSpawnersController = transform.parent.GetComponent<CharacterSpawnersController>();
+            CharacterSpawnersController = transform.parent.GetComponent<CharacterSpawnersController>();
         }
 
         protected void Start()
         {
-            if (!_characterSpawnersController.PlayerWasSpawned)
+            if (!CharacterSpawnersController.PlayerWasSpawned)
             {
                 SpawningCharacter(_playerPrefab);
-                _characterSpawnersController.ReportSpawnPlayer();
+                CharacterSpawnersController.ReportSpawnPlayer();
             }
         }
 
         protected void Update()
         {
-            if (_characterSpawnersController.CurrentCountEnemy < _characterSpawnersController.CountEnemy)
+            if (CharacterSpawnersController.CurrentCountEnemy < CharacterSpawnersController.CountEnemy)
                 UpdateSpawningEnemy();
         }
 
@@ -42,14 +42,14 @@ namespace LearnGame.Spawners
                 SetNewSpawnIntervalSeconds();
 
                 SpawningCharacter(_enemyPrefab);
-                _characterSpawnersController.ReportSpawnEnemy();
+                CharacterSpawnersController.ReportSpawnEnemy();
             }
         }
 
         private void SpawningCharacter(BaseCharacter character)
         {
             var randomPointInsideRange = Random.insideUnitCircle * _range;
-            var randomPosition = new Vector3(randomPointInsideRange.x, 1f, randomPointInsideRange.y) + transform.position;
+            var randomPosition = new Vector3(randomPointInsideRange.x, 0f, randomPointInsideRange.y) + transform.position;
 
             Instantiate(character, randomPosition, Quaternion.identity, transform);
         }

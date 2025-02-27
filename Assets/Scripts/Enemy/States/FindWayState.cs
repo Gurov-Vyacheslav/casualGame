@@ -22,7 +22,7 @@ namespace LearnGame.Enemy.States
 
         public override void Execute()
         {
-            Debug.Log("Ищет путь");
+           /* Debug.Log("Ищет путь");*/
             Vector3 targetPosition = _target.Closest.transform.position;
             if (!_navMesher.IsPathCalculated || _navMesher.DistanceToTargetPointFrom(targetPosition) > MaxDIstanceBetweenRealAndCaluculatePoints)
                 _navMesher.CalculatePath(targetPosition);
