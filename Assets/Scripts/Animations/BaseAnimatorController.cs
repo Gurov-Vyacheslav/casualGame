@@ -8,7 +8,7 @@ namespace LearnGame.Animations
     {
         protected Animator _animator;
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             _animator = GetComponent<Animator>();
         }

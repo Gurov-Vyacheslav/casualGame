@@ -4,6 +4,9 @@ namespace LearnGame.Animations
 {
     public class CharacterAnimatorController : BaseAnimatorController
     {
+
+        [SerializeField] private const float  _highLook = 1.3f;
+        [SerializeField] private const float _baseSpeed = 1f;
         public void SetMoving(bool isMoving) => _animator.SetBool("IsMoving", isMoving);
 
         public void SetRunning(bool isRunning) => _animator.SetBool("IsRunning", isRunning && _animator.GetBool("IsMoving"));
@@ -14,11 +17,22 @@ namespace LearnGame.Animations
 
         public void IsDead() => _animator.SetBool("IsDead", true);
 
+        public void MovingBackwards() => _animator.SetFloat("Speed", -Mathf.Abs(_animator.GetFloat("Speed")));
+        public void MovingForward() => _animator.SetFloat("Speed", Mathf.Abs(_animator.GetFloat("Speed")));
+        public void SetBoostSpeed(float n = 1f)
+        {
+            _animator.SetFloat("Speed", _baseSpeed * n);
+        }
+
+
         public Vector3 TargetPosition { get; set; }
         public bool HasTarget {  get; set; }
 
-        [SerializeField] private float _highLook = 1.3f;
-
+        protected override void Awake()
+        {
+            base.Awake();
+            _animator.SetFloat("Speed", _baseSpeed);
+        }
 
 
         private void OnAnimatorIK(int layerIndex)
