@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBooster:
-    <BoostSpeed>k__BackingField: 2
+    <BoostSpeed>k__BackingField: 1.5
     <IntrvalSeconds>k__BackingField: 5
     _currentBoostSpeedTimerSeconds: 0
 --- !u!135 &8602109040398759135

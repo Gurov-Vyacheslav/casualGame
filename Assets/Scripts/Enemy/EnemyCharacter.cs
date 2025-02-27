@@ -28,7 +28,7 @@ namespace LearnGame.Enemy
                 _characterSpawnerController.CountEnemy - _characterSpawnerController.CurrentCountKilledEnemy == 1)
             {
                 _characterAnimatorController.IsWinning();
-                _cameraController.SetPlayer(this);
+                _cameraController.SetCharacter(this);
                 _cameraController.ReportPlayerWon();
                 return true;
             }

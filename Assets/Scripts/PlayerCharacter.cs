@@ -12,7 +12,7 @@ namespace LearnGame
         {
             base.Awake();
             _cameraController = UnityEngine.Camera.main.GetComponent<CameraController>();
-            _cameraController.SetPlayer(this);
+            _cameraController.SetCharacter(this);
         }
 
         protected override void OnDestroy()
