@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LearnGame.Animations;
+using UnityEngine;
 
 namespace LearnGame.Shooting
 {
@@ -14,6 +15,12 @@ namespace LearnGame.Shooting
 
         private GameObject _target;
 
+        protected CharacterAnimatorController _characterAnimatorController;
+
+        protected void Awake()
+        {
+            _characterAnimatorController = GetComponent<CharacterAnimatorController>();
+        }
         protected void Update()
         {
             _target = GetTarget();
@@ -26,8 +33,9 @@ namespace LearnGame.Shooting
 
                 _nextShootTimerSec = _weapon.ShootFrequencySec;
             }
-            
 
+            if (HasTarget) _characterAnimatorController.TargetPosition = TargetPosition;
+            _characterAnimatorController.HasTarget = HasTarget;
         }
 
         public void SetWeapon( Weapon weaponPrefub, Transform hand)

@@ -21,7 +21,7 @@ namespace LearnGame.Enemy.States
         {
             try
             {
-                Debug.Log("Бежит на ");
+               /* Debug.Log("Бежит на ");*/
                 Vector3 targetPosition = _target.Closest.transform.position;
                 if (_currentPoint != targetPosition)
                 {

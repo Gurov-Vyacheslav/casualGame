@@ -1,4 +1,6 @@
-﻿namespace LearnGame.Animations
+﻿using UnityEngine;
+
+namespace LearnGame.Animations
 {
     public class CharacterAnimatorController : BaseAnimatorController
     {
@@ -12,21 +14,35 @@
 
         public void IsDead() => _animator.SetBool("IsDead", true);
 
-        /*     public Vector3 LookDirection { get; set; }*/
+        public Vector3 TargetPosition { get; set; }
+        public bool HasTarget {  get; set; }
 
-        /*private void Update()
+        [SerializeField] private float _highLook = 1.3f;
+
+
+
+        private void OnAnimatorIK(int layerIndex)
         {
-            if (_animator.GetBool("IsShooting"))
+            if (!HasTarget)
             {
-                Transform spineBone = _animator.GetBoneTransform(HumanBodyBones.Spine);
-                Quaternion targetRotation = Quaternion.LookRotation(LookDirection) * Quaternion.Euler(0, 0, 70);
-                spineBone.rotation = Quaternion.Slerp(spineBone.rotation, targetRotation, Time.deltaTime * 5f);
-                Debug.Log("Spine bone found: " + spineBone.name);
+                return;
             }
-        }*/
+
+            _animator.SetLookAtWeight(1, 0.5f, 1);
+            TargetPosition = new Vector3(TargetPosition.x, _highLook, TargetPosition.z);
+            Vector3 directionToTarget = TargetPosition - transform.position;
+
+            Quaternion rotation = Quaternion.Euler(0, 30, 0);
+            Vector3 rotatedDirection = rotation * directionToTarget;
+            Vector3 lookAtPosition = transform.position + rotatedDirection;
+
+            _animator.SetLookAtPosition(lookAtPosition);
+        }
         public void OnDeathAnimationEnd()
         {
             Destroy(gameObject);
         }
+
+        
     }
 }

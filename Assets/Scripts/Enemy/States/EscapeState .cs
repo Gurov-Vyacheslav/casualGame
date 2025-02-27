@@ -19,7 +19,7 @@ namespace LearnGame.Enemy.States
 
         public override void Execute()
         {
-            Debug.Log("Убегает");
+           /* Debug.Log("Убегает");*/
             try
             {
                 Vector3 targetPosition = _target.Closest.transform.position;

@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 4
   _boostSpeed: 2
-  _maxRadianDelta: 100
+  _maxRadianDelta: 10
 --- !u!114 &4447085488002897709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseWeaponPrefab: {fileID: 6643639849626107294, guid: 89682f8065f219045b8dd79d07a487a3, type: 3}
   _hand: {fileID: 290624773896961613}
-  <Health>k__BackingField: 100
+  <Health>k__BackingField: 10
 --- !u!114 &8278968525851143671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f492875fe831e438a1c96b6504d88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _highLook: 1.3
 --- !u!1 &1662424769040120509
 GameObject:
   m_ObjectHideFlags: 0

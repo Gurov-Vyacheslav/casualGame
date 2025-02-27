@@ -25,6 +25,7 @@ namespace LearnGame
         private CharacterMovementController _characterMovementController;
         private ShootingController _shootingController;
         private PowerUpController _powerUpController;
+
         protected CharacterAnimatorController _characterAnimatorController;
 
         protected CharacterSpawnersController _characterSpawnerController;
@@ -50,16 +51,17 @@ namespace LearnGame
         {
             var direction = _movementDirectionSourse.MovementDirection;
             var lookDirection = direction;
+
             if (_shootingController.HasTarget)
             {
                 lookDirection = (_shootingController.TargetPosition - transform.position).normalized;
             }
+
             if (CheckVictory() || CheckDie())
                 direction = Vector3.zero;
+
             _characterMovementController.MovementDirection = direction;
             _characterMovementController.LookDirection = lookDirection;
-
-            /*_characterAnimatorController.LookDirection = lookDirection;*/
 
             var boostIncluded = _movementDirectionSourse.BoostIncluded;
             _characterMovementController.BoostSpeedIncluded = boostIncluded;
