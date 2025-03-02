@@ -616,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6520283137315773508, guid: 866764e477543344196bbcafe0454d8a, type: 3}
       propertyPath: m_Name
-      value: BoostSpowner1
+      value: BoostSpawner1
       objectReference: {fileID: 0}
     - target: {fileID: 6520283137315773508, guid: 866764e477543344196bbcafe0454d8a, type: 3}
       propertyPath: m_IsActive
@@ -917,7 +917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6520283137315773508, guid: 866764e477543344196bbcafe0454d8a, type: 3}
       propertyPath: m_Name
-      value: CenterBoostSpowner1
+      value: CenterBoostSpawner1
       objectReference: {fileID: 0}
     - target: {fileID: 6520283137315773508, guid: 866764e477543344196bbcafe0454d8a, type: 3}
       propertyPath: m_IsActive
@@ -984,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_Name
-      value: automaticSpowner3
+      value: automaticSpawner3
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_IsActive
@@ -2498,7 +2498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6520283137315773508, guid: 866764e477543344196bbcafe0454d8a, type: 3}
       propertyPath: m_Name
-      value: CenterBoostSpowner2
+      value: CenterBoostSpawner2
       objectReference: {fileID: 0}
     - target: {fileID: 6520283137315773508, guid: 866764e477543344196bbcafe0454d8a, type: 3}
       propertyPath: m_IsActive
@@ -3041,7 +3041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_Name
-      value: automaticSpowner2
+      value: automaticSpawner2
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_IsActive
@@ -3532,7 +3532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6520283137315773508, guid: 866764e477543344196bbcafe0454d8a, type: 3}
       propertyPath: m_Name
-      value: BoostSpowner2
+      value: BoostSpawner2
       objectReference: {fileID: 0}
     - target: {fileID: 6520283137315773508, guid: 866764e477543344196bbcafe0454d8a, type: 3}
       propertyPath: m_IsActive
@@ -3565,7 +3565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_Name
-      value: automaticSpowner4
+      value: automaticSpawner4
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_IsActive
@@ -3662,7 +3662,7 @@ PrefabInstance:
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_Name
-      value: rifleSpowner1
+      value: rifleSpawner1
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_IsActive
@@ -4096,7 +4096,7 @@ PrefabInstance:
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_Name
-      value: rifleSpowner2
+      value: rifleSpawner2
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_IsActive
@@ -6175,7 +6175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_Name
-      value: automaticSpowner1
+      value: automaticSpawner1
       objectReference: {fileID: 0}
     - target: {fileID: 8320558594490688486, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_IsActive
@@ -6183,7 +6183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458650435992413538, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.190001
+      value: 9.449506
       objectReference: {fileID: 0}
     - target: {fileID: 8458650435992413538, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6191,7 +6191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458650435992413538, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.190001
+      value: -25.353992
       objectReference: {fileID: 0}
     - target: {fileID: 8458650435992413538, guid: 1d02e83ca9413f3479fc746a60d31d3d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10670,9 +10670,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -25.820002
       objectReference: {fileID: 0}
+    - target: {fileID: 2652758298837800390, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
+      propertyPath: m_Name
+      value: CharacterSpawner2
+      objectReference: {fileID: 0}
     - target: {fileID: 3389165957618097692, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: _range
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340847330251145398, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
+      propertyPath: m_Name
+      value: CharacterSpawner1
       objectReference: {fileID: 0}
     - target: {fileID: 4375965474115786998, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10756,7 +10764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9000932329326783323, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: m_Name
-      value: CharacterSpownersController
+      value: CharacterSpawnersController
       objectReference: {fileID: 0}
     - target: {fileID: 9000932329326783323, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: m_IsActive

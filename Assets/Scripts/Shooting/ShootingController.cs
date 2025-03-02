@@ -38,10 +38,10 @@ namespace LearnGame.Shooting
             _characterAnimatorController.HasTarget = HasTarget;
         }
 
-        public void SetWeapon( Weapon weaponPrefub, Transform hand)
+        public void SetWeapon( Weapon weaponPrefab, Transform hand)
         {
             if (_weapon != null) Destroy(_weapon.gameObject);
-            _weapon = Instantiate(weaponPrefub, hand);
+            _weapon = Instantiate(weaponPrefab, hand);
             _weapon.transform.localPosition = Vector3.zero;
             _weapon.transform.localPosition = Vector3.zero;
         }

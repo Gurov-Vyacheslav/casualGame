@@ -8,13 +8,13 @@ namespace LearnGame.Enemy.States
     public class MoveForwardState: BaseState
     {
         private readonly EnemyTarget _target;
-        private readonly EnemyDirectionController _enemydirectionController;
+        private readonly EnemyDirectionController _enemyDirectionController;
 
         private Vector3 _currentPoint;
         public MoveForwardState(EnemyTarget target, EnemyDirectionController enemydirectionController)
         {
             _target = target;
-            _enemydirectionController = enemydirectionController;
+            _enemyDirectionController = enemydirectionController;
         }
 
         public override void Execute()
@@ -26,7 +26,7 @@ namespace LearnGame.Enemy.States
                 if (_currentPoint != targetPosition)
                 {
                     _currentPoint = targetPosition;
-                    _enemydirectionController.UpdateMovementDirection(_currentPoint);
+                    _enemyDirectionController.UpdateMovementDirection(_currentPoint);
                 }
             }
             catch (Exception NotStoped)

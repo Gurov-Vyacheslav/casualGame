@@ -4,7 +4,6 @@ namespace LearnGame.Boosters
 {
     public class PowerUpController : MonoBehaviour
     {
-
         public SpeedBooster Booster { get; private set; }
 
         protected void Update()

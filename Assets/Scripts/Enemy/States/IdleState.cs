@@ -5,15 +5,15 @@ namespace LearnGame.Enemy.States
 {
     public class IdleState: BaseState
     {
-        private readonly EnemyDirectionController _enemydirectionController;
+        private readonly EnemyDirectionController _enemyDirectionController;
         public IdleState(EnemyDirectionController enemyDirectionController) 
         {
-            _enemydirectionController = enemyDirectionController;
+            _enemyDirectionController = enemyDirectionController;
         }
         public override void Execute()
         {
            /* Debug.Log("Ожидает");*/
-            _enemydirectionController.UpdateBoostIncluded(false);
+            _enemyDirectionController.UpdateBoostIncluded(false);
         }
     }
 }
