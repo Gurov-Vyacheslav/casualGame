@@ -9,7 +9,7 @@ namespace LearnGame.Enemy.States
 
         private readonly EnemyTarget _target;
         private readonly NavMesher _navMesher;
-        private readonly EnemyDirectionController _enemydirectionController;
+        private readonly EnemyDirectionController _enemyDirectionController;
 
         private Vector3 _currentPoint;
 
@@ -17,7 +17,7 @@ namespace LearnGame.Enemy.States
         {
             _target = target;
             _navMesher = navMesher;
-            _enemydirectionController = enemydirectionController;
+            _enemyDirectionController = enemydirectionController;
         }
 
         public override void Execute()
@@ -30,7 +30,7 @@ namespace LearnGame.Enemy.States
             if (_currentPoint !=  currentPoint)
             {
                 _currentPoint = currentPoint;
-                _enemydirectionController.UpdateMovementDirection(_currentPoint);
+                _enemyDirectionController.UpdateMovementDirection(_currentPoint);
             }
         }
     }
