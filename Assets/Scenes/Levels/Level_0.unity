@@ -968,7 +968,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 705507995}
-  - {fileID: 2035123802}
+  - {fileID: 1034484381}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383424979
@@ -2144,11 +2144,11 @@ Transform:
   m_GameObject: {fileID: 1034484380}
   serializedVersion: 2
   m_LocalRotation: {x: -0.24047007, y: -0.059070148, z: 0.014667542, w: -0.96874654}
-  m_LocalPosition: {x: -1.4202213, y: 7.1842966, z: -11.435205}
+  m_LocalPosition: {x: -3.1002214, y: 15.824297, z: -21.265205}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2035123802}
+  m_Father: {fileID: 376859148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1034484382
 MonoBehaviour:
@@ -2165,6 +2165,9 @@ MonoBehaviour:
   _followCameraOffset: {x: -10, y: 15, z: 0}
   _rotationOffset: {x: 0, y: 0, z: 0}
   _character: {fileID: 6375152166119255655, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
+  _winCameraOffset: {x: -4, y: 3, z: 0}
+  _winRotationOffset: {x: 0, y: 1.5, z: 0}
+  _moveSpeed: 6
 --- !u!81 &1034484383
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6953,73 +6956,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &2035123801
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2035123802}
-  - component: {fileID: 2035123804}
-  - component: {fileID: 2035123803}
-  m_Layer: 0
-  m_Name: MainCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2035123802
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035123801}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6800001, y: 8.64, z: -9.830001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1034484381}
-  m_Father: {fileID: 376859148}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2035123803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035123801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31034890a6b6de845a402c87b673691d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &2035123804
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035123801}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a56b54c77b70194bb4f3d47abb58ef3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2078544515
 GameObject:
   m_ObjectHideFlags: 0
