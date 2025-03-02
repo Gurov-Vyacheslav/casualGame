@@ -16,14 +16,27 @@ namespace LearnGame.Enemy.States
             var moveForwardState = new MoveForwardState(target, enemyDirectionController);
             var escapeState = new EscapeState(target, enemyDirectionController);
 
+            
+            bool NeedEscape()
+            {
+                float currentHealth = enemyCharacter.Health;
+                float maxHealth = enemyCharacter.MaxHealth;
+                float healthPercentage = MathUtils.ToPercentage(currentHealth, maxHealth);
+                GameObject closestTarget = target.Closest;
 
+                bool isLowHealth = healthPercentage <= minHpForEscapePercent;
+                bool closestIsCharacter = closestTarget != null && LayerUtils.IsCharacter(closestTarget);
+                bool isChanceTriggered = Random.value * 100f < probabilityEscapePercent;
+
+                return isLowHealth && closestIsCharacter && isChanceTriggered;
+            }
 
             SetInitialState(idleSate);
             AddState(state: idleSate, transotions: new List<Transition>
                 {
                     new Transition(
                         escapeState,
-                        () => enemyCharacter.Health/enemyCharacter.MaxHealth*100 <= minHpForEscapePercent && Random.Range( 0.0f, 100.0f ) <= probabilityEscapePercent),
+                        () => NeedEscape()),
                     new Transition(
                         findWaySate,
                         () => target.DistanceToClosestFromAgent() > NavMeshTurnOffDistance),
@@ -46,7 +59,7 @@ namespace LearnGame.Enemy.States
                 {
                     new Transition(
                         escapeState,
-                        () => enemyCharacter.Health/enemyCharacter.MaxHealth*100 <= minHpForEscapePercent && Random.Range( 0.0f, 100.0f ) <= probabilityEscapePercent),
+                        () => NeedEscape()),
                     new Transition(
                         idleSate,
                         () => target.Closest == null),
