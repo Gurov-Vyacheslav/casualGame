@@ -32,7 +32,7 @@ namespace LearnGame.Enemy.States
             }
 
             SetInitialState(idleSate);
-            AddState(state: idleSate, transotions: new List<Transition>
+            AddState(state: idleSate, transitions: new List<Transition>
                 {
                     new Transition(
                         escapeState,
@@ -45,7 +45,7 @@ namespace LearnGame.Enemy.States
                         () => target.DistanceToClosestFromAgent() <= NavMeshTurnOffDistance)
                 }
             );
-            AddState(state: findWaySate, transotions: new List<Transition>
+            AddState(state: findWaySate, transitions: new List<Transition>
                 {
                     new Transition(
                         idleSate,
@@ -55,7 +55,7 @@ namespace LearnGame.Enemy.States
                         () => target.DistanceToClosestFromAgent() <= NavMeshTurnOffDistance)
                 }
             );
-            AddState(state: moveForwardState, transotions: new List<Transition>
+            AddState(state: moveForwardState, transitions: new List<Transition>
                 {
                     new Transition(
                         escapeState,
@@ -68,7 +68,7 @@ namespace LearnGame.Enemy.States
                         () => target.DistanceToClosestFromAgent() > NavMeshTurnOffDistance)
                 }
             );
-            AddState(state: escapeState, transotions: new List<Transition>
+            AddState(state: escapeState, transitions: new List<Transition>
                 {
                     new Transition(
                         idleSate,

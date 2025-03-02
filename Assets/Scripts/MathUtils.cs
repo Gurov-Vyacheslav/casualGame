@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-namespace LearnGame
+﻿namespace LearnGame
 {
     public static class MathUtils
     {

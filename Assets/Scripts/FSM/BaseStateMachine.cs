@@ -20,12 +20,12 @@ namespace LearnGame.FSM
             _currentSate = state;
         }
 
-        public void AddState(BaseState state, List<Transition> transotions) 
+        public void AddState(BaseState state, List<Transition> transitions) 
         {
             if (!_states.Contains(state)) 
             { 
                 _states.Add(state);
-                _transitions.Add(state, transotions);
+                _transitions.Add(state, transitions);
             }
             else
             {
