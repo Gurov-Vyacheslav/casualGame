@@ -1,25 +1,29 @@
-using UnityEngine;
+using LearnGame.UI;
 
 namespace LearnGame.Ui
 {
-    public class LosePanel : MonoBehaviour
+    public class LosePanel : BasePanel
     {
-        [SerializeField]
-        private GameManager _gameManager;
-
-        void Start()
+        protected override void Start()
         {
             _gameManager.Loss += ShowPanel;
-            gameObject.SetActive(false);
+            base.Start();
         }
 
-        private void ShowPanel()
+        protected override void ShowPanel()
         {
             _gameManager.Loss -= ShowPanel;
-             gameObject.SetActive(true);
+             base.ShowPanel();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
+        {
+            if (_gameManager != null)
+            {
+                _gameManager.Loss -= ShowPanel;
+            }
+        }
+        protected void OnDisable()
         {
             if (_gameManager != null)
             {

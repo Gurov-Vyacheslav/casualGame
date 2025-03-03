@@ -7,7 +7,7 @@ namespace LearnGame.UI
 {
     public class OpenLevel : MonoBehaviour
     {
-        private Button openLevelButton;
+        private Button _openLevelButton;
 
         [SerializeField]
         private List<int> _levelList = new List<int>();
@@ -19,9 +19,9 @@ namespace LearnGame.UI
 
         private void Start()
         {
-            openLevelButton = GetComponent<Button>();
-            openLevelButton.onClick.RemoveAllListeners();
-            openLevelButton.onClick.AddListener(OpenRandomLevel);
+            _openLevelButton = GetComponent<Button>();
+            _openLevelButton.onClick.RemoveAllListeners();
+            _openLevelButton.onClick.AddListener(OpenRandomLevel);
         }
 
         private void OpenRandomLevel()

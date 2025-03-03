@@ -1,25 +1,26 @@
-using LearnGame.UI;
+﻿using System.Collections;
+using UnityEngine;
 
-namespace LearnGame.Ui
+namespace LearnGame.UI
 {
-    public class WinPanel : BasePanel
+    public class PausePanel : BasePanel
     {
         protected override void Start()
         {
-            _gameManager.Win += ShowPanel;
+            _gameManager.PressPause += ShowPanel;
             base.Start();
         }
 
         protected override void ShowPanel()
         {
-            _gameManager.Win -= ShowPanel;
-            base.ShowPanel();
+            gameObject.SetActive(!gameObject.activeInHierarchy);
         }
+
         protected override void OnDestroy()
         {
             if (_gameManager != null)
             {
-                _gameManager.Win -= ShowPanel;
+                _gameManager.PressPause -= ShowPanel;
             }
         }
     }
