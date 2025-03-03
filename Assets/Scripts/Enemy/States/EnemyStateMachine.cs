@@ -31,6 +31,15 @@ namespace LearnGame.Enemy.States
                 return isLowHealth && closestIsCharacter && isChanceTriggered;
             }
 
+            bool NeedTransitionFromEscape()
+            {
+                GameObject closestTarget = target.Closest;
+
+                bool closestIsNotCharacter = closestTarget == null || !LayerUtils.IsCharacter(closestTarget);
+
+                return closestIsNotCharacter || target.MoveToSafeDistance();
+            }
+
             SetInitialState(idleSate);
             AddState(state: idleSate, transitions: new List<Transition>
                 {
@@ -72,7 +81,7 @@ namespace LearnGame.Enemy.States
                 {
                     new Transition(
                         idleSate,
-                        () => target.Closest == null || target.MoveToSafeDistance())
+                        () => NeedTransitionFromEscape())
                 }
             );
 
