@@ -1,7 +1,7 @@
 ﻿using LearnGame.Enemy.States;
 using UnityEngine;
-using LearnGame.Movement;
 using LearnGame.Shooting;
+using LearnGame.Boosters;
 
 namespace LearnGame.Enemy
 {
@@ -21,12 +21,12 @@ namespace LearnGame.Enemy
         {
             var player = FindObjectOfType<PlayerCharacter>();
             var enemyDirectionController = GetComponent<EnemyDirectionController>();
-            var enemyMovementController = GetComponent<CharacterMovementController>();
+            var powerUpController = GetComponent<PowerUpController>();
             var enemyShootingController = GetComponent<ShootingController>();
             var nawMesher = new NavMesher(transform);
             var enemyCharacter = GetComponent<EnemyCharacter>();
 
-            _target = new EnemyTarget(transform, player, _viewRadius, enemyMovementController, enemyShootingController);
+            _target = new EnemyTarget(transform, player, _viewRadius, powerUpController, enemyShootingController);
             _stateMashine  = new EnemyStateMachine(enemyCharacter, enemyDirectionController, nawMesher, 
                 _target, _minHpForEscapePercent, _probabilityEscapePercent);
         }

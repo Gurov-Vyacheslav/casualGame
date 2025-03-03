@@ -1,4 +1,4 @@
-﻿using LearnGame.Movement;
+﻿using LearnGame.Boosters;
 using LearnGame.Shooting;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace LearnGame.Enemy
 
         private readonly float _viewRadius;
         private readonly Transform _agentTransform;
-        private readonly CharacterMovementController _enemyMovementController;
+        private readonly PowerUpController _powerUpController;
         private readonly ShootingController _shootingController;
         private readonly PlayerCharacter _player;
 
@@ -18,13 +18,13 @@ namespace LearnGame.Enemy
 
         private readonly float _safeDistance = 20f;
 
-        public EnemyTarget(Transform agent, PlayerCharacter player, float viewRadius, 
-            CharacterMovementController enemyMovementController, ShootingController shootingController)
+        public EnemyTarget(Transform agent, PlayerCharacter player, float viewRadius,
+            PowerUpController powerUpController, ShootingController shootingController)
         {
             _agentTransform = agent;
             _player = player;
             _viewRadius = viewRadius;
-            _enemyMovementController = enemyMovementController;
+            _powerUpController = powerUpController;
             _shootingController = shootingController;
         }
 
@@ -45,14 +45,14 @@ namespace LearnGame.Enemy
         {
             if (_shootingController.SetBaseWeapon())
             {
-                if (_enemyMovementController.BoostSpeedIncluded)
+                if (_powerUpController.BoostInclude())
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.CharacterMask });
                 else
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.CharacterMask | LayerUtils.PickUpBoosterMask});
             }
             else
             {
-                if (_enemyMovementController.BoostSpeedIncluded)
+                if (_powerUpController.BoostInclude())
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.PickUpWeaponMask, LayerUtils.CharacterMask});
                 else
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.PickUpWeaponMask, LayerUtils.PickUpBoosterMask, LayerUtils.CharacterMask });
