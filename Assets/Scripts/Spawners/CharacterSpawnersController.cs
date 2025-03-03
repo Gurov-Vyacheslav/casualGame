@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace LearnGame.Spawners
 {
     public class CharacterSpawnersController : MonoBehaviour
     {
+        public event Action DeadPlayer;
+        public event Action WinPlayer;
+
         [SerializeField]
         private int _minCountEnemy = 2;
         [SerializeField]
@@ -27,13 +31,19 @@ namespace LearnGame.Spawners
         public void ReportKillEnemy()
         {
             CurrentCountKilledEnemy++;
-            PlayerWon = CurrentCountKilledEnemy == CountEnemy;
+            PlayerWon = CurrentCountKilledEnemy == CountEnemy && !PlayerWasKilled;
+
+            if (PlayerWon)
+                WinPlayer?.Invoke();
         }
 
         public void ReportSpawnPlayer() => PlayerWasSpawned = true;
 
-        public void ReportKillPlayer() => PlayerWasKilled = true;
-
-        private int GetRandomCountEnemy() => Random.Range(_minCountEnemy, _maxCountEnemy);
+        public void ReportKillPlayer()
+        {
+            PlayerWasKilled = true;
+            DeadPlayer?.Invoke();
+        }
+        private int GetRandomCountEnemy() => UnityEngine.Random.Range(_minCountEnemy, _maxCountEnemy);
     }
 }
