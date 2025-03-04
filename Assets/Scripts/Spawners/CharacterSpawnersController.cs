@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using LearnGame.Enemy;
 
 namespace LearnGame.Spawners
 {
@@ -8,6 +9,8 @@ namespace LearnGame.Spawners
         public event Action DeadPlayer;
         public event Action WinPlayer;
         public event Action KillEnemy;
+        public event Action<EnemyCharacter> SpawnEnemy;
+        public event Action<BaseCharacter> SpawnPlayer;
 
         [SerializeField]
         private int _minCountEnemy = 2;
@@ -27,7 +30,11 @@ namespace LearnGame.Spawners
             CountEnemy = GetRandomCountEnemy();
         }
 
-        public void ReportSpawnEnemy() => CurrentCountEnemy++;
+        public void ReportSpawnEnemy(EnemyCharacter enemy)
+        {
+            CurrentCountEnemy++;
+            SpawnEnemy?.Invoke(enemy);
+        }
         
         public void ReportKillEnemy()
         {
@@ -39,7 +46,11 @@ namespace LearnGame.Spawners
                 WinPlayer?.Invoke();
         }
 
-        public void ReportSpawnPlayer() => PlayerWasSpawned = true;
+        public void ReportSpawnPlayer(BaseCharacter player)
+        {
+            PlayerWasSpawned = true;
+            SpawnPlayer?.Invoke(player);
+        }
 
         public void ReportKillPlayer()
         {

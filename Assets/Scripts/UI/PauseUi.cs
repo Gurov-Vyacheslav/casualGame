@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
@@ -7,7 +5,7 @@ using System;
 namespace LearnGame.UI
 {
 
-    public class PauseUi : MonoBehaviour
+    public class PauseUI : MonoBehaviour
     {
         public event Action PressButton;
 

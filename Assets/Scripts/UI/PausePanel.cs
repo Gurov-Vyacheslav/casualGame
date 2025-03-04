@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace LearnGame.UI
+﻿namespace LearnGame.UI
 {
     public class PausePanel : BasePanel
     {

@@ -22,8 +22,8 @@ namespace LearnGame.Spawners
         {
             if (!CharacterSpawnersController.PlayerWasSpawned)
             {
-                SpawningCharacter(_playerPrefab);
-                CharacterSpawnersController.ReportSpawnPlayer();
+                var player = SpawningCharacter(_playerPrefab);
+                CharacterSpawnersController.ReportSpawnPlayer(player);
             }
         }
 
@@ -41,17 +41,17 @@ namespace LearnGame.Spawners
                 _currentSpawnTimerSeconds = 0f;
                 SetNewSpawnIntervalSeconds();
 
-                SpawningCharacter(_enemyPrefab);
-                CharacterSpawnersController.ReportSpawnEnemy();
+                var enemy = SpawningCharacter(_enemyPrefab);
+                CharacterSpawnersController.ReportSpawnEnemy((EnemyCharacter)enemy);
             }
         }
 
-        private void SpawningCharacter(BaseCharacter character)
+        private BaseCharacter SpawningCharacter(BaseCharacter character)
         {
             var randomPointInsideRange = Random.insideUnitCircle * _range;
             var randomPosition = new Vector3(randomPointInsideRange.x, 0f, randomPointInsideRange.y) + transform.position;
 
-            Instantiate(character, randomPosition, Quaternion.identity, transform);
+            return Instantiate(character, randomPosition, Quaternion.identity, transform);
         }
     }
 }

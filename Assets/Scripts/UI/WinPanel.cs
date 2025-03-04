@@ -1,6 +1,4 @@
-using LearnGame.UI;
-
-namespace LearnGame.Ui
+namespace LearnGame.UI
 {
     public class WinPanel : BasePanel
     {

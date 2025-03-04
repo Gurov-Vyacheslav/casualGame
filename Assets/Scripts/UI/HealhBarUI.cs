@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using LearnGame.Enemy;
 
 namespace LearnGame.UI
 {

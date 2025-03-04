@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace LearnGame.Ui
+namespace LearnGame.UI
 {
-    public class CounterEnemyUi : MonoBehaviour
+    public class CounterEnemyUI : MonoBehaviour
     {
         [SerializeField]
         private TextMeshProUGUI _outputText;
