@@ -7,6 +7,7 @@ namespace LearnGame.Spawners
     {
         public event Action DeadPlayer;
         public event Action WinPlayer;
+        public event Action KillEnemy;
 
         [SerializeField]
         private int _minCountEnemy = 2;
@@ -33,6 +34,7 @@ namespace LearnGame.Spawners
             CurrentCountKilledEnemy++;
             PlayerWon = CurrentCountKilledEnemy == CountEnemy && !PlayerWasKilled;
 
+            KillEnemy?.Invoke();
             if (PlayerWon)
                 WinPlayer?.Invoke();
         }

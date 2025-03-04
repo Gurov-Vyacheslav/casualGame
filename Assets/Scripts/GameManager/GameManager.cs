@@ -17,15 +17,22 @@ namespace LearnGame
         private TimerUI _timer;
 
         private PauseUi _pauseButton;
+
+        private CounterEnemyUi _counterEnemy;
         private void Start()
         {
             _characterSpawnersController = FindObjectOfType<CharacterSpawnersController>();
             _timer = FindObjectOfType<TimerUI>();
             _pauseButton = FindObjectOfType<PauseUi>();
+            _pauseButton = FindObjectOfType<PauseUi>();
+            _counterEnemy = FindObjectOfType<CounterEnemyUi>();
 
             _characterSpawnersController.DeadPlayer += OnPlayerDead;
 
             _characterSpawnersController.WinPlayer += OnPlayerWin;
+
+            _characterSpawnersController.KillEnemy += OnLKillEnemy;
+            _counterEnemy.SetMaxCountEnemy(_characterSpawnersController.CountEnemy);
 
             _timer.TimeEnd += PlayerLose;
 
@@ -43,7 +50,7 @@ namespace LearnGame
         private void OnPlayerWin()
         {
             OffPauseButton();
-
+            _characterSpawnersController.KillEnemy -= OnLKillEnemy;
             _characterSpawnersController.WinPlayer -= OnPlayerWin;
             Win?.Invoke();
         }
@@ -73,6 +80,11 @@ namespace LearnGame
         {
             if (_pauseButton != null) 
                 _pauseButton.gameObject.SetActive(false);
+        }
+
+        private void OnLKillEnemy()
+        {
+            _counterEnemy.KilEnemy();
         }
     }
 }
