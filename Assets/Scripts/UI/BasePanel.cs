@@ -16,7 +16,8 @@ namespace LearnGame.UI
 
         protected virtual void ShowPanel()
         {
-            gameObject.SetActive(true);
+            if (!ReferenceEquals(gameObject, null))
+                gameObject.SetActive(true);
         }
 
         protected abstract void OnDestroy();

@@ -34,12 +34,16 @@ namespace LearnGame
 
         private void OnPlayerDead()
         {
+            OffPauseButton();
+
             _characterSpawnersController.DeadPlayer -= OnPlayerDead;
             Loss?.Invoke();
         }
 
         private void OnPlayerWin()
         {
+            OffPauseButton();
+
             _characterSpawnersController.WinPlayer -= OnPlayerWin;
             Win?.Invoke();
         }
@@ -62,8 +66,13 @@ namespace LearnGame
 
         private bool TimePoused()
         {
-            return Time.timeScale < 0.5f;
+            return Time.timeScale < 0.1f;
         }
 
+        private void OffPauseButton()
+        {
+            if (_pauseButton != null) 
+                _pauseButton.gameObject.SetActive(false);
+        }
     }
 }

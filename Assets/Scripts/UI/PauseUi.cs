@@ -11,13 +11,13 @@ namespace LearnGame.UI
     {
         public event Action PressButton;
 
-        private Button _stopGameButton;
+        private Button StopGameButton;
 
         private void Start()
         {
-            _stopGameButton = GetComponent<Button>();
-            _stopGameButton.onClick.RemoveAllListeners();
-            _stopGameButton.onClick.AddListener(IncudePause);
+            StopGameButton = GetComponent<Button>();
+            StopGameButton.onClick.RemoveAllListeners();
+            StopGameButton.onClick.AddListener(IncudePause);
         }
 
         private void IncudePause()

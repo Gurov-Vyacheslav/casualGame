@@ -23,12 +23,5 @@ namespace LearnGame.Ui
                 _gameManager.Loss -= ShowPanel;
             }
         }
-        protected void OnDisable()
-        {
-            if (_gameManager != null)
-            {
-                _gameManager.Loss -= ShowPanel;
-            }
-        }
     }
 }
