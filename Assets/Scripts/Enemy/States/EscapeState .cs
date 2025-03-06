@@ -19,20 +19,14 @@ namespace LearnGame.Enemy.States
 
         public override void Execute()
         {
-           /* Debug.Log("Убегает");*/
-            try
+            if (_target.Closest != null) return;
+
+            Vector3 targetPosition = _target.Closest.transform.position;
+            if (_currentPoint != targetPosition)
             {
-                Vector3 targetPosition = _target.Closest.transform.position;
-                if (_currentPoint != targetPosition)
-                {
-                    _currentPoint = targetPosition;
-                    _enemyDirectionController.UpdateMovementDirection(_currentPoint, true);
-                    _enemyDirectionController.UpdateBoostIncluded(true);
-                }
-            }
-            catch (Exception NotStoped)
-            {
-                throw new DoNotKnowWhatDoingException(DoNotKnowWhatDoingException.BaseMessage, NotStoped);
+                _currentPoint = targetPosition;
+                _enemyDirectionController.UpdateMovementDirection(_currentPoint, true);
+                _enemyDirectionController.UpdateBoostIncluded(true);
             }
         }
     }

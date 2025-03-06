@@ -20,6 +20,8 @@ namespace LearnGame
         [field: SerializeField]
         public float Health { get; private set; } = 2f;
 
+        public float MaxHealth { get; private set; }
+
         private IMovementDirectionSourse _movementDirectionSourse;
 
         private CharacterMovementController _characterMovementController;
@@ -40,6 +42,8 @@ namespace LearnGame
             _characterAnimatorController = GetComponent<CharacterAnimatorController>();
 
             _characterSpawnerController = transform.parent.GetComponent<CharacterSpawner>().CharacterSpawnersController;
+
+            MaxHealth = Health;
         }
 
         protected void Start()

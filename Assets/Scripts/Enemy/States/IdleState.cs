@@ -12,7 +12,6 @@ namespace LearnGame.Enemy.States
         }
         public override void Execute()
         {
-           /* Debug.Log("Ожидает");*/
             _enemyDirectionController.UpdateBoostIncluded(false);
         }
     }

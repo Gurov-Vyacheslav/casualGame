@@ -1,9 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using LearnGame.Enemy;
 
 namespace LearnGame.Spawners
 {
     public class CharacterSpawnersController : MonoBehaviour
     {
+        public event Action DeadPlayer;
+        public event Action WinPlayer;
+        public event Action KillEnemy;
+        public event Action<EnemyCharacter> SpawnEnemy;
+        public event Action<BaseCharacter> SpawnPlayer;
+
         [SerializeField]
         private int _minCountEnemy = 2;
         [SerializeField]
@@ -22,18 +30,34 @@ namespace LearnGame.Spawners
             CountEnemy = GetRandomCountEnemy();
         }
 
-        public void ReportSpawnEnemy() => CurrentCountEnemy++;
+        public void ReportSpawnEnemy(EnemyCharacter enemy)
+        {
+            CurrentCountEnemy++;
+            SpawnEnemy?.Invoke(enemy);
+        }
         
         public void ReportKillEnemy()
         {
             CurrentCountKilledEnemy++;
-            PlayerWon = CurrentCountKilledEnemy == CountEnemy;
+            PlayerWon = CurrentCountKilledEnemy == CountEnemy && !PlayerWasKilled;
+
+            KillEnemy?.Invoke();
+            if (PlayerWon)
+                WinPlayer?.Invoke();
         }
 
-        public void ReportSpawnPlayer() => PlayerWasSpawned = true;
+        public void ReportSpawnPlayer(BaseCharacter player)
+        {
+            PlayerWasSpawned = true;
+            SpawnPlayer?.Invoke(player);
+        }
 
-        public void ReportKillPlayer() => PlayerWasKilled = true;
-
-        private int GetRandomCountEnemy() => Random.Range(_minCountEnemy, _maxCountEnemy);
+        public void ReportKillPlayer()
+        {
+            PlayerWasKilled = true;
+            
+            DeadPlayer?.Invoke();
+        }
+        private int GetRandomCountEnemy() => UnityEngine.Random.Range(_minCountEnemy, _maxCountEnemy);
     }
 }

@@ -6,14 +6,11 @@ namespace LearnGame.Enemy
     [RequireComponent(typeof(EnemyDirectionController), typeof(EnemyAiController))]
     public class EnemyCharacter : BaseCharacter
     {
-        public float MaxHealth { get; private set; }
-
         private CameraController _cameraController;
 
         protected override void Awake()
         {
             base.Awake();
-            MaxHealth = Health;
             _cameraController = UnityEngine.Camera.main.GetComponent<CameraController>();
         }
 
