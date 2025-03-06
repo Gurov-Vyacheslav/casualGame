@@ -23,7 +23,7 @@ namespace LearnGame.UI.EnemyNavigator
 
 
         public void Initialize(EnemyCharacter enemy, BaseCharacter player, UnityEngine.Camera mainCamera, RectTransform enemyNavigator,
-            int minSizePx, int maxSizePx, float maxDistanseEffect, float minDistanceEffect, Color color)
+            int minSizePx, int maxSizePx, float maxDistanseEffect, float minDistanceEffect)
         {
             _enemy = enemy;
             _player = player;
@@ -36,15 +36,12 @@ namespace LearnGame.UI.EnemyNavigator
 
             _pointer = GetComponent<RectTransform>();
             _pointImage = GetComponent<Image>();
-
-            GetComponent<Image>().color = color;
         }
 
         private void LateUpdate()
         {
             if (_enemy == null || _player == null)
             {
-                Debug.Log("nooo");
                 _pointImage.enabled = false;
                 return;
             }
@@ -62,7 +59,6 @@ namespace LearnGame.UI.EnemyNavigator
 
             float currentDistance = Vector3.Distance(_player.transform.position, _enemy.transform.position);
             bool isVisible = currentDistance < _minDistanseEffect;
-            Debug.Log(isVisible);
             return isVisible;
         }
 

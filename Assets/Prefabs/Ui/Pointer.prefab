@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1891606081491164273}
   - component: {fileID: 7673152495538591671}
   - component: {fileID: 8903558741028461780}
+  - component: {fileID: 2731369130358811519}
   m_Layer: 5
   m_Name: Pointer
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -89,3 +90,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _edgeOffset: 50
+--- !u!114 &2731369130358811519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290203198137526669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91321310d01dd24ebfc8b4b17c50cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_topLeftColor: {r: 0.6784314, g: 0.15686275, b: 0.19215687, a: 1}
+  m_topRightColor: {r: 0.9372549, g: 0.13725491, b: 0.23529412, a: 1}
+  m_bottomRightColor: {r: 0.39215687, g: 0.050980393, b: 0.078431375, a: 1}
+  m_bottomLeftColor: {r: 0.5019608, g: 0.05490196, b: 0.07450981, a: 1}

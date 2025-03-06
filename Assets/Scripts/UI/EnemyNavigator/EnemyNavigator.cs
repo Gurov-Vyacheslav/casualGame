@@ -19,9 +19,6 @@ namespace LearnGame.UI.EnemyNavigator
         [SerializeField]
         private float _minDistanceEffect = 10f;
 
-        [SerializeField]
-        private List<Color> _colors;
-
 
         private BaseCharacter _player;
         private UnityEngine.Camera _camera;
@@ -39,12 +36,7 @@ namespace LearnGame.UI.EnemyNavigator
         private void SpawnPointer(EnemyCharacter enemy)
         {
             var pointer = Instantiate(_pointerPrefub, Vector3.zero, Quaternion.identity, this.transform);
-            pointer.Initialize(enemy, _player, _camera, _rectTransform, _minSizePx, _maxSizePx, _maxDistanceEffect, _minDistanceEffect, GetRandomColor());
-        }
-
-        private Color GetRandomColor()
-        {
-            return _colors[Random.Range(0, _colors.Count)];
+            pointer.Initialize(enemy, _player, _camera, _rectTransform, _minSizePx, _maxSizePx, _maxDistanceEffect, _minDistanceEffect);
         }
 
         private void OnDestroy()
@@ -55,7 +47,6 @@ namespace LearnGame.UI.EnemyNavigator
         private void SetPlayer(BaseCharacter player)
         {
             _player = player;
-            Debug.Log("spawn");
         }
 
     }

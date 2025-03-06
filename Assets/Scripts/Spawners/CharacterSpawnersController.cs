@@ -55,8 +55,8 @@ namespace LearnGame.Spawners
         public void ReportKillPlayer()
         {
             PlayerWasKilled = true;
-            if (CurrentCountKilledEnemy != CountEnemy)
-                DeadPlayer?.Invoke();
+            
+            DeadPlayer?.Invoke();
         }
         private int GetRandomCountEnemy() => UnityEngine.Random.Range(_minCountEnemy, _maxCountEnemy);
     }
