@@ -25,6 +25,7 @@ namespace LearnGame
 
         private void Awake()
         {
+            Time.timeScale = 1;
             _characterSpawnersController.SpawnPlayer += OnSpawnPlayer;
 
             _timer = FindObjectOfType<TimerUI>();
