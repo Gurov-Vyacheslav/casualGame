@@ -5,6 +5,7 @@ using LearnGame.PickUp;
 using LearnGame.Shooting;
 using LearnGame.Spawners;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace LearnGame
 {
@@ -19,6 +20,12 @@ namespace LearnGame
 
         [field: SerializeField]
         public float Health { get; private set; } = 2f;
+
+
+        [Space(10)]
+        [Header("Particle Settings")]
+        [SerializeField] private ParticleSystem _bloodSpatter;
+        [SerializeField] private ParticleSystem _dieParticle;
 
         public float MaxHealth { get; private set; }
 
@@ -82,6 +89,8 @@ namespace LearnGame
                 var bullet = other.gameObject.GetComponent<Bullet>();
 
                 Health -= bullet.Damage;
+                _bloodSpatter.Play();
+
                 Destroy(other.gameObject);
             }
             else if (LayerUtils.IsPickUp(other.gameObject))
@@ -107,6 +116,7 @@ namespace LearnGame
             if (Health <= 0)
             {
                 _characterAnimatorController.IsDead();
+                 _dieParticle.Play();
                 _characterMovementController.enabled = false;
                 _shootingController.enabled = false;
             }
