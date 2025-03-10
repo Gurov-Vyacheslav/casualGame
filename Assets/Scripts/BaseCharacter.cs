@@ -26,8 +26,9 @@ namespace LearnGame
         [Header("Particle Settings")]
         [SerializeField] private ParticleSystem _bloodSpatter;
         [SerializeField] private ParticleSystem _dieParticle;
-    
-        private AudioSource _dieSound;
+
+        [Header("Particle Settings")]
+        [SerializeField] private AudioSource _dieSound;
 
         public float MaxHealth { get; private set; }
 
@@ -53,8 +54,6 @@ namespace LearnGame
             _characterAnimatorController = GetComponent<CharacterAnimatorController>();
 
             _characterSpawnerController = transform.parent.GetComponent<CharacterSpawner>().CharacterSpawnersController;
-
-            _dieSound = GetComponent<AudioSource>();
 
             MaxHealth = Health;
         }
@@ -121,15 +120,20 @@ namespace LearnGame
         {
             if (Health <= 0 && !_isDead)
             {
-                _isDead = true;
-                _characterAnimatorController.IsDead();
-                 _dieParticle.Play();
-                _dieSound.Play();
-
-                _characterMovementController.enabled = false;
-                _shootingController.enabled = false;
+                SetSettingBeforeDie();
             }
             return Health <= 0;
+        }
+
+        protected virtual void SetSettingBeforeDie()
+        {
+            _isDead = true;
+            _characterAnimatorController.IsDead();
+            _dieParticle.Play();
+            _dieSound.Play();
+
+            _characterMovementController.enabled = false;
+            _shootingController.enabled = false;
         }
 
         protected abstract void OnDestroy();

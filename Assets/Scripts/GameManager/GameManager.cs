@@ -23,6 +23,8 @@ namespace LearnGame
 
         private CounterEnemyUI _counterEnemy;
 
+        private AudioSource _cameraSound;
+
         private void Awake()
         {
             Time.timeScale = 1;
@@ -31,6 +33,8 @@ namespace LearnGame
             _timer = FindObjectOfType<TimerUI>();
             _pauseButton = FindObjectOfType<PauseUI>();
             _counterEnemy = FindObjectOfType<CounterEnemyUI>();
+
+            _cameraSound = UnityEngine.Camera.main.GetComponent<AudioSource>();
         }
         private void Start()
         {
@@ -51,6 +55,7 @@ namespace LearnGame
 
         private void OnPlayerDead()
         {
+            _cameraSound.enabled = false;
             OffPauseButton();
             BigUnsubscribe();
             Loss?.Invoke();
@@ -58,6 +63,7 @@ namespace LearnGame
 
         private void OnPlayerWin()
         {
+            _cameraSound.enabled = false;
             OffPauseButton();
             BigUnsubscribe();
             Win?.Invoke();
@@ -65,6 +71,7 @@ namespace LearnGame
 
         private void PlayerLose()
         {
+            _cameraSound.enabled = false;
             BigUnsubscribe();
             Loss?.Invoke();
             Time.timeScale = 0;
