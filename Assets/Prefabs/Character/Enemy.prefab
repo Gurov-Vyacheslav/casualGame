@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39399ea79168044a8daf6562db3dd0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boostParticle: {fileID: 3079304746115209349}
 --- !u!95 &8470380480602209296
 Animator:
   serializedVersion: 5
@@ -672,6 +673,117 @@ Transform:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5985634496115995770, guid: 463cf9f7af4680240898f6aeba3fe3e6, type: 3}
   m_PrefabInstance: {fileID: 2086204703263390118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2440174268295097602
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8475454722466459597}
+    m_Modifications:
+    - target: {fileID: 821588947793098119, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 821588947793098119, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 821588947793098119, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.2624746
+      objectReference: {fileID: 0}
+    - target: {fileID: 821588947793098119, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.8962264
+      objectReference: {fileID: 0}
+    - target: {fileID: 821588947793098119, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.19023676
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707437386458104003, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421229236406988727, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_Name
+      value: CFXR Electrified 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773796980487667495, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799582420281367278, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: clearBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.040000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+--- !u!198 &3079304746115209349 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 821588947793098119, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+  m_PrefabInstance: {fileID: 2440174268295097602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6608495913565188787 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8821185615412027313, guid: f1b26e73cf1fe5b4bba9544dbfdf8633, type: 3}
+  m_PrefabInstance: {fileID: 2440174268295097602}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2474140981737115137
 PrefabInstance:
@@ -1845,6 +1957,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8887390848115447417, guid: 37c859929e7c72041ae900dd35bd6718, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2573514118663836899}
+    - targetCorrespondingSourceObject: {fileID: -8887390848115447417, guid: 37c859929e7c72041ae900dd35bd6718, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6608495913565188787}
     - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 37c859929e7c72041ae900dd35bd6718, type: 3}
       insertIndex: -1
       addedObject: {fileID: 290624773896961613}

@@ -27,7 +27,7 @@ namespace LearnGame
         [SerializeField] private ParticleSystem _bloodSpatter;
         [SerializeField] private ParticleSystem _dieParticle;
 
-        [Header("Particle Settings")]
+        [Header("Audio Settings")]
         [SerializeField] private AudioSource _dieSound;
 
         public float MaxHealth { get; private set; }
