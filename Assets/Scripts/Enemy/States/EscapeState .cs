@@ -19,7 +19,7 @@ namespace LearnGame.Enemy.States
 
         public override void Execute()
         {
-            if (_target.Closest != null) return;
+            if (_target.Closest == null) return;
 
             Vector3 targetPosition = _target.Closest.transform.position;
             if (_currentPoint != targetPosition)

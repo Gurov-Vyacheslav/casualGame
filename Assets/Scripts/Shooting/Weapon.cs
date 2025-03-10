@@ -25,10 +25,21 @@ namespace LearnGame.Shooting
         [SerializeField]
         private Transform _bulletSpawnPosition;
 
+        [SerializeField]
+        private ParticleSystem _shootParticle;
 
+        private AudioSource _shootSound;
+
+        protected void Awake()
+        {
+            _shootSound = GetComponent<AudioSource>();
+        }
         public void Shoot(Vector3 targetPoint)
         {
             var bullet = Instantiate(BulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
+            _shootParticle.Play();
+            _shootSound.Play();
+
             var target = targetPoint - _bulletSpawnPosition.position;
             target.y = 0;
             target.Normalize();

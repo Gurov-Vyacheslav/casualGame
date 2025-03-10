@@ -5,6 +5,7 @@ using LearnGame.PickUp;
 using LearnGame.Shooting;
 using LearnGame.Spawners;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace LearnGame
 {
@@ -20,7 +21,18 @@ namespace LearnGame
         [field: SerializeField]
         public float Health { get; private set; } = 2f;
 
+
+        [Space(10)]
+        [Header("Particle Settings")]
+        [SerializeField] private ParticleSystem _bloodSpatter;
+        [SerializeField] private ParticleSystem _dieParticle;
+
+        [Header("Audio Settings")]
+        [SerializeField] private AudioSource _dieSound;
+
         public float MaxHealth { get; private set; }
+
+        private bool _isDead = false;
 
         private IMovementDirectionSourse _movementDirectionSourse;
 
@@ -82,6 +94,8 @@ namespace LearnGame
                 var bullet = other.gameObject.GetComponent<Bullet>();
 
                 Health -= bullet.Damage;
+                _bloodSpatter.Play();
+
                 Destroy(other.gameObject);
             }
             else if (LayerUtils.IsPickUp(other.gameObject))
@@ -104,13 +118,22 @@ namespace LearnGame
 
         private bool CheckDie()
         {
-            if (Health <= 0)
+            if (Health <= 0 && !_isDead)
             {
-                _characterAnimatorController.IsDead();
-                _characterMovementController.enabled = false;
-                _shootingController.enabled = false;
+                SetSettingBeforeDie();
             }
             return Health <= 0;
+        }
+
+        protected virtual void SetSettingBeforeDie()
+        {
+            _isDead = true;
+            _characterAnimatorController.IsDead();
+            _dieParticle.Play();
+            _dieSound.Play();
+
+            _characterMovementController.enabled = false;
+            _shootingController.enabled = false;
         }
 
         protected abstract void OnDestroy();

@@ -12,11 +12,6 @@ namespace LearnGame.UI
         [SerializeField]
         private List<int> _levelList = new List<int>();
 
-        private void Awake()
-        {
-            Time.timeScale = 1;
-        }
-
         private void Start()
         {
             _openLevelButton = GetComponent<Button>();
