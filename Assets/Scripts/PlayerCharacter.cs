@@ -1,6 +1,7 @@
 using LearnGame.Camera;
 using LearnGame.Movement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LearnGame
 {
@@ -32,7 +33,8 @@ namespace LearnGame
                 if (!_isWin)
                 {
                     _isWin = true;
-                    _winSound.Play();
+                    if (SceneManager.GetActiveScene().buildIndex != 0)
+                        _winSound.Play();
                 }
 
                 _characterAnimatorController.IsWinning();

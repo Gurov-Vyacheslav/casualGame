@@ -6499,7 +6499,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2470243423170513560, guid: 45ca7391548ba6b4ba2774ae3f8895e0, type: 3}
       propertyPath: m_Intensity
-      value: 1.2
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4490674912299246192, guid: 45ca7391548ba6b4ba2774ae3f8895e0, type: 3}
       propertyPath: m_LocalPosition.x
