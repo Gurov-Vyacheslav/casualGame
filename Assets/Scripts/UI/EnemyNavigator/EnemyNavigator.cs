@@ -1,13 +1,10 @@
 using LearnGame.Enemy;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LearnGame.UI.EnemyNavigator
 {
     public class EnemyNavigator : MonoBehaviour
     {
-        [SerializeField]
-        private GameManager _manager;
         [SerializeField]
         private EnemyPointer _pointerPrefub;
         [SerializeField]
@@ -26,8 +23,8 @@ namespace LearnGame.UI.EnemyNavigator
 
         private void Awake()
         {
-            _manager.SpawnEnemyPointer += SpawnPointer;
-            _manager.SpawnPlayer += SetPlayer;
+            GameManager.Instance.SpawnEnemyPointer += SpawnPointer;
+            GameManager.Instance.SpawnPlayer += SetPlayer;
             _camera = UnityEngine.Camera.main;
             _rectTransform = GetComponent<RectTransform>();
             
@@ -41,7 +38,7 @@ namespace LearnGame.UI.EnemyNavigator
 
         private void OnDestroy()
         {
-            _manager.SpawnEnemyPointer -= SpawnPointer;
+            GameManager.Instance.SpawnEnemyPointer -= SpawnPointer;
         }
 
         private void SetPlayer(BaseCharacterView player)

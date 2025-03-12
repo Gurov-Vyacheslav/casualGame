@@ -4,7 +4,7 @@ using TMPro;
 
 namespace LearnGame.UI
 {
-    public class TimerUI : MonoBehaviour
+    public class TimerUI : MonoBehaviour, IInitializerGameManeger
     {
         public event Action TimeEnd;
 
@@ -19,8 +19,14 @@ namespace LearnGame.UI
 
         private bool _timerEnd;
 
+        public void InitializeGameManager()
+        {
+            GameManager.Instance.SetTimerUI(this);
+        }
+
         private void Start()
         {
+            InitializeGameManager();
             _format = _outputText.text;
             _timerEnd = false;
         }

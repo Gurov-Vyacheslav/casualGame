@@ -8,7 +8,7 @@ using UnityEngine;
 namespace LearnGame
 {
     [DefaultExecutionOrder(-10)]
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour, IBaseUI
     {
         public static GameManager Instance {  get; private set; }
 
@@ -26,6 +26,22 @@ namespace LearnGame
 
         private AudioSource _cameraSound;
 
+        public void SetTimerUI(TimerUI timer)
+        {
+            _timerUI = timer;
+            _timerUI.TimeEnd += PlayerLose;
+        }
+        public void SetPauseButtonUI(PauseUI pauseButton)
+        {
+            _pauseButton = pauseButton;
+            _pauseButton.PressButton += StopGame;
+        }
+        public void SetCounterEnemy(CounterEnemyUI counterEnemy)
+        {
+            _counterEnemy = counterEnemy;
+            _counterEnemy.SetMaxCountEnemy(CharacterSpawnersController.instance.CountEnemy);
+        }
+
         private void Awake()
         {
             if (Instance == null)
@@ -41,39 +57,33 @@ namespace LearnGame
             _cameraSound = UnityEngine.Camera.main.GetComponent<AudioSource>();
             CharacterSpawnersController.instance.SpawnPlayer += OnSpawnPlayer;
 
-            _timerUI = FindObjectOfType<TimerUI>();
-            _pauseButton = FindObjectOfType<PauseUI>();
-            _counterEnemy = FindObjectOfType<CounterEnemyUI>();
-
             CharacterSpawnersController.instance.DeadPlayer += OnPlayerDead;
 
             CharacterSpawnersController.instance.WinPlayer += OnPlayerWin;
 
             CharacterSpawnersController.instance.KillEnemy += OnLKillEnemy;
-            _counterEnemy.SetMaxCountEnemy(CharacterSpawnersController.instance.CountEnemy);
 
             CharacterSpawnersController.instance.SpawnEnemy += OnSpawnEnemy;
-
-            _timerUI.TimeEnd += PlayerLose;
-
-            _pauseButton.PressButton += StopGame;
         }
 
         protected void OnDestroy()
         {
-            CharacterSpawnersController.instance.SpawnPlayer -= OnSpawnPlayer;
+            if (CharacterSpawnersController.instance != null)
+            {
+                CharacterSpawnersController.instance.SpawnPlayer -= OnSpawnPlayer;
 
-            CharacterSpawnersController.instance.DeadPlayer -= OnPlayerDead;
+                CharacterSpawnersController.instance.DeadPlayer -= OnPlayerDead;
 
-            CharacterSpawnersController.instance.WinPlayer -= OnPlayerWin;
+                CharacterSpawnersController.instance.WinPlayer -= OnPlayerWin;
 
-            CharacterSpawnersController.instance.KillEnemy -= OnLKillEnemy;
+                CharacterSpawnersController.instance.KillEnemy -= OnLKillEnemy;
 
-            CharacterSpawnersController.instance.SpawnEnemy -= OnSpawnEnemy;
-
-            _timerUI.TimeEnd -= PlayerLose;
-
-            _pauseButton.PressButton -= StopGame;
+                CharacterSpawnersController.instance.SpawnEnemy -= OnSpawnEnemy;
+            }
+            if (_timerUI != null)
+                _timerUI.TimeEnd -= PlayerLose;
+            if (_pauseButton != null)
+                _pauseButton.PressButton -= StopGame;
         }
         private void OnPlayerDead()
         {
