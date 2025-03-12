@@ -1,12 +1,13 @@
 using LearnGame.Camera;
 using LearnGame.Movement;
+using LearnGame.Spawners;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace LearnGame
 {
     [RequireComponent(typeof(PlayerMovementDirectionController))]
-    public class PlayerCharacter : BaseCharacter
+    public class PlayerCharacterView : BaseCharacterView
     {
         [SerializeField] private AudioSource _winSound;
         [SerializeField] private AudioSource _loseSound;
@@ -23,12 +24,12 @@ namespace LearnGame
 
         protected override void OnDestroy()
         {
-            _characterSpawnerController.ReportKillPlayer();
+            CharacterSpawnersController.instance.ReportKillPlayer();
         }
 
         protected override bool CheckVictory()
         {
-            if (_characterSpawnerController.CountEnemy == _characterSpawnerController.CurrentCountKilledEnemy)
+            if (CharacterSpawnersController.instance.CountEnemy == CharacterSpawnersController.instance.CurrentCountKilledEnemy)
             {
                 if (!_isWin)
                 {

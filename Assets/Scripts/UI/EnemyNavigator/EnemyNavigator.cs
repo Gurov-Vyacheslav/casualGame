@@ -20,7 +20,7 @@ namespace LearnGame.UI.EnemyNavigator
         private float _minDistanceEffect = 10f;
 
 
-        private BaseCharacter _player;
+        private BaseCharacterView _player;
         private UnityEngine.Camera _camera;
         private RectTransform _rectTransform;
 
@@ -33,7 +33,7 @@ namespace LearnGame.UI.EnemyNavigator
             
         }
 
-        private void SpawnPointer(EnemyCharacter enemy)
+        private void SpawnPointer(EnemyCharacterView enemy)
         {
             var pointer = Instantiate(_pointerPrefub, Vector3.zero, Quaternion.identity, this.transform);
             pointer.Initialize(enemy, _player, _camera, _rectTransform, _minSizePx, _maxSizePx, _maxDistanceEffect, _minDistanceEffect);
@@ -44,7 +44,7 @@ namespace LearnGame.UI.EnemyNavigator
             _manager.SpawnEnemyPointer -= SpawnPointer;
         }
 
-        private void SetPlayer(BaseCharacter player)
+        private void SetPlayer(BaseCharacterView player)
         {
             _player = player;
         }

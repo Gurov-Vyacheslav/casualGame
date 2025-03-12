@@ -11,21 +11,19 @@ namespace LearnGame.Enemy
         private readonly float _viewRadius;
         private readonly Transform _agentTransform;
         private readonly PowerUpController _powerUpController;
-        private readonly ShootingController _shootingController;
-        private readonly PlayerCharacter _player;
+        private readonly PlayerCharacterView _player;
 
         private readonly Collider[] _coliders = new Collider[10];
 
         private readonly float _safeDistance = 20f;
 
-        public EnemyTarget(Transform agent, PlayerCharacter player, float viewRadius,
-            PowerUpController powerUpController, ShootingController shootingController)
+        public EnemyTarget(Transform agent, PlayerCharacterView player, float viewRadius,
+            PowerUpController powerUpController)
         {
             _agentTransform = agent;
             _player = player;
             _viewRadius = viewRadius;
             _powerUpController = powerUpController;
-            _shootingController = shootingController;
         }
 
         public float DistanceToClosestFromAgent()
@@ -43,7 +41,7 @@ namespace LearnGame.Enemy
 
         public void FindClosest()
         {
-            if (_shootingController.SetBaseWeapon())
+            if (_player.Model.SetBaseWeapon)
             {
                 if (_powerUpController.BoostInclude())
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.CharacterMask });

@@ -7,10 +7,10 @@ namespace LearnGame.Boosters
     {
         [field:SerializeField]
         public float BoostSpeed { get; private set; } = 1f;
+        
         [field: SerializeField]
         public float IntrvalSeconds { get; private set; } = 1f;
 
-        [HideInInspector]
-        public float _currentBoostSpeedTimerSeconds;
+        public float CurrentBoostSpeedTimerSeconds { get; set; }
     }
 }

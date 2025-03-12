@@ -124,8 +124,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8082863715821902452}
-  - component: {fileID: 4786838563505972999}
   - component: {fileID: 299346953194282935}
+  - component: {fileID: 9107837004065852159}
   m_Layer: 0
   m_Name: SniperRifle
   m_TagString: Untagged
@@ -150,26 +150,6 @@ Transform:
   - {fileID: 353845231045135532}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4786838563505972999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444084036520068086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96e9eb2cccbd0048adb2cf4e8835e4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7735622923358220789, guid: cb591771739d71340a384a064a65e611, type: 3}
-  <ShootRadius>k__BackingField: 12
-  <ShootFrequencySec>k__BackingField: 2
-  _damage: 2
-  _bulletMaxFlyDistance: 200
-  _bulletFlySpeed: 40
-  _bulletSpawnPosition: {fileID: 8640837548642143027}
-  _shootParticle: {fileID: 67632144174244810}
 --- !u!82 &299346953194282935
 AudioSource:
   m_ObjectHideFlags: 0
@@ -266,6 +246,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9107837004065852159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444084036520068086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d771c5dcb644a35459f0bf55bcbb0c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <BulletSpawnPosition>k__BackingField: {fileID: 8640837548642143027}
+  _bulletPrefab: {fileID: 7735622923358220789, guid: cb591771739d71340a384a064a65e611, type: 3}
+  _shootParticle: {fileID: 67632144174244810}
 --- !u!1 &1987361167451575841
 GameObject:
   m_ObjectHideFlags: 0

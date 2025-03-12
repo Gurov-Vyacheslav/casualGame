@@ -4,7 +4,7 @@
     {
         protected override void Start()
         {
-            _gameManager.PressPause += ShowPanel;
+            GameManager.Instance.PressPause += ShowPanel;
             base.Start();
         }
 
@@ -15,9 +15,9 @@
 
         protected override void OnDestroy()
         {
-            if (_gameManager != null)
+            if (GameManager.Instance != null)
             {
-                _gameManager.PressPause -= ShowPanel;
+                GameManager.Instance.PressPause -= ShowPanel;
             }
         }
     }

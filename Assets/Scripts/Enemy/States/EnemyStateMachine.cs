@@ -8,7 +8,7 @@ namespace LearnGame.Enemy.States
     {
         private const float NavMeshTurnOffDistance = 3f;
 
-        public EnemyStateMachine(EnemyCharacter enemyCharacter, EnemyDirectionController enemyDirectionController,
+        public EnemyStateMachine(EnemyCharacterView enemyCharacter, EnemyDirectionController enemyDirectionController,
             NavMesher navMesher, EnemyTarget target, float minHpForEscapePercent, float probabilityEscapePercent)
         {
             var idleSate = new IdleState(enemyDirectionController);
@@ -19,8 +19,8 @@ namespace LearnGame.Enemy.States
             
             bool NeedEscape()
             {
-                float currentHealth = enemyCharacter.Health;
-                float maxHealth = enemyCharacter.MaxHealth;
+                float currentHealth = enemyCharacter.Model.Health;
+                float maxHealth = enemyCharacter.Model.MaxHealth;
                 float healthPercentage = MathUtils.ToPercentage(currentHealth, maxHealth);
                 GameObject closestTarget = target.Closest;
 

@@ -1,4 +1,3 @@
-using LearnGame.Animations;
 using System;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace LearnGame.Camera
         [SerializeField]
         private Vector3 _rotationOffset = Vector3.zero;
         [SerializeField]
-        private BaseCharacter _character;
+        private BaseCharacterView _character;
 
         [Header("Win Settings")]
         [SerializeField]
@@ -53,7 +52,7 @@ namespace LearnGame.Camera
             );
         }
 
-        public void SetCharacter(BaseCharacter character)
+        public void SetCharacter(BaseCharacterView character)
         {
             _character = character;
         }

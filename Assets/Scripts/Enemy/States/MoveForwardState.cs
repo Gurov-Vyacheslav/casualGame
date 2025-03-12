@@ -1,6 +1,4 @@
-﻿using LearnGame.Exceptions;
-using LearnGame.FSM;
-using System;
+﻿using LearnGame.FSM;
 using UnityEngine;
 
 namespace LearnGame.Enemy.States

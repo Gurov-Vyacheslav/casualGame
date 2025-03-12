@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LearnGame.Animations;
+using UnityEngine;
 
 namespace LearnGame.Boosters
 {
@@ -9,18 +10,25 @@ namespace LearnGame.Boosters
 
         public SpeedBooster Booster { get; private set; }
 
+        private ICharacterPowerUpAnimationSetting _animationSetting;
+
+        protected void Awake()
+        {
+            _animationSetting = GetComponent<ICharacterPowerUpAnimationSetting>();
+        }
         protected void Update()
         {
             if (Booster != null)
             {
-                if (Booster._currentBoostSpeedTimerSeconds <= Booster.IntrvalSeconds)
+                if (Booster.CurrentBoostSpeedTimerSeconds <= Booster.IntrvalSeconds)
                 {
-                    Booster._currentBoostSpeedTimerSeconds += Time.deltaTime;
+                    Booster.CurrentBoostSpeedTimerSeconds += Time.deltaTime;
                 }
                 else
                 {
                     Booster = null;
                     _boostParticle.Stop();
+                    _animationSetting.SetBoostSpeed();
                 }
             }
         }
@@ -31,6 +39,7 @@ namespace LearnGame.Boosters
             if (!BoostInclude())
                 _boostParticle.Play();
             Booster = speedBooster;
+            _animationSetting.SetBoostSpeed(Booster.BoostSpeed);
         }
     }
 }

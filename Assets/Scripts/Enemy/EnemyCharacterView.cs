@@ -1,10 +1,11 @@
 using LearnGame.Camera;
+using LearnGame.Spawners;
 using UnityEngine;
 
 namespace LearnGame.Enemy
 {
     [RequireComponent(typeof(EnemyDirectionController), typeof(EnemyAiController))]
-    public class EnemyCharacter : BaseCharacter
+    public class EnemyCharacterView : BaseCharacterView
     {
         private CameraController _cameraController;
 
@@ -16,13 +17,13 @@ namespace LearnGame.Enemy
 
         protected override void OnDestroy()
         {
-            _characterSpawnerController.ReportKillEnemy();
+            CharacterSpawnersController.instance.ReportKillEnemy();
         }
 
         protected override bool CheckVictory()
         {
-            if (_characterSpawnerController.PlayerWasKilled &&
-                _characterSpawnerController.CountEnemy - _characterSpawnerController.CurrentCountKilledEnemy == 1)
+            if (CharacterSpawnersController.instance.PlayerWasKilled &&
+                CharacterSpawnersController.instance.CountEnemy - CharacterSpawnersController.instance.CurrentCountKilledEnemy == 1)
             {
                 _characterAnimatorController.IsWinning();
                 _cameraController?.SetCharacter(this);

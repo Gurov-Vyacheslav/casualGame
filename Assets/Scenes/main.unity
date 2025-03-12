@@ -919,7 +919,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3155536054916077971, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: _levelList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3155536054916077971, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: _levelList.Array.data[0]

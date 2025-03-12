@@ -4,20 +4,20 @@ namespace LearnGame.UI
     {
         protected override void Start()
         {
-            _gameManager.Win += ShowPanel;
+            GameManager.Instance.Win += ShowPanel;
             base.Start();
         }
 
         protected override void ShowPanel()
         {
-            _gameManager.Win -= ShowPanel;
+            GameManager.Instance.Win -= ShowPanel;
             base.ShowPanel();
         }
         protected override void OnDestroy()
         {
-            if (_gameManager != null)
+            if (GameManager.Instance != null)
             {
-                _gameManager.Win -= ShowPanel;
+                GameManager.Instance.Win -= ShowPanel;
             }
         }
     }

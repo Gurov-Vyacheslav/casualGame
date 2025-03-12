@@ -8,7 +8,7 @@ namespace LearnGame.PickUp
         [SerializeField]
         private SpeedBooster speedBooster;
 
-        public override void PickUp(BaseCharacter character)
+        public override void PickUp(BaseCharacterView character)
         {
             base.PickUp(character);
             character.GetBoostSpeed(speedBooster);

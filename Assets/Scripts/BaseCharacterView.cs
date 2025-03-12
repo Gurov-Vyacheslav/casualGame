@@ -5,21 +5,17 @@ using LearnGame.PickUp;
 using LearnGame.Shooting;
 using LearnGame.Spawners;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace LearnGame
 {
-    [RequireComponent(typeof(CharacterMovementController), typeof(ShootingController), typeof(CharacterAnimatorController))]
-    public abstract class BaseCharacter : MonoBehaviour
+    [RequireComponent(typeof(CharacterController), typeof(CharacterAnimatorController), typeof(PowerUpController))]
+    public abstract class BaseCharacterView : MonoBehaviour
     {
         [SerializeField]
-        private Weapon _baseWeaponPrefab;
+        private WeaponFactory _baseWeaponFactory;
 
         [SerializeField]
         private Transform _hand;
-
-        [field: SerializeField]
-        public float Health { get; private set; } = 2f;
 
 
         [Space(10)]
@@ -30,70 +26,70 @@ namespace LearnGame
         [Header("Audio Settings")]
         [SerializeField] private AudioSource _dieSound;
 
-        public float MaxHealth { get; private set; }
-
         private bool _isDead = false;
 
         private IMovementDirectionSourse _movementDirectionSourse;
 
-        private CharacterMovementController _characterMovementController;
-        private ShootingController _shootingController;
-        private PowerUpController _powerUpController;
+        private WeaponView _weapon;
 
+        private PowerUpController _powerUpController;
+        private CharacterController _characterController;
         protected CharacterAnimatorController _characterAnimatorController;
 
-        protected CharacterSpawnersController _characterSpawnerController;
+        public BaseCharacterModel Model { get; private set; }
 
         protected virtual void Awake()
         {
             _movementDirectionSourse = GetComponent<IMovementDirectionSourse>();
-
-            _characterMovementController = GetComponent<CharacterMovementController>();
-            _shootingController = GetComponent<ShootingController>();
             _powerUpController = GetComponent<PowerUpController>();
             _characterAnimatorController = GetComponent<CharacterAnimatorController>();
-
-            _characterSpawnerController = transform.parent.GetComponent<CharacterSpawner>().CharacterSpawnersController;
-
-            MaxHealth = Health;
+            _characterController = GetComponent<CharacterController>();
         }
 
         protected void Start()
         {
-            SetWeapon(_baseWeaponPrefab);
+            SetWeapon(_baseWeaponFactory, true);
+        }
+
+        public void Initialize(BaseCharacterModel model)
+        {
+            Model = model;
+            Model.Initialize(transform.position, transform.rotation);
         }
 
         protected virtual void Update()
         {
+            if (CheckVictory() || CheckDie()) return;
+
             var direction = _movementDirectionSourse.MovementDirection;
-            var lookDirection = direction;
-
-            if (_shootingController.HasTarget)
-            {
-                lookDirection = (_shootingController.TargetPosition - transform.position).normalized;
-            }
-
-            if (CheckVictory() || CheckDie())
-                direction = Vector3.zero;
-
-            _characterMovementController.MovementDirection = direction;
-            _characterMovementController.LookDirection = lookDirection;
-
             var boostIncluded = _movementDirectionSourse.BoostIncluded;
-            _characterMovementController.BoostSpeedIncluded = boostIncluded;
 
-            _characterAnimatorController.SetMoving(direction != Vector3.zero);
-            _characterAnimatorController.SetRunning(boostIncluded);
-            _characterAnimatorController.SetShooting(_shootingController.HasTarget);
+            Model.Move(direction, boostIncluded);
+            Model.TryShoot(_weapon.BulletSpawnPosition.position);
+
+            var moveDelta = Model.Transform.Position - transform.position;
+            _characterController.Move(moveDelta);
+            Model.Transform.Position = transform.position;
+
+            transform.rotation = Model.Transform.Rotation;
+
+            if (Model.MovingForward)
+                _characterAnimatorController.MovingForward();
+            else
+                _characterAnimatorController.MovingBackwards();
+
         }
 
         protected void OnTriggerEnter(Collider other)
         {
+            if (_isDead) return;
+
             if (LayerUtils.IsBullet(other.gameObject))
             {
                 var bullet = other.gameObject.GetComponent<Bullet>();
 
-                Health -= bullet.Damage;
+                Model.Damage(bullet.Damage);
+
                 _bloodSpatter.Play();
 
                 Destroy(other.gameObject);
@@ -106,9 +102,13 @@ namespace LearnGame
             }
         }
 
-        public void SetWeapon(Weapon weapon)
+        public void SetWeapon(WeaponFactory weaponFactory, bool isBaseWeaapon = false)
         {
-            _shootingController.SetWeapon(weapon, _hand);
+            if (_weapon != null)
+                Destroy(_weapon);
+            _weapon = weaponFactory.Create(_hand);
+
+            Model.SetWeapon(_weapon.Model, isBaseWeaapon);
         }
 
         public void GetBoostSpeed(SpeedBooster speedBooster)
@@ -118,11 +118,11 @@ namespace LearnGame
 
         private bool CheckDie()
         {
-            if (Health <= 0 && !_isDead)
+            if (Model.IsDead && !_isDead)
             {
                 SetSettingBeforeDie();
             }
-            return Health <= 0;
+            return Model.IsDead;
         }
 
         protected virtual void SetSettingBeforeDie()
@@ -131,9 +131,6 @@ namespace LearnGame
             _characterAnimatorController.IsDead();
             _dieParticle.Play();
             _dieSound.Play();
-
-            _characterMovementController.enabled = false;
-            _shootingController.enabled = false;
         }
 
         protected abstract void OnDestroy();

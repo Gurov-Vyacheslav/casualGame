@@ -1,16 +1,20 @@
 ﻿using System;
 using UnityEngine;
 using LearnGame.Enemy;
+using LearnGame.Timer;
 
 namespace LearnGame.Spawners
 {
+    [DefaultExecutionOrder(-20)]
     public class CharacterSpawnersController : MonoBehaviour
     {
+        public static CharacterSpawnersController instance { get; private set; }
+
         public event Action DeadPlayer;
         public event Action WinPlayer;
         public event Action KillEnemy;
-        public event Action<EnemyCharacter> SpawnEnemy;
-        public event Action<BaseCharacter> SpawnPlayer;
+        public event Action<EnemyCharacterView> SpawnEnemy;
+        public event Action<BaseCharacterView> SpawnPlayer;
 
         [SerializeField]
         private int _minCountEnemy = 2;
@@ -25,12 +29,24 @@ namespace LearnGame.Spawners
         public bool PlayerWon {  get; private set; } = false;
         public int CurrentCountKilledEnemy { get; private set; } = 0;
 
+        public PlayerCharacterView Player {  get; private set; }
+
+        public ITimer Timer { get; private set; }
+
         protected void Awake()
         {
+            if (instance == null)
+                instance = this;
+            else
+            {
+                Destroy(this);
+                return;
+            }
+            Timer = new UnityTimer();
             CountEnemy = GetRandomCountEnemy();
         }
 
-        public void ReportSpawnEnemy(EnemyCharacter enemy)
+        public void ReportSpawnEnemy(EnemyCharacterView enemy)
         {
             CurrentCountEnemy++;
             SpawnEnemy?.Invoke(enemy);
@@ -46,9 +62,10 @@ namespace LearnGame.Spawners
                 WinPlayer?.Invoke();
         }
 
-        public void ReportSpawnPlayer(BaseCharacter player)
+        public void ReportSpawnPlayer(PlayerCharacterView player)
         {
             PlayerWasSpawned = true;
+            Player = player;
             SpawnPlayer?.Invoke(player);
         }
 

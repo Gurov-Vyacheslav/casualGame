@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3e5e04567dea249880bacf4d7839d4, type: 3}
+  m_Name: PistolFactory
+  m_EditorClassIdentifier: 
+  _weaponPrefab: {fileID: 3292626433899934460, guid: 89682f8065f219045b8dd79d07a487a3, type: 3}
+  _description:
+    <ShootRadius>k__BackingField: 5
+    <ShootFrequencySec>k__BackingField: 0.7
+    <Damage>k__BackingField: 1
+    <BulletMaxFlyDistance>k__BackingField: 50
+    <BulletFlySpeed>k__BackingField: 25
+    BaseWeapon: 1

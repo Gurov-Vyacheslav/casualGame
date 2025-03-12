@@ -6,8 +6,8 @@ namespace LearnGame.UI.EnemyNavigator
 {
     public class EnemyPointer : MonoBehaviour
     {
-        private EnemyCharacter _enemy;
-        private BaseCharacter _player;
+        private EnemyCharacterView _enemy;
+        private BaseCharacterView _player;
         private UnityEngine.Camera _mainCamera;
         private RectTransform _enemyNavigator;
         private RectTransform _pointer;
@@ -22,7 +22,7 @@ namespace LearnGame.UI.EnemyNavigator
         public float _edgeOffset = 50f;
 
 
-        public void Initialize(EnemyCharacter enemy, BaseCharacter player, UnityEngine.Camera mainCamera, RectTransform enemyNavigator,
+        public void Initialize(EnemyCharacterView enemy, BaseCharacterView player, UnityEngine.Camera mainCamera, RectTransform enemyNavigator,
             int minSizePx, int maxSizePx, float maxDistanseEffect, float minDistanceEffect)
         {
             _enemy = enemy;
