@@ -4,21 +4,24 @@ using TMPro;
 
 namespace LearnGame.UI
 {
-    public class TimerUI : MonoBehaviour, IInitializerGameManeger
+    public class TimerUIView : MonoBehaviour, IInitializerGameManeger
     {
         public event Action TimeEnd;
 
         [SerializeField]
         private TextMeshProUGUI _outputText;
+
         private string _format;
 
-        [field:SerializeField]
-        public float GameDurationSeconds {  get; private set; }
-
-        public float TimerSeconds { get; private set; }
+        private TimerUIModel _model;
 
         private bool _timerEnd;
 
+
+        public void Initialize(TimerUIModel model)
+        {
+            _model = model;
+        }
         public void InitializeGameManager()
         {
             GameManager.Instance.SetTimerUI(this);
@@ -35,14 +38,12 @@ namespace LearnGame.UI
         {
             if (_timerEnd) return;
 
-            TimerSeconds += Time.deltaTime;
-            if (TimerSeconds >= GameDurationSeconds)
+            var time = _model.UpdateTimer();
+            if (_model.Finish)
             {
                 TimeEnd?.Invoke();
                 _timerEnd = true;
             }
-
-            int time = (int)(GameDurationSeconds - TimerSeconds);
             _outputText.text = string.Format(_format, time / 60, time%60);
         }
     }

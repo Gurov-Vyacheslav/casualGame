@@ -2,7 +2,7 @@
 {
     public interface IBaseUI
     {
-         void SetTimerUI(TimerUI timer);
+         void SetTimerUI(TimerUIView timer);
          void SetPauseButtonUI(PauseUI pauseButton);
          void SetCounterEnemy(CounterEnemyUI counterEnemy);
     }

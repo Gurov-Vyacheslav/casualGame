@@ -55,8 +55,6 @@ namespace LearnGame.UI.EnemyNavigator
 
         private bool IsEnemyVisible(Vector3 screenPosEnemy)
         {
-            /*if (screenPosEnemy.z < 0) return false;*/
-
             float currentDistance = Vector3.Distance(_player.transform.position, _enemy.transform.position);
             bool isVisible = currentDistance < _minDistanseEffect;
             return isVisible;

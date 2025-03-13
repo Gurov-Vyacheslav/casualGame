@@ -19,7 +19,7 @@ namespace LearnGame
         public event Action<EnemyCharacterView> SpawnEnemyPointer;
         public event Action<BaseCharacterView> SpawnPlayer;
 
-        private TimerUI _timerUI;
+        private TimerUIView _timerUI;
 
         private PauseUI _pauseButton;
 
@@ -27,7 +27,7 @@ namespace LearnGame
 
         private AudioSource _cameraSound;
 
-        public void SetTimerUI(TimerUI timer)
+        public void SetTimerUI(TimerUIView timer)
         {
             _timerUI = timer;
             _timerUI.TimeEnd += PlayerLose;
