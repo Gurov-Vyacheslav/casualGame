@@ -1,4 +1,4 @@
-﻿namespace LearnGame.UI
+﻿namespace LearnGame
 {
     public interface IInitializerGameManeger
     {

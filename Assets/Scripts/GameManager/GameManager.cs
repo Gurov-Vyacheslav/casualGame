@@ -11,6 +11,7 @@ namespace LearnGame
     public class GameManager : MonoBehaviour, IBaseUI
     {
         public static GameManager Instance {  get; private set; }
+        public ITimer Timer { get; private set; }
 
         public event Action Win;
         public event Action Loss;
@@ -51,7 +52,7 @@ namespace LearnGame
                 Destroy(this);
                 return;
             }
-
+            Timer = CharacterSpawnersController.instance.Timer;
             Time.timeScale = 1;
 
             _cameraSound = UnityEngine.Camera.main.GetComponent<AudioSource>();

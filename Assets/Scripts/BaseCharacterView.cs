@@ -3,7 +3,6 @@ using LearnGame.Boosters;
 using LearnGame.Movement;
 using LearnGame.PickUp;
 using LearnGame.Shooting;
-using LearnGame.Spawners;
 using UnityEngine;
 
 namespace LearnGame
@@ -86,9 +85,9 @@ namespace LearnGame
 
             if (LayerUtils.IsBullet(other.gameObject))
             {
-                var bullet = other.gameObject.GetComponent<Bullet>();
+                var bullet = other.gameObject.GetComponent<BulletView>();
 
-                Model.Damage(bullet.Damage);
+                Model.Damage(bullet.Model.Damage);
 
                 _bloodSpatter.Play();
 

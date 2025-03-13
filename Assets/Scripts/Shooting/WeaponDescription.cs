@@ -13,15 +13,9 @@ namespace LearnGame.Shooting
         public float ShootFrequencySec { get; private set; } = 1f;
 
         [field: SerializeField]
-        public float Damage { get; private set; } = 1f;
+        public BulletDescription BulletDescription { get; private set; }
 
         [field: SerializeField]
-        public float BulletMaxFlyDistance { get; private set; } = 10f;
-
-        [field: SerializeField]
-        public float BulletFlySpeed { get; private set; } = 10f;
-
-        [field: SerializeField]
-        public bool BaseWeapon = false;
+        public bool BaseWeapon { get; private set; } = false;
     }
 }

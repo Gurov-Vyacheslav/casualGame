@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BulletSpawnPosition>k__BackingField: {fileID: 918297198566497470}
-  _bulletPrefab: {fileID: 7735622923358220789, guid: cb591771739d71340a384a064a65e611, type: 3}
+  _bulletPrefab: {fileID: 5497654005988336084, guid: cb591771739d71340a384a064a65e611, type: 3}
   _shootParticle: {fileID: 4071527375113948201}
 --- !u!1 &6364635233464102721
 GameObject:

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LearnGame.CompositionRoot;
+using UnityEngine;
 
 namespace LearnGame.Shooting
 {
@@ -8,7 +9,7 @@ namespace LearnGame.Shooting
         public Transform BulletSpawnPosition {get; private set;}
 
         [SerializeField]
-        private Bullet _bulletPrefab;
+        private BulletCompositionRoot _bulletPrefab;
 
 
         [SerializeField]
@@ -39,9 +40,8 @@ namespace LearnGame.Shooting
         public void Shoot(Vector3 targetDIrection, WeaponDescription description)
         {
             var bullet = Instantiate(_bulletPrefab, BulletSpawnPosition.position, Quaternion.identity);
-            bullet.Initialize(targetDIrection,
-                description.BulletMaxFlyDistance, description.BulletFlySpeed, description.Damage);
-            
+            bullet.Initialize(targetDIrection, description.BulletDescription);
+            bullet.Compose(GameManager.Instance.Timer);
             _shootParticle.Play();
             _shootSound.Play();
         }

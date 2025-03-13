@@ -16,7 +16,8 @@ MonoBehaviour:
   _description:
     <ShootRadius>k__BackingField: 12
     <ShootFrequencySec>k__BackingField: 2
-    <Damage>k__BackingField: 2
-    <BulletMaxFlyDistance>k__BackingField: 200
-    <BulletFlySpeed>k__BackingField: 40
-    BaseWeapon: 0
+    <BulletDescription>k__BackingField:
+      <Damage>k__BackingField: 2
+      <BulletMaxFlyDistance>k__BackingField: 200
+      <BulletFlySpeed>k__BackingField: 40
+    <BaseWeapon>k__BackingField: 0
