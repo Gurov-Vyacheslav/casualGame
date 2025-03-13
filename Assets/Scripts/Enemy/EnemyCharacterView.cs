@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LearnGame.Enemy
 {
-    [RequireComponent(typeof(EnemyDirectionController), typeof(EnemyAiController))]
+    [RequireComponent(typeof(EnemyDirectionController))]
     public class EnemyCharacterView : BaseCharacterView
     {
         private CameraController _cameraController;
@@ -17,13 +17,13 @@ namespace LearnGame.Enemy
 
         protected override void OnDestroy()
         {
-            CharacterSpawnersController.instance.ReportKillEnemy();
+            CharacterSpawnersController.Instance.ReportKillEnemy();
         }
 
         protected override bool CheckVictory()
         {
-            if (CharacterSpawnersController.instance.PlayerWasKilled &&
-                CharacterSpawnersController.instance.CountEnemy - CharacterSpawnersController.instance.CurrentCountKilledEnemy == 1)
+            if (CharacterSpawnersController.Instance.PlayerWasKilled &&
+                CharacterSpawnersController.Instance.CountEnemy - CharacterSpawnersController.Instance.CurrentCountKilledEnemy == 1)
             {
                 _characterAnimatorController.IsWinning();
                 _cameraController?.SetCharacter(this);

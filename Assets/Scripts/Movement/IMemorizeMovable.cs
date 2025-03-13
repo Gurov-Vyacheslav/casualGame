@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace LearnGame.Movement
+﻿namespace LearnGame.Movement
 {
     public interface IMemorizeMovable:IMovable
     {

@@ -49,4 +49,4 @@ MonoBehaviour:
   _maxSpawnIntervalSeconds: 6
   _colorGizmos: {r: 0.754717, g: 0.34531865, b: 0.3625295, a: 1}
   _playerPrefab: {fileID: 8200969914622545809, guid: eedd6806352c3d2429ec211d192ed2ef, type: 3}
-  _enemyPrefab: {fileID: 17044614220696103, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
+  _enemyPrefab: {fileID: 5819830095868161635, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}

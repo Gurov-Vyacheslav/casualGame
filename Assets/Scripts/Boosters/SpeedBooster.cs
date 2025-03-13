@@ -14,7 +14,7 @@ namespace LearnGame.Boosters
 
         private float _currentBoostSpeedTimerSeconds { get; set; }
 
-        public bool BoosterActive => _currentBoostSpeedTimerSeconds <= _currentBoostSpeedTimerSeconds;
+        public bool BoosterActive => _currentBoostSpeedTimerSeconds <= _intrvalSeconds;
 
         private ITimer _timer;
 

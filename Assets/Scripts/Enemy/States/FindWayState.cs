@@ -7,13 +7,13 @@ namespace LearnGame.Enemy.States
     {
         private const float MaxDIstanceBetweenRealAndCaluculatePoints = 3f;
 
-        private readonly EnemyTarget _target;
+        private readonly EnemyTargetGO _target;
         private readonly NavMesher _navMesher;
         private readonly EnemyDirectionController _enemyDirectionController;
 
         private Vector3 _currentPoint;
 
-        public FindWayState(EnemyTarget target, NavMesher navMesher, EnemyDirectionController enemydirectionController)
+        public FindWayState(EnemyTargetGO target, NavMesher navMesher, EnemyDirectionController enemydirectionController)
         {
             _target = target;
             _navMesher = navMesher;

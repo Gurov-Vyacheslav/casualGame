@@ -1,10 +1,9 @@
 ﻿using LearnGame.Boosters;
-using LearnGame.Shooting;
 using UnityEngine;
 
 namespace LearnGame.Enemy
 {
-    public class EnemyTarget
+    public class EnemyTargetGO : IEnemyTarget
     {
         public GameObject Closest {  get; private set; }
 
@@ -15,14 +14,15 @@ namespace LearnGame.Enemy
 
         private readonly Collider[] _coliders = new Collider[10];
 
-        private readonly float _safeDistance = 20f;
+        private readonly float _safeDistance;
 
-        public EnemyTarget(Transform agent, PlayerCharacterView player, float viewRadius,
-            PowerUpController powerUpController)
+        public EnemyTargetGO(IEnemyAIConfig enemyAiconfig, Transform agent,
+            PlayerCharacterView player, PowerUpController powerUpController)
         {
             _agentTransform = agent;
             _player = player;
-            _viewRadius = viewRadius;
+            _viewRadius = enemyAiconfig.ViewRadius;
+            _safeDistance = enemyAiconfig.SafeDistance;
             _powerUpController = powerUpController;
         }
 
@@ -53,7 +53,7 @@ namespace LearnGame.Enemy
                 if (_powerUpController.BoostInclude)
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.PickUpWeaponMask, LayerUtils.CharacterMask});
                 else
-                    FindClosestByMasksHeirarchy(new int[] { LayerUtils.PickUpWeaponMask, LayerUtils.PickUpBoosterMask, LayerUtils.CharacterMask });
+                    FindClosestByMasksHeirarchy(new int[] { LayerUtils.PickUpWeaponMask, LayerUtils.PickUpBoosterMask | LayerUtils.CharacterMask });
             }
         }
         private void FindClosestByMasksHeirarchy(int[] layerMasks)

@@ -2706,7 +2706,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followCameraOffset: {x: -10, y: 15, z: 0}
   _rotationOffset: {x: 0, y: 0, z: 0}
-  _character: {fileID: 0}
   _winCameraOffset: {x: -4, y: 3, z: 0}
   _winRotationOffset: {x: 0, y: 1.5, z: 0}
   _moveSpeed: 6
@@ -11662,7 +11661,7 @@ PrefabInstance:
     - target: {fileID: 8161733437682754001, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: _enemyPrefab
       value: 
-      objectReference: {fileID: 17044614220696103, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
+      objectReference: {fileID: 5819830095868161635, guid: fcb7ea3c3ac644f429fe4c8d7269cc57, type: 3}
     - target: {fileID: 8161733437682754001, guid: 6cb6cc26ba082ea498fdd1c58b36bdcd, type: 3}
       propertyPath: _playerPrefab
       value: 

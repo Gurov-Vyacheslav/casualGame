@@ -24,12 +24,12 @@ namespace LearnGame
 
         protected override void OnDestroy()
         {
-            CharacterSpawnersController.instance.ReportKillPlayer();
+            CharacterSpawnersController.Instance.ReportKillPlayer();
         }
 
         protected override bool CheckVictory()
         {
-            if (CharacterSpawnersController.instance.CountEnemy == CharacterSpawnersController.instance.CurrentCountKilledEnemy)
+            if (CharacterSpawnersController.Instance.CountEnemy == CharacterSpawnersController.Instance.CurrentCountKilledEnemy)
             {
                 if (!_isWin)
                 {

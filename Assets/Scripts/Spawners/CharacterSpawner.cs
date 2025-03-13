@@ -19,16 +19,16 @@ namespace LearnGame.Spawners
 
         protected void Start()
         {
-            if (!CharacterSpawnersController.instance.PlayerWasSpawned)
+            if (!CharacterSpawnersController.Instance.PlayerWasSpawned)
             {
                 var player = SpawningCharacter(_playerPrefab);
-                CharacterSpawnersController.instance.ReportSpawnPlayer((PlayerCharacterView)player);
+                CharacterSpawnersController.Instance.ReportSpawnPlayer((PlayerCharacterView)player);
             }
         }
 
         protected void Update()
         {
-            if (CharacterSpawnersController.instance.CurrentCountEnemy < CharacterSpawnersController.instance.CountEnemy)
+            if (CharacterSpawnersController.Instance.CurrentCountEnemy < CharacterSpawnersController.Instance.CountEnemy)
                 UpdateSpawningEnemy();
         }
 
@@ -41,7 +41,7 @@ namespace LearnGame.Spawners
                 SetNewSpawnIntervalSeconds();
 
                 var enemy = SpawningCharacter(_enemyPrefab);
-                CharacterSpawnersController.instance.ReportSpawnEnemy((EnemyCharacterView)enemy);
+                CharacterSpawnersController.Instance.ReportSpawnEnemy((EnemyCharacterView)enemy);
             }
         }
 
@@ -51,7 +51,7 @@ namespace LearnGame.Spawners
             var randomPosition = new Vector3(randomPointInsideRange.x, 0f, randomPointInsideRange.y) + transform.position;
             var newCharacterCompositionRoot = Instantiate(characterCompositionRoot, randomPosition, Quaternion.identity, transform);
 
-            return newCharacterCompositionRoot.Compose(CharacterSpawnersController.instance.Timer);
+            return newCharacterCompositionRoot.Compose(CharacterSpawnersController.Instance.Timer);
         }
     }
 }

@@ -40,7 +40,7 @@ namespace LearnGame
         public void SetCounterEnemy(CounterEnemyUI counterEnemy)
         {
             _counterEnemy = counterEnemy;
-            _counterEnemy.SetMaxCountEnemy(CharacterSpawnersController.instance.CountEnemy);
+            _counterEnemy.SetMaxCountEnemy(CharacterSpawnersController.Instance.CountEnemy);
         }
 
         private void Awake()
@@ -52,34 +52,34 @@ namespace LearnGame
                 Destroy(this);
                 return;
             }
-            Timer = CharacterSpawnersController.instance.Timer;
+            Timer = CharacterSpawnersController.Instance.Timer;
             Time.timeScale = 1;
 
             _cameraSound = UnityEngine.Camera.main.GetComponent<AudioSource>();
-            CharacterSpawnersController.instance.SpawnPlayer += OnSpawnPlayer;
+            CharacterSpawnersController.Instance.SpawnPlayer += OnSpawnPlayer;
 
-            CharacterSpawnersController.instance.DeadPlayer += OnPlayerDead;
+            CharacterSpawnersController.Instance.DeadPlayer += OnPlayerDead;
 
-            CharacterSpawnersController.instance.WinPlayer += OnPlayerWin;
+            CharacterSpawnersController.Instance.WinPlayer += OnPlayerWin;
 
-            CharacterSpawnersController.instance.KillEnemy += OnLKillEnemy;
+            CharacterSpawnersController.Instance.KillEnemy += OnLKillEnemy;
 
-            CharacterSpawnersController.instance.SpawnEnemy += OnSpawnEnemy;
+            CharacterSpawnersController.Instance.SpawnEnemy += OnSpawnEnemy;
         }
 
         protected void OnDestroy()
         {
-            if (CharacterSpawnersController.instance != null)
+            if (CharacterSpawnersController.Instance != null)
             {
-                CharacterSpawnersController.instance.SpawnPlayer -= OnSpawnPlayer;
+                CharacterSpawnersController.Instance.SpawnPlayer -= OnSpawnPlayer;
 
-                CharacterSpawnersController.instance.DeadPlayer -= OnPlayerDead;
+                CharacterSpawnersController.Instance.DeadPlayer -= OnPlayerDead;
 
-                CharacterSpawnersController.instance.WinPlayer -= OnPlayerWin;
+                CharacterSpawnersController.Instance.WinPlayer -= OnPlayerWin;
 
-                CharacterSpawnersController.instance.KillEnemy -= OnLKillEnemy;
+                CharacterSpawnersController.Instance.KillEnemy -= OnLKillEnemy;
 
-                CharacterSpawnersController.instance.SpawnEnemy -= OnSpawnEnemy;
+                CharacterSpawnersController.Instance.SpawnEnemy -= OnSpawnEnemy;
             }
             if (_timerUI != null)
                 _timerUI.TimeEnd -= PlayerLose;
@@ -142,7 +142,7 @@ namespace LearnGame
 
         private void OnSpawnPlayer(BaseCharacterView player)
         {
-            CharacterSpawnersController.instance.SpawnPlayer -= OnSpawnPlayer;
+            CharacterSpawnersController.Instance.SpawnPlayer -= OnSpawnPlayer;
             
             SpawnPlayer?.Invoke(player);
         }
@@ -150,9 +150,9 @@ namespace LearnGame
 
         private void BigUnsubscribe()
         {
-            CharacterSpawnersController.instance.KillEnemy -= OnLKillEnemy;
-            CharacterSpawnersController.instance.WinPlayer -= OnPlayerWin;
-            CharacterSpawnersController.instance.SpawnEnemy -= OnSpawnEnemy;
+            CharacterSpawnersController.Instance.KillEnemy -= OnLKillEnemy;
+            CharacterSpawnersController.Instance.WinPlayer -= OnPlayerWin;
+            CharacterSpawnersController.Instance.SpawnEnemy -= OnSpawnEnemy;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using LearnGame.Animations;
-using LearnGame.Movement;
+﻿using LearnGame.Movement;
 using LearnGame.Shooting;
 using LearnGame.Timer;
 using UnityEngine;

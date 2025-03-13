@@ -8,7 +8,7 @@ namespace LearnGame.Spawners
     [DefaultExecutionOrder(-20)]
     public class CharacterSpawnersController : MonoBehaviour
     {
-        public static CharacterSpawnersController instance { get; private set; }
+        public static CharacterSpawnersController Instance { get; private set; }
 
         public event Action DeadPlayer;
         public event Action WinPlayer;
@@ -35,8 +35,8 @@ namespace LearnGame.Spawners
 
         protected void Awake()
         {
-            if (instance == null)
-                instance = this;
+            if (Instance == null)
+                Instance = this;
             else
             {
                 Destroy(this);
