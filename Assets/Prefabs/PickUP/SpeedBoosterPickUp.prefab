@@ -48,9 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBooster:
-    <BoostSpeed>k__BackingField: 1.5
-    <IntrvalSeconds>k__BackingField: 5
-    _currentBoostSpeedTimerSeconds: 0
+    <BoostSpeed>k__BackingField: 1.75
+    <IntrvalSeconds>k__BackingField: 7
 --- !u!95 &3607595246404731896
 Animator:
   serializedVersion: 5

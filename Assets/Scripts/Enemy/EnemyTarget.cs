@@ -43,14 +43,14 @@ namespace LearnGame.Enemy
         {
             if (_player.Model.SetBaseWeapon)
             {
-                if (_powerUpController.BoostInclude())
+                if (_powerUpController.BoostInclude)
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.CharacterMask });
                 else
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.CharacterMask | LayerUtils.PickUpBoosterMask});
             }
             else
             {
-                if (_powerUpController.BoostInclude())
+                if (_powerUpController.BoostInclude)
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.PickUpWeaponMask, LayerUtils.CharacterMask});
                 else
                     FindClosestByMasksHeirarchy(new int[] { LayerUtils.PickUpWeaponMask, LayerUtils.PickUpBoosterMask, LayerUtils.CharacterMask });

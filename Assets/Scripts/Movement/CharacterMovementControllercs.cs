@@ -34,7 +34,7 @@ namespace LearnGame.Movement
 
             if (BoostSpeedIncluded) currentSpeed *= _boostSpeed;
 
-            if (_powerUpController.BoostInclude())
+            if (_powerUpController.BoostInclude)
                 currentSpeed *= _powerUpController.Booster.BoostSpeed;
 
             var delta = movementDirection * currentSpeed * _timer.DeltaTime;

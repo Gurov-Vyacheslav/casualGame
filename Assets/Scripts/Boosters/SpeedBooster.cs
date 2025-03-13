@@ -1,3 +1,4 @@
+using LearnGame.Timer;
 using UnityEngine;
 
 namespace LearnGame.Boosters
@@ -8,9 +9,23 @@ namespace LearnGame.Boosters
         [field:SerializeField]
         public float BoostSpeed { get; private set; } = 1f;
         
-        [field: SerializeField]
-        public float IntrvalSeconds { get; private set; } = 1f;
+        [SerializeField]
+        private float _intrvalSeconds = 1f;
 
-        public float CurrentBoostSpeedTimerSeconds { get; set; }
+        private float _currentBoostSpeedTimerSeconds { get; set; }
+
+        public bool BoosterActive => _currentBoostSpeedTimerSeconds <= _currentBoostSpeedTimerSeconds;
+
+        private ITimer _timer;
+
+
+        public void Initialize()
+        {
+            _timer = GameManager.Instance.Timer;
+        }
+        public void UpdateTimer()
+        {
+            _currentBoostSpeedTimerSeconds += _timer.DeltaTime;
+        }
     }
 }

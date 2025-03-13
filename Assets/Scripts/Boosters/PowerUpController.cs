@@ -5,12 +5,13 @@ namespace LearnGame.Boosters
 {
     public class PowerUpController : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]  
         private ParticleSystem _boostParticle;
 
         public SpeedBooster Booster { get; private set; }
 
         private ICharacterPowerUpAnimationSetting _animationSetting;
+        public bool BoostInclude => Booster != null;
 
         protected void Awake()
         {
@@ -18,11 +19,11 @@ namespace LearnGame.Boosters
         }
         protected void Update()
         {
-            if (Booster != null)
+            if (BoostInclude)
             {
-                if (Booster.CurrentBoostSpeedTimerSeconds <= Booster.IntrvalSeconds)
+                if (Booster.BoosterActive)
                 {
-                    Booster.CurrentBoostSpeedTimerSeconds += Time.deltaTime;
+                    Booster.UpdateTimer();
                 }
                 else
                 {
@@ -32,13 +33,13 @@ namespace LearnGame.Boosters
                 }
             }
         }
-        public bool BoostInclude() => Booster != null;
 
         public void GetSpeedBooster(SpeedBooster speedBooster)
         {
-            if (!BoostInclude())
+            if (!BoostInclude)
                 _boostParticle.Play();
             Booster = speedBooster;
+            Booster.Initialize();
             _animationSetting.SetBoostSpeed(Booster.BoostSpeed);
         }
     }
