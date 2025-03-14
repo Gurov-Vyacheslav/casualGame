@@ -6,15 +6,7 @@ namespace LearnGame.UI.EnemyNavigator
     public class EnemyNavigator : MonoBehaviour
     {
         [SerializeField]
-        private EnemyPointer _pointerPrefub;
-        [SerializeField]
-        private int _maxSizePx = 100;
-        [SerializeField]
-        private int _minSizePx = 50;
-        [SerializeField]
-        private float _maxDistanceEffect = 100f;
-        [SerializeField]
-        private float _minDistanceEffect = 10f;
+        private PointerFactory _pointerFactory;
 
 
         private BaseCharacterView _player;
@@ -32,8 +24,7 @@ namespace LearnGame.UI.EnemyNavigator
 
         private void SpawnPointer(EnemyCharacterView enemy)
         {
-            var pointer = Instantiate(_pointerPrefub, Vector3.zero, Quaternion.identity, this.transform);
-            pointer.Initialize(enemy, _player, _camera, _rectTransform, _minSizePx, _maxSizePx, _maxDistanceEffect, _minDistanceEffect);
+            _pointerFactory.Create(transform, enemy.transform, _player.transform, _camera);
         }
 
         private void OnDestroy()
