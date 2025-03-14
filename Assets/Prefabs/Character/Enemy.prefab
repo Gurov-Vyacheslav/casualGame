@@ -12,15 +12,15 @@ GameObject:
   - component: {fileID: 5002407769419264004}
   - component: {fileID: 4305371420000130052}
   - component: {fileID: 5082701132232559237}
-  - component: {fileID: 6578357238004625492}
-  - component: {fileID: 3888116424987772617}
+  - component: {fileID: 8470380480602209296}
+  - component: {fileID: 2495752480612572868}
   - component: {fileID: 4447085488002897709}
   - component: {fileID: 4710825965176283279}
   - component: {fileID: 8278968525851143671}
-  - component: {fileID: 4397974602669738038}
   - component: {fileID: 158646122657892035}
-  - component: {fileID: 8470380480602209296}
-  - component: {fileID: 2495752480612572868}
+  - component: {fileID: 5336808193555678460}
+  - component: {fileID: 5286198890279273238}
+  - component: {fileID: 5819830095868161635}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -123,7 +123,30 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &6578357238004625492
+--- !u!95 &8470380480602209296
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470609506295431261}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 37c859929e7c72041ae900dd35bd6718, type: 3}
+  m_Controller: {fileID: 9100000, guid: 9748989c37e1d1042bf1171c43456836, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig:Spine'\n\tFrom animation clip 'IdleShoot'"
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2495752480612572868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,24 +155,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470609506295431261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29dbcb4041ce9a64ea27a39832e242c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 65f492875fe831e438a1c96b6504d88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3888116424987772617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470609506295431261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f9d1f7bca0cc724e8f4ea47472fb281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 4
-  _boostSpeed: 2
-  _maxRadianDelta: 10
 --- !u!114 &4447085488002897709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,9 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0288a2b13bcedb44dab6fbe802eaf98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseWeaponPrefab: {fileID: 6643639849626107294, guid: 89682f8065f219045b8dd79d07a487a3, type: 3}
+  _baseWeaponFactory: {fileID: 11400000, guid: 4a2cc41fbf6e87f419eeafecb5195774, type: 2}
   _hand: {fileID: 290624773896961613}
-  <Health>k__BackingField: 10
   _bloodSpatter: {fileID: 2573514118663836908}
   _dieParticle: {fileID: 5756320244898598364}
   _dieSound: {fileID: 4710825965176283279}
@@ -276,21 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3734ed0da2b224c82355aa705073a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4397974602669738038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470609506295431261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbce76355f0f3be4a937b492142bd77b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _viewRadius: 50
-  _minHpForEscapePercent: 30
-  _probabilityEscapePercent: 70
 --- !u!114 &158646122657892035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,30 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boostParticle: {fileID: 3079304746115209349}
---- !u!95 &8470380480602209296
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470609506295431261}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 37c859929e7c72041ae900dd35bd6718, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9748989c37e1d1042bf1171c43456836, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig:Spine'\n\tFrom animation clip 'IdleShoot'"
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2495752480612572868
+--- !u!114 &5336808193555678460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,9 +305,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470609506295431261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f492875fe831e438a1c96b6504d88e, type: 3}
+  m_Script: {fileID: 11500000, guid: 06482c37a352f944dad48e85020d0447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5286198890279273238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470609506295431261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5112380b607e15f45a8c6717a5ad8dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyAIConfig: {fileID: 11400000, guid: 6e9268e856f91db43aaddef6be05c968, type: 2}
+--- !u!114 &5819830095868161635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470609506295431261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed797fa33c7f2224e9e5cfb04b2be5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterConfig: {fileID: 11400000, guid: 8bbc7cfe2969b9c4fabb6c012608072d, type: 2}
 --- !u!1 &1662424769040120509
 GameObject:
   m_ObjectHideFlags: 0

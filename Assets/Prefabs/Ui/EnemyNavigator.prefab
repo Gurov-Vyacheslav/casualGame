@@ -114,12 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49982f61cf5cfb408764925efa5b915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _manager: {fileID: 0}
-  _pointerPrefub: {fileID: 8903558741028461780, guid: 78957908d426f394a85c2665b667b4c8, type: 3}
-  _maxSizePx: 100
-  _minSizePx: 50
-  _maxDistanceEffect: 100
-  _minDistanceEffect: 20
-  _colors:
-  - {r: 1, g: 0, b: 0.018630981, a: 0.79607844}
-  - {r: 1, g: 0, b: 0.25638866, a: 0.8784314}
+  _pointerFactory: {fileID: 11400000, guid: 89f018d073d29514791b583c9ed1772b, type: 2}

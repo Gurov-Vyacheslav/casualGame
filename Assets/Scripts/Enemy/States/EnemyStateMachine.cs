@@ -8,8 +8,8 @@ namespace LearnGame.Enemy.States
     {
         private const float NavMeshTurnOffDistance = 3f;
 
-        public EnemyStateMachine(EnemyCharacter enemyCharacter, EnemyDirectionController enemyDirectionController,
-            NavMesher navMesher, EnemyTarget target, float minHpForEscapePercent, float probabilityEscapePercent)
+        public EnemyStateMachine(IEnemyAIConfig enemyAIConfig ,EnemyCharacterView enemyCharacter, EnemyDirectionController enemyDirectionController,
+            NavMesher navMesher, EnemyTargetGO target)
         {
             var idleSate = new IdleState(enemyDirectionController);
             var findWaySate = new FindWayState(target, navMesher, enemyDirectionController);
@@ -19,14 +19,14 @@ namespace LearnGame.Enemy.States
             
             bool NeedEscape()
             {
-                float currentHealth = enemyCharacter.Health;
-                float maxHealth = enemyCharacter.MaxHealth;
+                float currentHealth = enemyCharacter.Model.Health;
+                float maxHealth = enemyCharacter.Model.MaxHealth;
                 float healthPercentage = MathUtils.ToPercentage(currentHealth, maxHealth);
                 GameObject closestTarget = target.Closest;
 
-                bool isLowHealth = healthPercentage <= minHpForEscapePercent;
+                bool isLowHealth = healthPercentage <= enemyAIConfig.MinHpForEscapePercent;
                 bool closestIsCharacter = closestTarget != null && LayerUtils.IsCharacter(closestTarget);
-                bool isChanceTriggered = Random.value * 100f < probabilityEscapePercent;
+                bool isChanceTriggered = Random.value * 100f < enemyAIConfig.ProbabilityEscapePercent;
 
                 return isLowHealth && closestIsCharacter && isChanceTriggered;
             }

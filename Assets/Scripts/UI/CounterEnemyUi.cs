@@ -3,12 +3,22 @@ using UnityEngine;
 
 namespace LearnGame.UI
 {
-    public class CounterEnemyUI : MonoBehaviour
+    public class CounterEnemyUI : MonoBehaviour, IInitializerGameManeger
     {
         [SerializeField]
         private TextMeshProUGUI _outputText;
 
         private int _currentCountEnemy;
+
+        public void InitializeGameManager()
+        {
+            GameManager.Instance.SetCounterEnemy(this);
+        }
+
+        public void Start()
+        {
+            InitializeGameManager();
+        }
 
         public void SetMaxCountEnemy(int count)
         {

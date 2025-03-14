@@ -1,36 +1,46 @@
-﻿using UnityEngine;
+﻿using LearnGame.Animations;
+using UnityEngine;
 
 namespace LearnGame.Boosters
 {
     public class PowerUpController : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]  
         private ParticleSystem _boostParticle;
 
         public SpeedBooster Booster { get; private set; }
 
+        private ICharacterPowerUpAnimationSetting _animationSetting;
+        public bool BoostInclude => Booster != null;
+
+        protected void Awake()
+        {
+            _animationSetting = GetComponent<ICharacterPowerUpAnimationSetting>();
+        }
         protected void Update()
         {
-            if (Booster != null)
+            if (BoostInclude)
             {
-                if (Booster._currentBoostSpeedTimerSeconds <= Booster.IntrvalSeconds)
+                if (Booster.BoosterActive)
                 {
-                    Booster._currentBoostSpeedTimerSeconds += Time.deltaTime;
+                    Booster.UpdateTimer();
                 }
                 else
                 {
                     Booster = null;
                     _boostParticle.Stop();
+                    _animationSetting.SetBoostSpeed();
                 }
             }
         }
-        public bool BoostInclude() => Booster != null;
 
         public void GetSpeedBooster(SpeedBooster speedBooster)
         {
-            if (!BoostInclude())
+            if (!BoostInclude)
                 _boostParticle.Play();
             Booster = speedBooster;
+            Booster.Initialize();
+            _animationSetting.SetBoostSpeed(Booster.BoostSpeed);
         }
     }
 }

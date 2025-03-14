@@ -157,8 +157,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8557018955650884919}
-  - component: {fileID: 6643639849626107294}
   - component: {fileID: 7158383403056683684}
+  - component: {fileID: 3292626433899934460}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: BaseWeapon
@@ -183,27 +183,6 @@ Transform:
   - {fileID: 5741185871343479124}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6643639849626107294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4733111480587801268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96e9eb2cccbd0048adb2cf4e8835e4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7735622923358220789, guid: cb591771739d71340a384a064a65e611, type: 3}
-  <ShootRadius>k__BackingField: 5
-  <ShootFrequencySec>k__BackingField: 0.7
-  _damage: 1
-  _bulletMaxFlyDistance: 50
-  _bulletFlySpeed: 25
-  _bulletSpawnPosition: {fileID: 918297198566497470}
-  _shootParticle: {fileID: 4071527375113948201}
-  _shootSound: {fileID: 0}
 --- !u!82 &7158383403056683684
 AudioSource:
   m_ObjectHideFlags: 0
@@ -300,6 +279,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3292626433899934460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733111480587801268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d771c5dcb644a35459f0bf55bcbb0c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <BulletSpawnPosition>k__BackingField: {fileID: 918297198566497470}
+  _bulletPrefab: {fileID: 5497654005988336084, guid: cb591771739d71340a384a064a65e611, type: 3}
+  _shootParticle: {fileID: 4071527375113948201}
 --- !u!1 &6364635233464102721
 GameObject:
   m_ObjectHideFlags: 0

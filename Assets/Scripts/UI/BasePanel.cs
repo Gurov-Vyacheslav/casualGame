@@ -4,10 +4,6 @@ namespace LearnGame.UI
 {
     public abstract class BasePanel : MonoBehaviour
     {
-
-        [SerializeField]
-        protected GameManager _gameManager;
-
         protected virtual void Start()
         {
             gameObject.SetActive(false);

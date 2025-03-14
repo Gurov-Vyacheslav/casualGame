@@ -2,31 +2,44 @@
 
 namespace LearnGame.Animations
 {
-    public class CharacterAnimatorController : BaseAnimatorController
+    public class CharacterAnimatorController : BaseAnimatorController, 
+        ICharacterShootingAnimationSettings, ICharacterMovingAnimationSetting, ICharacterPowerUpAnimationSetting
     {
 
         [SerializeField] private const float  _highLook = 1.3f;
         [SerializeField] private const float _baseSpeed = 1f;
 
-        public Vector3 TargetPosition { get; set; }
-        public bool HasTarget { get; set; }
+        public Vector3 ShootingTargetPosition { get; set; }
+        private bool _hasTarget;
 
         public void SetMoving(bool isMoving) => _animator.SetBool("IsMoving", isMoving);
+        public void MovingBackwards() => _animator.SetFloat("Speed", -Mathf.Abs(_animator.GetFloat("Speed")));
+        public void MovingForward() => _animator.SetFloat("Speed", Mathf.Abs(_animator.GetFloat("Speed")));
 
         public void SetRunning(bool isRunning) => _animator.SetBool("IsRunning", isRunning && _animator.GetBool("IsMoving"));
 
-        public void SetShooting(bool isShooting) => _animator.SetBool("IsShooting", isShooting && !_animator.GetBool("IsDead"));
-
-        public void IsWinning() => _animator.SetTrigger("IsWin");
-
-        public void IsDead() => _animator.SetBool("IsDead", true);
-
-        public void MovingBackwards() => _animator.SetFloat("Speed", -Mathf.Abs(_animator.GetFloat("Speed")));
-        public void MovingForward() => _animator.SetFloat("Speed", Mathf.Abs(_animator.GetFloat("Speed")));
+        public void SetShooting(bool isShooting)
+        {
+            _hasTarget = isShooting && !_animator.GetBool("IsDead");
+            _animator.SetBool("IsShooting", _hasTarget);
+        }
         public void SetBoostSpeed(float n = 1f)
         {
             _animator.SetFloat("Speed", _baseSpeed * n);
         }
+
+        public void IsWinning()
+        {
+            _animator.SetTrigger("IsWin");
+            SetShooting(false);
+        }
+
+        public void IsDead()
+        {
+            _animator.SetBool("IsDead", true);
+            SetShooting(false);
+        }
+
 
         protected override void Awake()
         {
@@ -36,11 +49,11 @@ namespace LearnGame.Animations
 
         private void OnAnimatorIK(int layerIndex)
         {
-            if (!HasTarget) return;
+            if (!_hasTarget) return;
 
             _animator.SetLookAtWeight(1, 0.5f, 1);
-            TargetPosition = new Vector3(TargetPosition.x, _highLook, TargetPosition.z);
-            Vector3 directionToTarget = TargetPosition - transform.position;
+            ShootingTargetPosition = new Vector3(ShootingTargetPosition.x, _highLook, ShootingTargetPosition.z);
+            Vector3 directionToTarget = ShootingTargetPosition - transform.position;
 
             Quaternion rotation = Quaternion.Euler(0, 30, 0);
             Vector3 rotatedDirection = rotation * directionToTarget;

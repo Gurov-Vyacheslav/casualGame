@@ -1,17 +1,15 @@
-﻿using LearnGame.Exceptions;
-using LearnGame.FSM;
-using System;
+﻿using LearnGame.FSM;
 using UnityEngine;
 
 namespace LearnGame.Enemy.States
 {
     public class MoveForwardState: BaseState
     {
-        private readonly EnemyTarget _target;
+        private readonly EnemyTargetGO _target;
         private readonly EnemyDirectionController _enemyDirectionController;
 
         private Vector3 _currentPoint;
-        public MoveForwardState(EnemyTarget target, EnemyDirectionController enemydirectionController)
+        public MoveForwardState(EnemyTargetGO target, EnemyDirectionController enemydirectionController)
         {
             _target = target;
             _enemyDirectionController = enemydirectionController;

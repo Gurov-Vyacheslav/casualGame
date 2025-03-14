@@ -1,4 +1,5 @@
-﻿using LearnGame.Enemy;
+﻿using LearnGame.CompositionRoot;
+using LearnGame.Enemy;
 using UnityEngine;
 
 namespace LearnGame.Spawners
@@ -6,30 +7,28 @@ namespace LearnGame.Spawners
     public class CharacterSpawner : BaseSpawner
     {
         [SerializeField]
-        private PlayerCharacter _playerPrefab;
+        private CharacterCompositionRoot _playerPrefab;
         [SerializeField]
-        private EnemyCharacter _enemyPrefab;
+        private CharacterCompositionRoot _enemyPrefab;
 
-        public CharacterSpawnersController CharacterSpawnersController {get; private set;}
 
         protected override void Awake()
         {
             base.Awake();
-            CharacterSpawnersController = transform.parent.GetComponent<CharacterSpawnersController>();
         }
 
         protected void Start()
         {
-            if (!CharacterSpawnersController.PlayerWasSpawned)
+            if (!CharacterSpawnersController.Instance.PlayerWasSpawned)
             {
                 var player = SpawningCharacter(_playerPrefab);
-                CharacterSpawnersController.ReportSpawnPlayer(player);
+                CharacterSpawnersController.Instance.ReportSpawnPlayer((PlayerCharacterView)player);
             }
         }
 
         protected void Update()
         {
-            if (CharacterSpawnersController.CurrentCountEnemy < CharacterSpawnersController.CountEnemy)
+            if (CharacterSpawnersController.Instance.CurrentCountEnemy < CharacterSpawnersController.Instance.CountEnemy)
                 UpdateSpawningEnemy();
         }
 
@@ -42,16 +41,17 @@ namespace LearnGame.Spawners
                 SetNewSpawnIntervalSeconds();
 
                 var enemy = SpawningCharacter(_enemyPrefab);
-                CharacterSpawnersController.ReportSpawnEnemy((EnemyCharacter)enemy);
+                CharacterSpawnersController.Instance.ReportSpawnEnemy((EnemyCharacterView)enemy);
             }
         }
 
-        private BaseCharacter SpawningCharacter(BaseCharacter character)
+        private BaseCharacterView SpawningCharacter(CharacterCompositionRoot characterCompositionRoot)
         {
             var randomPointInsideRange = Random.insideUnitCircle * _range;
             var randomPosition = new Vector3(randomPointInsideRange.x, 0f, randomPointInsideRange.y) + transform.position;
+            var newCharacterCompositionRoot = Instantiate(characterCompositionRoot, randomPosition, Quaternion.identity, transform);
 
-            return Instantiate(character, randomPosition, Quaternion.identity, transform);
+            return newCharacterCompositionRoot.Compose(CharacterSpawnersController.Instance.Timer);
         }
     }
 }

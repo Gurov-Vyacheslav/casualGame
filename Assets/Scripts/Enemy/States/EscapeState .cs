@@ -1,17 +1,15 @@
-﻿using LearnGame.Exceptions;
-using LearnGame.FSM;
-using System;
+﻿using LearnGame.FSM;
 using UnityEngine;
 
 namespace LearnGame.Enemy.States
 {
     public class EscapeState: BaseState
     {
-        private readonly EnemyTarget _target;
+        private readonly EnemyTargetGO _target;
         private readonly EnemyDirectionController _enemyDirectionController;
 
         private Vector3 _currentPoint;
-        public EscapeState(EnemyTarget target, EnemyDirectionController enemydirectionController)
+        public EscapeState(EnemyTargetGO target, EnemyDirectionController enemydirectionController)
         {
             _target = target;
             _enemyDirectionController = enemydirectionController;

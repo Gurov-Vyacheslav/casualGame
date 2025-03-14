@@ -1,77 +1,51 @@
-﻿using LearnGame.Animations;
+﻿using LearnGame.Timer;
+using LearnGame.Animations;
 using UnityEngine;
 
 namespace LearnGame.Shooting
 {
-    public class ShootingController : MonoBehaviour
+    public class ShootingController
     {
         public bool HasTarget => _target != null;
-        public Vector3 TargetPosition => _target.transform.position;
+        public Vector3 TargetPosition => _target.Transform.Position;
 
-        private Weapon _weapon;
+        private WeaponModel _weapon;
 
-        private Collider[] _colliders = new Collider[2];
+        private readonly IShootingTarget _shootingTarget;
+        private readonly ITimer _timer;
+        private readonly ICharacterShootingAnimationSettings _animationSettings;
+
+        private BaseCharacterModel _target;
         private float _nextShootTimerSec;
 
-        private GameObject _target;
-
-        protected CharacterAnimatorController _characterAnimatorController;
-
-        protected void Awake()
+        public ShootingController(IShootingTarget shootingTarget, ITimer timer, ICharacterShootingAnimationSettings animationSettings)
         {
-            _characterAnimatorController = GetComponent<CharacterAnimatorController>();
+            _shootingTarget = shootingTarget;
+            _timer = timer;
+            _animationSettings = animationSettings;
         }
-        protected void Update()
-        {
-            _target = GetTarget();
 
-            _nextShootTimerSec -= Time.deltaTime;
+        public void TryShoot(Vector3 position)
+        {
+            _target = _shootingTarget.GetTarget(position, _weapon.Description.ShootRadius);
+
+            _nextShootTimerSec -= _timer.DeltaTime;
             if ( _nextShootTimerSec < 0 )
             {
                 if (HasTarget)
-                    _weapon.Shoot(TargetPosition);
+                    _weapon.Shoot(position, TargetPosition);
 
-                _nextShootTimerSec = _weapon.ShootFrequencySec;
+                _nextShootTimerSec = _weapon.Description.ShootFrequencySec;
             }
 
-            if (HasTarget) _characterAnimatorController.TargetPosition = TargetPosition;
-            _characterAnimatorController.HasTarget = HasTarget;
+            _animationSettings.SetShooting(HasTarget);
+            if (HasTarget)
+                _animationSettings.ShootingTargetPosition = TargetPosition;
         }
 
-        public void SetWeapon( Weapon weaponPrefab, Transform hand)
+        public void SetWeapon( WeaponModel weapon)
         {
-            if (_weapon != null) Destroy(_weapon.gameObject);
-            _weapon = Instantiate(weaponPrefab, hand);
-            _weapon.transform.localPosition = Vector3.zero;
-            _weapon.transform.localPosition = Vector3.zero;
-        }
-
-        private GameObject GetTarget()
-        {
-            GameObject target = null;
-
-            var position = _weapon.transform.position;
-            var radius = _weapon.ShootRadius;
-
-            var size = Physics.OverlapSphereNonAlloc(position, radius, _colliders, LayerUtils.CharacterMask);
-
-            if (size > 0 )
-            {
-                for (int i = 0; i < size; i++)
-                {
-                    if (_colliders[i].gameObject != gameObject)
-                    {
-                        target = _colliders[i].gameObject;
-                        break;
-                    }
-                }
-            }
-            return target;
-        }
-
-        public bool SetBaseWeapon()
-        {
-            return !LayerUtils.IsBaseWeapon(_weapon.gameObject);
+            _weapon = weapon;
         }
     }
 }
