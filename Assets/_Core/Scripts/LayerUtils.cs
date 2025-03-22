@@ -29,8 +29,5 @@ namespace LearnGame
         public static bool IsEnemy(GameObject other) => other.layer == EnemyLayer;
         public static bool IsPlayer(GameObject other) => other.layer == PlayerLayer;
         public static bool IsCharacter(GameObject other) => IsEnemy(other) || IsPlayer(other);
-
-
-        public static bool IsBaseWeapon(GameObject other) => other.tag == PistolTag;
     }
 }
