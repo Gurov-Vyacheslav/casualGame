@@ -939,7 +939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460305147176036982, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8460305147176036982, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -947,7 +947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460305147176036982, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8460305147176036982, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: m_AnchorMin.y
@@ -955,7 +955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460305147176036982, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8460305147176036982, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: m_SizeDelta.y
@@ -995,7 +995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460305147176036982, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 150
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8460305147176036982, guid: d1220e2b79f674143b73e8c95b7259f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2224,7 +2224,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followCameraOffset: {x: 0, y: 0, z: 0}
   _rotationOffset: {x: 0, y: 0, z: 0}
-  _character: {fileID: 0}
   _winCameraOffset: {x: -4, y: 3, z: 0}
   _winRotationOffset: {x: 0, y: 1.5, z: 0}
   _moveSpeed: 3
@@ -3725,7 +3724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1719372159
 Transform:
   m_ObjectHideFlags: 0
@@ -6225,8 +6224,8 @@ Transform:
   m_GameObject: {fileID: 4245247041111582779}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0001285038, y: 0.0012935575, z: -0.0026705419, w: 0.9999956}
-  m_LocalPosition: {x: 0.0568, y: -0.0058, z: 21.9837}
-  m_LocalScale: {x: 20, y: 1, z: 34.657364}
+  m_LocalPosition: {x: 0.056797, y: -0.0058, z: 21.984}
+  m_LocalScale: {x: 61.653004, y: 3.0830002, z: 106.836006}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 699454682}
