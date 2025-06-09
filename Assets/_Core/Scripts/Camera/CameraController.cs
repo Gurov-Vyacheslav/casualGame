@@ -57,6 +57,8 @@ namespace LearnGame.Camera
         public void SetCharacter(BaseCharacterView character)
         {
             _character = character;
+            _currentCameraOffset = _followCameraOffset;
+            _currentRotationOffset = _rotationOffset;
         }
         public void ReportPlayerWon()
         {

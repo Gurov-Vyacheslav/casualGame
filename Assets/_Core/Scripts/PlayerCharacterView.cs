@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 
 namespace LearnGame
 {
+#if UNITY_ANDROID
+    [RequireComponent(typeof(JoystickPlayerMovementDirectionController))]
+#elif UNITY_EDITOR || UNITY_STANDALONE
     [RequireComponent(typeof(PlayerMovementDirectionController))]
+#endif
     public class PlayerCharacterView : BaseCharacterView
     {
         [SerializeField] private AudioSource _winSound;
